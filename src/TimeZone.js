@@ -1,9 +1,9 @@
-// import {useEffect} from 'react'
+import {useEffect} from 'react'
 
 const TimeZone = (props) => {
-// useEffect(() => {
-//     props.setWelcome(!props.welcome)
-// }, [])
+useEffect(() => {
+    props.setWelcome(false)
+}, [])
 
     return (
         <div className="component timeZoneContainer">
