@@ -1,5 +1,20 @@
 import TimeZone from "./TimeZone";
 // import Setup from "./Setup"
+ JSFunctionality
+import Meetings from "./Meetings"
+import { Route, Link, useHistory } from "react-router-dom"
+import { useState, useEffect } from 'react'
+import firebase from './firebase'
+
+
+
+const Welcome = (props) => {
+    const { welcome, setWelcome } = props
+    const history = useHistory()
+    // const [welcome, setWelcome] = useState(true)
+    const [meetingNumberInput, setMeetingNumberInput] = useState("")
+    const [timeZones, setTimeZones] = useState([])
+=======
 import Meetings from "./Meetings";
 import { Route, Link, useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -12,10 +27,32 @@ const Welcome = (props) => {
   // const [welcome, setWelcome] = useState(true)
   const [meetingNumberInput, setMeetingNumberInput] = useState("");
 
+
   const handleChange = (e) => {
     setMeetingNumberInput(e.target.value);
   };
 
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        if (e.target.name === "newMeeting") {
+            setWelcome(false)
+            history.push('/timezone')
+        } else {
+            const dbRef = firebase.database().ref();
+            // dbRef.child('Test5').set("setting random value")
+
+            dbRef.on('value', (snapshot) => {
+                if (snapshot.child(meetingNumberInput).exists()) {
+                    console.log('it worked')
+                    history.push('/meetings/' + meetingNumberInput)
+                    setMeetingNumberInput("")
+                } else {
+                alert("Meeting does not exist")
+                }
+            })
+        }
+=======
   const handleClick = (e) => {
     e.preventDefault();
     if (e.target.name === "newMeeting") {
@@ -23,6 +60,7 @@ const Welcome = (props) => {
       history.push("/timezone");
     } else {
       console.log("check for verification, firebase datatbase");
+
     }
   };
 
