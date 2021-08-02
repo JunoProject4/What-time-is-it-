@@ -243,7 +243,9 @@ template {
 }
 
 
-
+body {
+  overflow: hidden;
+}
 
 
 main p,
@@ -314,7 +316,7 @@ h2 {
   height: 255px;
   width: 400px;
   border-radius: 50%;
-  left: 120px;
+  left: 35%;
   top: -140px;
 }
 .ellipse3 {
@@ -348,7 +350,7 @@ h1 {
   width: 60%;
   height: 200px;
   border-radius: 10px;
-  margin-top: 100px;
+  margin-top: 140px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -382,4 +384,16 @@ label {
 footer {
   height: 20vh;
   background-color: #0c1c65;
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    left: 38%;
+  }
+  .newMeeting {
+    width: 400px;
+  }
+  form {
+    width: 400px;
+  }
 }
