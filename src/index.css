@@ -243,7 +243,9 @@ template {
 }
 
 
-
+body {
+  overflow: hidden;
+}
 
 
 main p,
@@ -314,7 +316,7 @@ h2 {
   height: 255px;
   width: 400px;
   border-radius: 50%;
-  left: 120px;
+  left: 35%;
   top: -140px;
 }
 .ellipse3 {
