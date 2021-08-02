@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Welcome from "./Welcome"
 // import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import { FaGlobeEurope } from 'react-icons/fa';
+
 
 
 
@@ -41,19 +43,21 @@ function App() {
   return (
     // <Router>
       <div className={darkMode}>
-        <header className="App-header">
-          <h1>Timeless</h1>
-          <p>created by juno</p>
-        </header>
+        
         <main>
+          <h1>Timeless</h1>
+          <div className="ellipse1"></div>
+          <div className="ellipse2"></div>
+          <div className="ellipse3"></div>
           <Welcome welcome={welcome} setWelcome={setWelcome}/>
         </main>
+     
         
         <footer>        
           {
             buttonArray.map(button => {
               return (
-                  <button className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+                  <button  className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
               )
             })
           }
