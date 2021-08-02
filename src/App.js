@@ -15,7 +15,6 @@ function App() {
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
   const buttonArray = ['timeZone', 'meetings', 'theme', 'restart']
-
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
   const history = useHistory()
@@ -23,7 +22,7 @@ function App() {
   // const [test, setTest] = useState("ayyooooo")
 
 
-//Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
+  //Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
   const handleClick = (e) => {
     e.preventDefault()
     if (e.target.className !== "theme" && e.target.className !== "restart") {
@@ -40,25 +39,25 @@ function App() {
 
   return (
     // <Router>
-      <div className={darkMode}>
-        <header className="App-header">
-          <h1>Timeless</h1>
-          <p>created by juno</p>
-        </header>
-        <main>
-          <Welcome welcome={welcome} setWelcome={setWelcome}/>
-        </main>
-        
-        <footer>        
-          {
-            buttonArray.map(button => {
-              return (
-                  <button className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
-              )
-            })
-          }
-        </footer>
-      </div>
+    <div className={darkMode}>
+      <header className="App-header">
+        <h1>Timeless</h1>
+        <p>created by juno</p>
+      </header>
+      <main>
+        <Welcome welcome={welcome} setWelcome={setWelcome} />
+      </main>
+
+      <footer>
+        {
+          buttonArray.map((button, index) => {
+            return (
+              <button className={button} key={index} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+            )
+          })
+        }
+      </footer>
+    </div>
     // </Router>
   );
 }

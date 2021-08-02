@@ -2,14 +2,17 @@ import TimeZone from "./TimeZone"
 // import Setup from "./Setup"
 import Meetings from "./Meetings"
 import { Route, Link, useHistory } from "react-router-dom"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import firebase from './firebase'
+
 
 
 const Welcome = (props) => {
-    const {welcome, setWelcome} = props
+    const { welcome, setWelcome } = props
     const history = useHistory()
     // const [welcome, setWelcome] = useState(true)
     const [meetingNumberInput, setMeetingNumberInput] = useState("")
+    const [timeZones, setTimeZones] = useState([])
 
     const handleChange = (e) => {
         setMeetingNumberInput(e.target.value)
@@ -21,7 +24,18 @@ const Welcome = (props) => {
             setWelcome(false)
             history.push('/timezone')
         } else {
-            console.log("check for verification, firebase datatbase")
+            const dbRef = firebase.database().ref();
+            // dbRef.child('Test5').set("setting random value")
+
+            dbRef.on('value', (snapshot) => {
+                if (snapshot.child(meetingNumberInput).exists()) {
+                    console.log('it worked')
+                    history.push('/meetings/' + meetingNumberInput)
+                    setMeetingNumberInput("")
+                } else {
+                alert("Meeting does not exist")
+                }
+            })
         }
     }
 
