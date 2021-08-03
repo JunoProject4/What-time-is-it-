@@ -22,11 +22,13 @@ const TimeZone = (props) => {
         }
         await getQuotes()
             .then((res) => {
-                apiInformation.push([city[0].toUpperCase() + city.slice(1), res.datetime.substring(11, 19), res.datetime.slice(26)])
+                let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
+                apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26)])
                 setApiFinal(apiInformation)
             })
             .catch(() => {
-                apiInformation.push([city[0].toUpperCase() + city.slice(1), "no information available"])
+                let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
+                apiInformation.push([formattedCity, "no information available"])
                 setApiFinal(apiInformation)
             })
         return Promise.resolve()
@@ -54,7 +56,7 @@ const TimeZone = (props) => {
         e.preventDefault()
         let alertCount = 0
         let copyArray = []
-        const check = (/(^[a-zA-Z]+\s[a-zA-Z]+)$/)
+        const check = (/(^[a-zA-Z_]+\s[a-zA-Z_]+)$/)
 
         if (city1Input.match(check)) {
             copyArray.push(city1Input.split(" "))
@@ -91,11 +93,11 @@ const TimeZone = (props) => {
     useEffect(() => {
         setTimeout(() => {
             setInfoReady(!infoReady)
-        }, 2500)
+        }, 3500)
 
         setTimeout(() => {
             setInfoReady(!infoReady)
-        }, 5000)
+        }, 7000)
 
     }, [apiFinal])
 
