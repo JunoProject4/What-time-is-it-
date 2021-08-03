@@ -3,6 +3,7 @@ import TimeZone from "./TimeZone"
 import Meetings from "./Meetings"
 import { Route, Link, useHistory } from "react-router-dom"
 import { useState } from 'react'
+import { FaCalendarTimes, FaStopwatch, FaGlobeEurope } from 'react-icons/fa';
 
 
 const Welcome = (props) => {
@@ -28,10 +29,15 @@ const Welcome = (props) => {
     return (
         <div className="component Welcome">
             { welcome
-                ? <div>
+                ? <div className="newMeetingSection">
+                    <div className="newMeeting">
+                        <p>Create New Meeting Time</p>
+                       <FaStopwatch className= "icons stopWatch"/>
                     <button name="newMeeting" onClick={handleClick}>New Meeting</button>
+                    </div>
                     <form action="submit">
-                        <label htmlFor="meetingNumber">Existing Meeting:</label>
+                        <label htmlFor="meetingNumber">View Existing Meeting:</label>
+                        <FaCalendarTimes className= "icons calendarTimes"/>
                         <input
                             type="text"
                             name="meetingNumber"
