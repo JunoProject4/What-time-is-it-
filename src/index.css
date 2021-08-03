@@ -378,14 +378,17 @@ footer {
 }
 .meetingsContainer {
   height: 80vh;
-  background-color: #0c1c65;
+  background-color: #000d54;
 }
  h2 {
  color: whitesmoke;
  padding-top: 150px;
- padding-left: 37%;
+ padding-left: 34%;
 }
-
+.timeZoneContainer {
+  height: 80vh;
+  background-color: #000d54;
+}
 @media (min-width: 1000px) {
   h1 {
     left: 38%;

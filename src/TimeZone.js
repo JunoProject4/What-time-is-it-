@@ -7,7 +7,7 @@ useEffect(() => {
 
     return (
         <div className="component timeZoneContainer">
-            <h2>time zone</h2>
+            <h2>Time zone</h2>
         </div>
     )
 }
