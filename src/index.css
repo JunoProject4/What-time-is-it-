@@ -466,23 +466,11 @@ template {
 }
 
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-
 body {
   overflow: hidden;
 }
+
+
 
 main p,
 main h3 {
@@ -522,25 +510,7 @@ a:active {
   top: 1px;
 }
 
-.component {
-  height: 60vh;
-  margin: 0 auto;
-  background-color: lightseagreen;
-  border-radius: 6px;
-  width: 82.5%;
 
-}
-
-.timeZoneContainer {
-  background-color: palegoldenrod;
-}
-
-.setupContainer {
-  background-color: orange;
-}
-.meetingsContainer {
-  background-color: greenyellow;
-}
 
 h2 {
   margin: 0;
@@ -596,7 +566,6 @@ h1 {
   height: 200px;
   border-radius: 10px;
   margin-top: 140px;
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -631,7 +600,19 @@ footer {
   height: 20vh;
   background-color: #0c1c65;
 }
-
+.meetingsContainer {
+  height: 80vh;
+  background-color: #000d54;
+}
+ h2 {
+ color: whitesmoke;
+ padding-top: 150px;
+ padding-left: 34%;
+}
+.timeZoneContainer {
+  height: 80vh;
+  background-color: #000d54;
+}
 @media (min-width: 1000px) {
   h1 {
     left: 38%;
@@ -643,4 +624,3 @@ footer {
     width: 400px;
   }
 }
-
