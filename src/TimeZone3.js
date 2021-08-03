@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 import Setup from './Setup'
-import Calendar from './Calendar'
-import { useHistory } from "react-router-dom";
-
 
 const TimeZone = (props) => {
     // const [cityArray, setCityArray] = useState([["Lagos", "Africa"], ["London", "Europe"], ["Tokyo", "Asia"]])
@@ -10,13 +7,9 @@ const TimeZone = (props) => {
     const [city1Input, setCity1Input] = useState("")
     const [city2Input, setCity2Input] = useState("")
     const [city3Input, setCity3Input] = useState("")
+    const [apiFinal, setApiFinal] = useState([])
     const [infoReady, setInfoReady] = useState(false)
-    const [localTime, setLocalTime] = useState("")
     let apiInformation = []
-    // const [apiFinal, setApiFinal] = useState([])
-    const {apiFinal, setApiFinal} = props
-    const history = useHistory()
-    // const [loading, setLoading] = useState(true)
 
 
     const url = ("https://worldtimeapi.org/api/timezone/")
@@ -29,13 +22,11 @@ const TimeZone = (props) => {
         }
         await getQuotes()
             .then((res) => {
-                let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
-                apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26).replace(":", "")])
+                apiInformation.push([city[0].toUpperCase() + city.slice(1), res.datetime.substring(11, 19), res.datetime.slice(26)])
                 setApiFinal(apiInformation)
             })
             .catch(() => {
-                let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
-                apiInformation.push([formattedCity, "no information available"])
+                apiInformation.push([city[0].toUpperCase() + city.slice(1), "no information available"])
                 setApiFinal(apiInformation)
             })
         return Promise.resolve()
@@ -63,7 +54,7 @@ const TimeZone = (props) => {
         e.preventDefault()
         let alertCount = 0
         let copyArray = []
-        const check = (/(^[a-zA-Z_]+\s[a-zA-Z_]+)$/)
+        const check = (/(^[a-zA-Z]+\s[a-zA-Z]+)$/)
 
         if (city1Input.match(check)) {
             copyArray.push(city1Input.split(" "))
@@ -97,32 +88,24 @@ const TimeZone = (props) => {
         }
     }
 
-    const handleClick2 = () => {
-        history.push('/calendar')
-    }
-
     useEffect(() => {
-        // setTimeout(() => {
-        //     setInfoReady(!infoReady)
-        // }, 3500)
+        setTimeout(() => {
+            setInfoReady(!infoReady)
+        }, 2500)
 
         setTimeout(() => {
             setInfoReady(!infoReady)
-        }, 8000)
+        }, 5000)
 
     }, [apiFinal])
 
-    useEffect(() => {
-    let time = [Date().substring(16, 24), Date().substring(28,33)]
-    setLocalTime(time)
-    }, [])
 
 
     return (
         <div className="component timeZoneContainer">
             <div>
                 <h2>Enter city and location (Asia, America, Africa, Europe, Australia)</h2>
-                <form className="cityInputForm" action="submit">
+                <form className="chatPage2Form" action="submit">
 
                     <div>
                         <label htmlFor="city1">City 1</label>
@@ -137,21 +120,19 @@ const TimeZone = (props) => {
                         <input name="city3" value={city3Input} type="text" placeholder="City3 Continent" required onChange={handleChange} />
                     </div>
 
-                    <button name="submitCities" onClick={handleClick}>Send</button>
+                    <button onClick={handleClick}>Send</button>
                 </form>
-                <button name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
             </div>
             <div>
-                <h3>Local time is: {localTime}</h3>
                 {
                     apiFinal.map((item, index) => {
                         console.log("what is going on??")
                         console.log(item)
                         return (
-                            <h3 key={index}>Time in {item[0]}: {item[1]}</h3>
+                            <p key={index}>Time in {item[0]}: {item[1]}</p>
                         )
                     })
-                    }
+                }
             </div>
 
             {/* {

@@ -17,7 +17,6 @@ function App() {
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
   const buttonArray = ['timeZone', 'meetings', 'theme', 'restart']
-
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
   const history = useHistory()
@@ -25,7 +24,7 @@ function App() {
   // const [test, setTest] = useState("ayyooooo")
 
 
-//Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
+  //Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
   const handleClick = (e) => {
     e.preventDefault()
     if (e.target.className !== "theme" && e.target.className !== "restart") {
@@ -42,28 +41,28 @@ function App() {
 
   return (
     // <Router>
-      <div className={darkMode}>
-        
-        <main>
-          <h1>Timeless</h1>
-          <div className="ellipse1"></div>
-          <div className="ellipse2"></div>
-          <div className="ellipse3"></div>
-          <Welcome welcome={welcome} setWelcome={setWelcome}/>
-        </main>
-     
-        
-        <footer>        
-          {
-            buttonArray.map(button => {
-              return (
-                
-                  <button  className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
-              )
-            })
-          }
-        </footer>
-      </div>
+    // JSFunctionality
+    <div className={darkMode}>
+
+      <main>
+        <h1>Timeless</h1>
+        <div className="ellipse1"></div>
+        <div className="ellipse2"></div>
+        <div className="ellipse3"></div>
+        <Welcome welcome={welcome} setWelcome={setWelcome} />
+      </main>
+
+
+      <footer>
+        {
+          buttonArray.map((button, i) => {
+            return (
+              <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+            )
+          })
+        }
+      </footer>
+    </div>
     // </Router>
   );
 }
