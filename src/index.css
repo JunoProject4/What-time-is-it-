@@ -286,16 +286,7 @@ a:active {
   top: 1px;
 }
 
-.timeZoneContainer {
-  background-color: palegoldenrod;
-}
 
-.setupContainer {
-  background-color: orange;
-}
-.meetingsContainer {
-  background-color: greenyellow;
-}
 
 h2 {
   margin: 0;
@@ -384,6 +375,15 @@ label {
 footer {
   height: 20vh;
   background-color: #0c1c65;
+}
+.meetingsContainer {
+  height: 80vh;
+  background-color: #0c1c65;
+}
+ h2 {
+ color: whitesmoke;
+ padding-top: 150px;
+ padding-left: 37%;
 }
 
 @media (min-width: 1000px) {
