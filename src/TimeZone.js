@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import Setup from './Setup'
+import Calendar from './Calendar'
+import { useHistory } from "react-router-dom";
+
 
 const TimeZone = (props) => {
     // const [cityArray, setCityArray] = useState([["Lagos", "Africa"], ["London", "Europe"], ["Tokyo", "Asia"]])
@@ -7,9 +10,13 @@ const TimeZone = (props) => {
     const [city1Input, setCity1Input] = useState("")
     const [city2Input, setCity2Input] = useState("")
     const [city3Input, setCity3Input] = useState("")
-    const [apiFinal, setApiFinal] = useState([])
     const [infoReady, setInfoReady] = useState(false)
+    const [localTime, setLocalTime] = useState("")
     let apiInformation = []
+    // const [apiFinal, setApiFinal] = useState([])
+    const {apiFinal, setApiFinal} = props
+    const history = useHistory()
+    // const [loading, setLoading] = useState(true)
 
 
     const url = ("https://worldtimeapi.org/api/timezone/")
@@ -23,7 +30,7 @@ const TimeZone = (props) => {
         await getQuotes()
             .then((res) => {
                 let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
-                apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26)])
+                apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26).replace(":", "")])
                 setApiFinal(apiInformation)
             })
             .catch(() => {
@@ -90,24 +97,32 @@ const TimeZone = (props) => {
         }
     }
 
+    const handleClick2 = () => {
+        history.push('/calendar')
+    }
+
     useEffect(() => {
-        setTimeout(() => {
-            setInfoReady(!infoReady)
-        }, 3500)
+        // setTimeout(() => {
+        //     setInfoReady(!infoReady)
+        // }, 3500)
 
         setTimeout(() => {
             setInfoReady(!infoReady)
-        }, 7000)
+        }, 8000)
 
     }, [apiFinal])
 
+    useEffect(() => {
+    let time = [Date().substring(16, 24), Date().substring(28,33)]
+    setLocalTime(time)
+    }, [])
 
 
     return (
         <div className="component timeZoneContainer">
             <div>
                 <h2>Enter city and location (Asia, America, Africa, Europe, Australia)</h2>
-                <form className="chatPage2Form" action="submit">
+                <form className="cityInputForm" action="submit">
 
                     <div>
                         <label htmlFor="city1">City 1</label>
@@ -122,19 +137,21 @@ const TimeZone = (props) => {
                         <input name="city3" value={city3Input} type="text" placeholder="City3 Continent" required onChange={handleChange} />
                     </div>
 
-                    <button onClick={handleClick}>Send</button>
+                    <button name="submitCities" onClick={handleClick}>Send</button>
                 </form>
+                <button name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
             </div>
             <div>
+                <h3>Local time is: {localTime}</h3>
                 {
                     apiFinal.map((item, index) => {
                         console.log("what is going on??")
                         console.log(item)
                         return (
-                            <p key={index}>Time in {item[0]}: {item[1]}</p>
+                            <h3 key={index}>Time in {item[0]}: {item[1]}</h3>
                         )
                     })
-                }
+                    }
             </div>
 
             {/* {

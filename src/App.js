@@ -55,9 +55,9 @@ function App() {
 
       <footer>
         {
-          buttonArray.map(button => {
+          buttonArray.map((button, i) => {
             return (
-              <button className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+              <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
             )
           })
         }

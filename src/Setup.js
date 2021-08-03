@@ -4,9 +4,9 @@ const Setup = (props) => {
         <div className="component setupContainer">
             <h2>set up</h2>
             {
-                apiFinal.map(x => {
+                apiFinal.map((x, index) => {
                     return (
-                        <p>{x[0]} and {x[1]}</p>
+                        <p key={index}>{x[0]} and {x[1]}</p>
                     )
                 })
             }

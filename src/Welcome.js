@@ -10,6 +10,8 @@ import TimeZone from "./TimeZone";
 // import { Route, Link, useHistory } from "react-router-dom"
 // import { useState, useEffect } from 'react'
 import firebase from './firebase'
+import Calendar from './Calendar'
+
 
 
 
@@ -26,6 +28,8 @@ const Welcome = (props) => {
   const history = useHistory();
   // const [welcome, setWelcome] = useState(true)
   const [meetingNumberInput, setMeetingNumberInput] = useState("");
+  const [apiFinal, setApiFinal] = useState([])
+
 
 
   const handleChange = (e) => {
@@ -97,10 +101,11 @@ const Welcome = (props) => {
               exact
               path="/timezone"
               render={() => (
-                <TimeZone setWelcome={setWelcome} welcome={welcome} />
+                <TimeZone setWelcome={setWelcome} welcome={welcome} setApiFinal={setApiFinal} apiFinal={apiFinal}/>
               )}
             />
-            {/* <Route exact path="/setup" render={() => <Setup setWelcome={setWelcome} welcome={welcome} />} /> */}
+            <Route exact path="/calendar" render={() => <Calendar setWelcome={setWelcome} welcome={welcome} apiFinal={apiFinal}/>} />
+            
             <Route
               exact
               path="/meetings"
