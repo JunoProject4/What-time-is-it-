@@ -598,7 +598,9 @@ label {
 }
 footer {
   height: 20vh;
-  background-color: #0c1c65;
+  background-color: #000d54;
+  text-align: center;
+  
 }
 .meetingsContainer {
   height: 80vh;
@@ -613,14 +615,53 @@ footer {
   height: 80vh;
   background-color: #000d54;
 }
+
+#userBtns {
+  display: inline-block;
+  margin: 20px 20px;
+}
+
+
+
+
+
 @media (min-width: 1000px) {
   h1 {
-    left: 38%;
+    font-size: 3rem;
+    left: 42%;
   }
   .newMeeting {
-    width: 400px;
+    width: 500px;
   }
-  form {
-    width: 400px;
+  .newMeeting p {
+    font-size: 1.8rem;
+  }
+  label {
+    font-size: 1.8rem;
+  }
+  .icons {
+    font-size: 2rem;
+  }
+  
+}
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 3rem;
+    left: 510px;
+  }
+  #userBtns {
+    margin-top: 45px;
+    margin-left: 15px;
   }
 }
+@media (min-width: 1400px) {
+  h1 {
+    font-size: 3rem;
+    left: 615px;
+  }
+  #userBtns {
+    margin-top: 45px;
+    margin-left: 15px;
+  }
+}
+

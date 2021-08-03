@@ -57,7 +57,7 @@ function App() {
         {
           buttonArray.map((button, i) => {
             return (
-              <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+              <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
             )
           })
         }
