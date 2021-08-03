@@ -632,6 +632,11 @@ footer {
   background-color: #0c1c65;
 }
 
+/* TIMEZONE STYLINGS */
+.timeZoneContainer {
+  background-color: #000d54;
+}
+
 @media (min-width: 1000px) {
   h1 {
     left: 38%;
