@@ -82,6 +82,7 @@ const TimeZone = (props) => {
 
 
                     <TimePickerComponent
+                    className="timePicker"
                         selected={selectStartTime}
                         onChange={time => setSelectStartTime(time.value)}
                         placeholder="Select a Start Time"
