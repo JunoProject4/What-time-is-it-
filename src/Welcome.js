@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaCalendarTimes, FaStopwatch, FaGlobeEurope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import TimeZone from "./TimeZone";
+import MeetingDetails from "./MeetingDetails"
 // // import Setup from "./Setup"
 //  JSFunctionality
 // import Meetings from "./Meetings"
@@ -24,28 +25,53 @@ const Welcome = (props) => {
   // const [welcome, setWelcome] = useState(true)
   const [meetingNumberInput, setMeetingNumberInput] = useState("");
   const [apiFinal, setApiFinal] = useState([]);
+
+  const [checkMeeting, setCheckMeeting] = useState([])
+
+
   const handleChange = (e) => {
     setMeetingNumberInput(e.target.value);
   };
+
+
   const handleClick = (e) => {
     e.preventDefault();
-    if (e.target.name === "newMeeting") {
-      setWelcome(false);
-      history.push("/timezone");
-    } else {
-      const dbRef = firebase.database().ref();
-      // dbRef.child('Test5').set("setting random value")
-      dbRef.on("value", (snapshot) => {
-        if (snapshot.child(meetingNumberInput).exists()) {
-          console.log("it worked");
-          history.push("/meetings/" + meetingNumberInput);
-          setMeetingNumberInput("");
-        } else {
-          alert("Meeting does not exist");
-        }
-      });
-    }
-  };
+    setWelcome(false);
+    history.push("/timezone")
+  }
+
+
+  const handleClick2 = (e) => {
+    e.preventDefault()
+    let checkMeetingState = []
+    const dbRef = firebase.database().ref();
+    // dbRef.child('Test5').set("setting random value")
+
+    dbRef.on("value", (snapshot) => {
+      if (snapshot.child(meetingNumberInput).exists()) {
+        console.log("it worked")
+
+        dbRef.on("value", (response) => {
+          const data = response.val()
+          for (let key in data) {
+            if (meetingNumberInput === key) {
+              checkMeetingState.push({ key: key, info: data[key] })
+            }
+          }
+          console.log(checkMeetingState)
+          setCheckMeeting(checkMeetingState)
+        })
+        setWelcome(false)
+        history.push("/meetingdetails")
+        // history.push("/meetings/" + meetingNumberInput);
+        // setMeetingNumberInput("");
+      } else {
+        alert("Meeting does not exist")
+      }
+    });
+  }
+
+
   return (
     <div className="component Welcome">
       {welcome ? (
@@ -56,7 +82,7 @@ const Welcome = (props) => {
             animate={{ opacity: 1, y: -10 }}
             transition={{ delay: 1, type: "spring" }}
           >
-            <p>Create New Meeting Time</p>
+            <p>Create New Meeting Time:</p>
             <FaStopwatch className="icons stopWatch" />
             <button name="newMeeting" onClick={handleClick}>
               New Meeting
@@ -64,7 +90,7 @@ const Welcome = (props) => {
           </motion.div>
           <motion.form
             action="submit"
-            className="newMeeting"
+            className="newMeetingForm"
             initial={{ opacity: 0, y: -250 }}
             animate={{ opacity: 1, y: -10 }}
             transition={{ delay: 0.5, type: "spring" }}
@@ -78,7 +104,7 @@ const Welcome = (props) => {
               onChange={handleChange}
               required
             />
-            <button name="meetingCheck" onClick={handleClick}>
+            <button name="meetingCheck" onClick={handleClick2}>
               Check
             </button>
           </motion.form>
@@ -114,6 +140,14 @@ const Welcome = (props) => {
             path="/meetings"
             render={() => (
               <Meetings setWelcome={setWelcome} welcome={welcome} />
+            )}
+          />
+
+          <Route
+            exact
+            path="/meetingdetails"
+            render={() => (
+              <MeetingDetails info={checkMeeting} />
             )}
           />
         </div>

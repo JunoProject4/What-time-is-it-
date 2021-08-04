@@ -16,7 +16,7 @@ function App() {
 
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
-  const buttonArray = ['timeZone', 'meetings', 'theme', 'restart']
+  const buttonArray = ['meetings', 'theme', 'restart']
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
   const history = useHistory()
@@ -44,20 +44,31 @@ function App() {
     // JSFunctionality
     <div className={darkMode}>
 
+      <header>
+        <h1>Timeless</h1>
+        <div className="ellipse1"></div>
+        <div className="ellipse2"></div>
+        <div className="ellipse3"></div>
+      </header>
+
       <main>
+        <Welcome welcome={welcome} setWelcome={setWelcome} />
+      </main>
+
+      {/* <main>
         <h1>Timeless</h1>
         <div className="ellipse1"></div>
         <div className="ellipse2"></div>
         <div className="ellipse3"></div>
         <Welcome welcome={welcome} setWelcome={setWelcome} />
-      </main>
+      </main> */}
 
 
       <footer>
         {
           buttonArray.map((button, i) => {
             return (
-              <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+              <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
             )
           })
         }
