@@ -104,8 +104,11 @@ const TimeZone = (props) => {
                 </form>
 
 
+                <div className="timePicker">
 
+                
                     <TimePickerComponent
+                    className="timePickerInput"
                         selected={selectStartTime}
                         onChange={time => {
                             setSelectStartTime(time.value)
@@ -134,9 +137,10 @@ const TimeZone = (props) => {
                 {
                     approvedTime ?
                     <button onClick={onSubmitDates}>Set Meeting</button> : 
-                    <button onClick={defineTime}>Check Availability</button>
+                    <button onClick={defineTime} className="setMeeting">Check Availability</button>
                 }
 
+                </div>
             </div>
             <div className="timeApiInfo">
                 {/* <h3>{difference[0]} {difference[1]} {difference[2]}</h3> */}
