@@ -19,7 +19,6 @@ const Meetings = (props) => {
             for (let key in data) {
                 newState.push({ key: key, info: data[key] });
             }
-            //   console.log(newState)
             setMeetings(newState)
 
         });
