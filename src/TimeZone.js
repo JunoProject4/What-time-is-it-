@@ -29,7 +29,7 @@ const TimeZone = (props) => {
         }
         await getQuotes()
             .then((res) => {
-                let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
+                let formattedCity = [city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" "), continent.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")]
                 apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26).replace(":", "")])
                 setApiFinal(apiInformation)
             })
@@ -153,16 +153,6 @@ const TimeZone = (props) => {
                     })
                     }
             </div>
-
-            {/* {
-                infoReady === true 
-                ? <Setup apiFinal={apiFinal} />
-                : null
-            } */}
-
-
-
-
 
         </div>
     )

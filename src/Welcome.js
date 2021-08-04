@@ -38,7 +38,7 @@ const Welcome = (props) => {
       dbRef.on("value", (snapshot) => {
         if (snapshot.child(meetingNumberInput).exists()) {
           console.log("it worked");
-          history.push("/meetings/" + meetingNumberInput);
+          // history.push("/meetings/" + meetingNumberInput);
           setMeetingNumberInput("");
         } else {
           alert("Meeting does not exist");

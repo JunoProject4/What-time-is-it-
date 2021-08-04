@@ -5,23 +5,32 @@ import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 
 const TimeZone = (props) => {
 
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectTime, setSelectTime] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectStartTime, setSelectStartTime] = useState(null);
+    const [selectEndTime, setSelectEndTime] = useState(null);
     const [startDateAndTime, setStartDateAndTime] = useState(null);
+    const [endDateAndTime, setEndDateAndTime] = useState(null);
 
     const { apiFinal } = props
     const [localTime, setLocalTime] = useState("")
     const [difference, setDifference] = useState([])
 
-    const startTime = () => {
+    const time = (new Date('01/01/2021 8:00 AM'));
+    const minTime = (new Date('1/1/2021 8:00 AM'));
+    const maxTime = (new Date('1/1/2021 7:00 PM'));
+
+    const defineTime = (e) => {
+        e.preventDefault();
         const newDate = new Date(selectedDate).toDateString()
-        const newTime = new Date(selectTime).toLocaleTimeString().split(' ')[0]
-        const definedDate = new Date(`${newDate} ${newTime}`)
-        setStartDateAndTime(definedDate)
+        const newStartTime = new Date(selectStartTime).toTimeString().split(' ')[0]
+        const newEndTime = new Date(selectEndTime).toTimeString().split(' ')[0]
+        const definedStartDate = new Date(`${newDate} ${newStartTime}`)
+        const definedEndDate = new Date(`${newDate} ${newEndTime}`)
+        setStartDateAndTime(definedStartDate)
+        setEndDateAndTime(definedEndDate)
+
+        changeDate()
     }
-
-    console.log(startDateAndTime);
-
 
     // useEffect(() => {
     //     props.setWelcome(false)
@@ -39,6 +48,25 @@ const TimeZone = (props) => {
         setLocalTime(time)
     }, [])
 
+    const changeDate = () => {
+        const arrayDuplicate = [...difference]
+        const arrayOfTimes = [];
+
+
+        const different = arrayDuplicate.forEach(array => {
+            if(array[2] > 0) {
+                const timeZone = new Date(endDateAndTime)
+                timeZone.setHours(timeZone.getHours()+array[2]/100)
+                arrayOfTimes.push(timeZone)
+            } else {
+                const timeZone = new Date(startDateAndTime)
+                timeZone.setHours(timeZone.getHours()+array[2]/100)
+                arrayOfTimes.push(timeZone)
+            }
+        })
+        console.log(arrayOfTimes)
+    }
+
     return (
         <div className="component finalizingMeetingsContainer">
             <div className="calendar">
@@ -47,24 +75,42 @@ const TimeZone = (props) => {
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
                         minDate={new Date()}
+                        required
                     />
                 </form>
 
-                <form action="#"></form>
-                <TimePickerComponent
-                    selected={selectTime}
-                    onChange={time => setSelectTime(time.value)}
-                    placeholder="Select a Time"
-                />
 
-                <button onClick={startTime}></button>
+
+                    <TimePickerComponent
+                        selected={selectStartTime}
+                        onChange={time => setSelectStartTime(time.value)}
+                        placeholder="Select a Start Time"
+                        min={minTime}
+                        max={maxTime}
+                    />
+
+                {
+                    selectStartTime ?
+                    <TimePickerComponent
+                        selected={selectEndTime}
+                        onChange={time => setSelectEndTime(time.value)}
+                        placeholder="Select an End Time"
+                        min={selectStartTime}
+                        max={maxTime}
+                    /> :
+                    null
+                }
+
+
+                <button onClick={defineTime}>Set Meeting</button>
+
             </div>
             <div className="timeApiInfo">
                 {/* <h3>{difference[0]} {difference[1]} {difference[2]}</h3> */}
                 {
                     difference.map((x, index) => {
                         return (
-                            <h3 key={index}>The time at {x[0]} is {x[1]} and the difference is {x[2]}</h3>
+                            <h3 key={index}>The time at {x[0][0]}, {x[0][1]} is {x[1]} and the difference is {x[2]}</h3>
                         )
                     })
                 }
