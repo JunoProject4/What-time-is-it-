@@ -27,15 +27,14 @@ function App() {
   //Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
   const handleClick = (e) => {
     e.preventDefault()
-    if (e.target.className !== "theme" && e.target.className !== "restart") {
+    if (e.target.className === "meetings") {
+      history.push("/" + e.target.className)
+    } else if (e.target.className === 'theme') {
+      darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
+    } else {
+      setWelcome(true)
       history.push("/" + e.target.className)
     }
-    e.target.className === "theme"
-      ? darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
-      : e.target.className === "restart"
-        ? setWelcome(true)
-        : setWelcome(false)
-
   }
 
 
