@@ -2,14 +2,22 @@ import { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
+import { useHistory } from 'react-router'
 
 const TimeZone = (props) => {
+
+    console.log(props)
 
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectStartTime, setSelectStartTime] = useState(null);
     const [selectEndTime, setSelectEndTime] = useState(null);
-    const [startDateAndTime, setStartDateAndTime] = useState(null);
-    const [endDateAndTime, setEndDateAndTime] = useState(null);
+    const [arrayOfTimes, setArrayOfTimes] = useState([]);
+    const [approvedTime, setApprovedTime] = useState(false);
+
+    const history = useHistory()
+
+    console.log(approvedTime)
+    console.log(arrayOfTimes)
 
     const { apiFinal } = props
     const [localTime, setLocalTime] = useState("")
@@ -26,10 +34,45 @@ const TimeZone = (props) => {
         const newEndTime = new Date(selectEndTime).toTimeString().split(' ')[0]
         const definedStartDate = new Date(`${newDate} ${newStartTime}`)
         const definedEndDate = new Date(`${newDate} ${newEndTime}`)
-        setStartDateAndTime(definedStartDate)
-        setEndDateAndTime(definedEndDate)
 
-        changeDate()
+        const arrOfTimesToState = [];
+
+        difference.forEach(array => {
+            const startTimeZone = new Date(definedStartDate)
+            const endTimeZone = new Date(definedEndDate)
+            startTimeZone.setHours(startTimeZone.getHours()+array[2]/100)
+            endTimeZone.setHours(endTimeZone.getHours()+array[2]/100)
+            const timeObj = {
+                    location: array[0][0],
+                    startTime: startTimeZone,
+                    endTime: endTimeZone,
+                    timeDifference: array[2]/100
+                }
+            arrOfTimesToState.push(timeObj)
+        })
+        setArrayOfTimes(arrOfTimesToState);
+
+        arrOfTimesToState.forEach(arr => {
+            if(arr.startTime.getHours() < 8) {
+                alert(`This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} hours to accomodate for the time difference.`)
+            }
+            if (arr.endTime.getHours() > 19) {
+                alert(`This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} hours to accomodate for the time difference.`)
+            }
+        })
+
+        const checker = (array) => array.every(arr => {
+            return arr.startTime.getHours() >= 8 && arr.endTime.getHours() <= 19;
+        });
+        if(checker(arrOfTimesToState)) {
+            alert(`The meeting falls within the alloted time in all timezones`)
+        }
+        setApprovedTime(checker(arrOfTimesToState));
+    }
+
+    const onSubmitDates = () => {
+        history.push('/Meetings');
+        props.setMeetingInfo(arrayOfTimes)
     }
 
     // useEffect(() => {
@@ -40,32 +83,13 @@ const TimeZone = (props) => {
         let timeDifference = apiFinal.filter(x => x.length === 3).map(y => y = [y[0] , y[1] , (y[2] - time[1] )])
         
         setDifference(timeDifference)
-    }, [])
+    }, [apiFinal])
 
 
     useEffect(() => {
         let time = Date().substring(16, 24)
         setLocalTime(time)
     }, [])
-
-    const changeDate = () => {
-        const arrayDuplicate = [...difference]
-        const arrayOfTimes = [];
-
-
-        const different = arrayDuplicate.forEach(array => {
-            if(array[2] > 0) {
-                const timeZone = new Date(endDateAndTime)
-                timeZone.setHours(timeZone.getHours()+array[2]/100)
-                arrayOfTimes.push(timeZone)
-            } else {
-                const timeZone = new Date(startDateAndTime)
-                timeZone.setHours(timeZone.getHours()+array[2]/100)
-                arrayOfTimes.push(timeZone)
-            }
-        })
-        console.log(arrayOfTimes)
-    }
 
     return (
         <div className="component finalizingMeetingsContainer">
@@ -83,7 +107,10 @@ const TimeZone = (props) => {
 
                     <TimePickerComponent
                         selected={selectStartTime}
-                        onChange={time => setSelectStartTime(time.value)}
+                        onChange={time => {
+                            setSelectStartTime(time.value)
+                            setApprovedTime(false)
+                        }}
                         placeholder="Select a Start Time"
                         min={minTime}
                         max={maxTime}
@@ -93,7 +120,10 @@ const TimeZone = (props) => {
                     selectStartTime ?
                     <TimePickerComponent
                         selected={selectEndTime}
-                        onChange={time => setSelectEndTime(time.value)}
+                        onChange={time => {
+                            setSelectEndTime(time.value)
+                            setApprovedTime(false)
+                        }}
                         placeholder="Select an End Time"
                         min={selectStartTime}
                         max={maxTime}
@@ -101,8 +131,11 @@ const TimeZone = (props) => {
                     null
                 }
 
-
-                <button onClick={defineTime}>Set Meeting</button>
+                {
+                    approvedTime ?
+                    <button onClick={onSubmitDates}>Set Meeting</button> : 
+                    <button onClick={defineTime}>Check Availability</button>
+                }
 
             </div>
             <div className="timeApiInfo">
