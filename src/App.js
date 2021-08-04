@@ -16,7 +16,7 @@ function App() {
 
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
-  const buttonArray = ['timeZone', 'meetings', 'theme', 'restart']
+  const buttonArray = ['meetings', 'theme', 'restart']
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
   const history = useHistory()
