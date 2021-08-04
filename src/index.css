@@ -529,6 +529,7 @@ header {
 
 .ellipse2 {
   background-color: #fc4f7f;
+   
   position: absolute;
   height: 255px;
   width: 400px;
@@ -639,22 +640,47 @@ label {
   align-items: center;  
 }
 
-.finalizeMeeting {
-  border: 3px solid red; 
+/* CALENDAR */
+
+.calendar {
+  margin: 0 auto; 
 }
 
-/* Calendar */
-
-.timeApiInfo h3{
-  color: red;
+.finalizingMeetingsContainer {
+  background-color: #000d54; 
+  margin: 0 auto; 
 }
+
+.myForm {
+  margin: 0 auto; 
+}
+
+.timePicker { 
+  width: 60%; 
+  background-color: #0c1c65; 
+  margin: 3rem auto; 
+}
+ 
+.timePickerInput:before {
+  width: auto;
+  margin: 0 auto; 
+  background-color: white; 
+  margin: 3px solid purple; 
+}
+
+.setMeeting {
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
 
 /* Meetings and IndividualMeetings */
 
 .meetingsContainer h2 {
   /* margin: 0;  */
-  padding-top: 7.5rem;
-  
+  padding-top: 7.5rem; 
 }
 
 .meetingsGrid {

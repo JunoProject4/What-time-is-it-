@@ -80,8 +80,11 @@ const TimeZone = (props) => {
                 </form>
 
 
+                <div className="timePicker">
 
+                
                     <TimePickerComponent
+                    className="timePickerInput"
                         selected={selectStartTime}
                         onChange={time => setSelectStartTime(time.value)}
                         placeholder="Select a Start Time"
@@ -102,8 +105,9 @@ const TimeZone = (props) => {
                 }
 
 
-                <button onClick={defineTime}>Set Meeting</button>
+                <button onClick={defineTime} className="setMeeting">Set Meeting</button>
 
+                </div>
             </div>
             <div className="timeApiInfo">
                 {/* <h3>{difference[0]} {difference[1]} {difference[2]}</h3> */}
