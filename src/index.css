@@ -18,6 +18,15 @@ nav,
 section {
   display: block;
 }
+<<<<<<< HEAD
+=======
+
+/* h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+} */
+
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
 figcaption,
 figure,
 main {
@@ -234,7 +243,14 @@ nav,
 section {
   display: block;
 }
+<<<<<<< HEAD
 
+=======
+/* h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+} */
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
 figcaption,
 figure,
 main {
@@ -452,12 +468,16 @@ template {
 body {
   overflow: hidden;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
 
 main p,
 main h3 {
   margin: 0;
+  color: white; 
 }
 
 .darkMode main {
@@ -468,11 +488,15 @@ main h3 {
 
 Button,
 a {
-  box-shadow: inset 0px 1px 0px 0px #97c4fe;
-  background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
-  background-color: #3d94f6;
+  /* box-shadow: inset 0px 1px 0px 0px #97c4fe; */
+  /* background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+  background-color: #3d94f6; */
+  box-shadow: inset 0px 1px 0px 0px;
+  background: linear-gradient(to bottom, #fc4f7f 5%, #f180a0 100%);
+  background-color: #fc4f7f;
   border-radius: 6px;
-  border: 1px solid #337fed;
+  /* border: 1px solid #337fed; */
+  border: 1px solid #b63d5f; 
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -481,24 +505,35 @@ a {
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #1570cd;
+  /* text-shadow: 0px 1px 0px #1570cd; */
+  text-shadow: 0px 1px 0px #b63d5f; 
   margin-bottom: 17px;
 }
-button:hover,
-a:hover {
-  background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-  background-color: #1e62d0;
+  button:hover,
+  a:hover,
+  button:focus, 
+  a:hover {
+    background: linear-gradient(to bottom, #f180a0 5%, #fc4f7f 100%);
+    background-color: #fc4f7f;
 }
+
 button:active,
 a:active {
   position: relative;
   top: 1px;
 }
 
+<<<<<<< HEAD
 
 
 h2 {
   margin: 0;
+=======
+/* HEADER AND FOOTER STYLING ACROSS ALL PAGES */
+
+header {
+  position: relative; 
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
 }
 
 .ellipse1 {
@@ -510,6 +545,7 @@ h2 {
   left: -165px;
   top: -136px;
 }
+
 .ellipse2 {
   background-color: #fc4f7f;
   position: absolute;
@@ -525,18 +561,34 @@ h2 {
   height: 150px;
   border-radius: 50%;
   position: absolute;
-
   left: 90px;
   top: -60px;
   overflow: hidden;
 }
+
 h1 {
   color: whitesmoke;
+<<<<<<< HEAD
   font-size: 2rem;
    position: absolute; 
   left: 27%;
   z-index: 100;
+=======
+  font-size: 2.5rem;
+  position: absolute;
+  z-index: 100; 
+  text-align: center;
+  width: 100%; 
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
 }
+
+footer {
+  height: 20vh;
+  background-color: #0c1c65; 
+}
+
+/* MEETINGS/HOME */
+
 .newMeetingSection {
   height: 80vh;
   display: flex;
@@ -559,7 +611,17 @@ h1 {
 .newMeeting p {
   color: white;
 }
+<<<<<<< HEAD
 .newMeetingForm{
+=======
+
+.meetingsContainer {
+  height: 80vh;
+  background-color: #000d54;
+}
+
+form {
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
   background-color: #0c1c65;
   border-radius: 10px;
   width: 60%;
@@ -569,6 +631,7 @@ h1 {
   justify-content: space-around;
   align-items: center;
 }
+
 label {
   color: white;
   margin-top: 12px;
@@ -581,6 +644,7 @@ label {
   font-size: 1.5rem;
  
 }
+<<<<<<< HEAD
 footer {
   height: 20vh;
   background-color: #000d54;
@@ -664,11 +728,52 @@ footer {
   #userBtns {
     margin-top: 45px;
     margin-left: 15px;
+=======
+
+ h2 {
+ color: whitesmoke;
+ padding-top: 150px;
+ /* padding-left: 34%; */
+ text-align: center; 
+ margin: 0; 
+}
+
+/* TIME ZONE  */
+
+.timeZoneContainer {
+  height: 80vh;
+  background-color: #000d54; 
+}
+
+.cityInputForm {
+  margin: auto; 
+}
+
+.cityInputForm input {
+  display: flex; 
+  align-items: center;  
+}
+
+.finalizeMeeting {
+  border: 3px solid red; 
+}
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: 1000px) {
+  /* h1 {
+    left: 38%;
+  } */
+  .newMeeting {
+    width: 400px;
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
   }
   .newMeeting, .newMeetingForm {
     width: 650px;
   }
 }
+<<<<<<< HEAD
 
 
 
@@ -685,3 +790,5 @@ footer {
 
 
 
+=======
+>>>>>>> 37c1b1f38ba4650918ee6a16757f75374e3913f1
