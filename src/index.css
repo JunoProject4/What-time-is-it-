@@ -688,6 +688,17 @@ label {
   border: 0.3rem solid blueviolet;
 }
 
+/* MeetingsDetails */
+
+.meetingDetailsContainer {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #000d54;
+}
+
 
 /* MEDIA QUERIES */
 
