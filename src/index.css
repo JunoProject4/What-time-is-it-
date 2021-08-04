@@ -1,4 +1,3 @@
-
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
 html {
@@ -8,7 +7,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", serif;
 }
 article,
 aside,
@@ -457,7 +456,6 @@ template {
   overflow: hidden;
 }
 
-
 body {
   overflow: hidden;
 }
@@ -465,14 +463,14 @@ body {
 main p,
 main h3 {
   margin: 0;
-  color: white; 
+  color: white;
 }
 
-.darkMode main {
+/* .darkMode main {
   background-color: purple;
-}
+} */
 /* Google font */
-@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
 Button,
 a {
@@ -484,7 +482,7 @@ a {
   background-color: #fc4f7f;
   border-radius: 6px;
   /* border: 1px solid #337fed; */
-  border: 1px solid #b63d5f; 
+  border: 1px solid #b63d5f;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -494,15 +492,15 @@ a {
   padding: 6px 24px;
   text-decoration: none;
   /* text-shadow: 0px 1px 0px #1570cd; */
-  text-shadow: 0px 1px 0px #b63d5f; 
+  text-shadow: 0px 1px 0px #b63d5f;
   margin-bottom: 17px;
 }
-  button:hover,
-  a:hover,
-  button:focus, 
-  a:hover {
-    background: linear-gradient(to bottom, #f180a0 5%, #fc4f7f 100%);
-    background-color: #fc4f7f;
+button:hover,
+a:hover,
+button:focus,
+a:hover {
+  background: linear-gradient(to bottom, #f180a0 5%, #fc4f7f 100%);
+  background-color: #fc4f7f;
 }
 
 button:active,
@@ -514,7 +512,7 @@ a:active {
 /* HEADER AND FOOTER STYLING ACROSS ALL PAGES */
 
 header {
-  position: relative; 
+  position: relative;
 }
 
 .ellipse1 {
@@ -552,14 +550,25 @@ h1 {
   color: whitesmoke;
   font-size: 2.5rem;
   position: absolute;
-  z-index: 100; 
+  z-index: 100;
   text-align: center;
-  width: 100%; 
+  width: 100%;
 }
 
 footer {
   height: 20vh;
-  background-color: #0c1c65; 
+  background-color: #000d54;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+/* buttons */
+#userBtns {
+  margin: 10px;
+}
+.finalizeMeetingBtn {
+  margin: 0 auto;
 }
 
 /* MEETINGS/HOME */
@@ -592,11 +601,11 @@ footer {
   background-color: #000d54;
 }
 
-form {
+.newMeetingForm {
   background-color: #0c1c65;
   border-radius: 10px;
   width: 60%;
-  height: 200px;
+ height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -613,36 +622,67 @@ label {
 .icons {
   color: whitesmoke;
   font-size: 1.5rem;
- 
 }
 
- h2 {
- color: whitesmoke;
- padding-top: 150px;
- /* padding-left: 34%; */
- text-align: center; 
- margin: 0; 
+h2 {
+  color: whitesmoke;
+  padding-top: 160px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  margin: 0;
 }
 
 /* TIME ZONE  */
 
 .timeZoneContainer {
   height: 80vh;
-  background-color: #000d54; 
+  background-color: #000d54;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
-
+.localTimeDisplay {
+  text-align: center;
+}
+.localTimeDisplay h3 {
+  padding-top: 25px;
+}
 .cityInputForm {
-  margin: auto; 
+  
+  background-color: #0c1c65;
+  padding: 20px 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 50px;
+  
+}
+.cityInputForm > div {
+  margin-top: 20px;
 }
 
 .cityInputForm input {
-  display: flex; 
-  align-items: center;  
+  border-radius: 5px;
+  padding: 6px;
+  border: none;
+  background-color: whitesmoke;
+ display: flex;
+ margin-bottom: 15px;
+ margin-top: 10px;
+}
+.cityInputForm label {
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+}
+.cityInputForm  button {
+  margin: 0 auto;
 }
 
 /* CALENDAR */
 
-.calendar {
+/* Was slated for deletion but  keep commentted out in case */
+/* .calendar {
   margin: 0 auto; 
 }
 
@@ -653,6 +693,19 @@ label {
 
 .myForm {
   margin: 0 auto; 
+} */
+
+.finalizeMeeting {
+  border: 3px solid red;
+}
+
+.timeApiInfo h3 {
+  color: red;
+}
+.flexFrom {
+  
+  display: flex;
+  flex-direction: column;
 }
 
 .timePicker { 
@@ -680,51 +733,62 @@ label {
 
 .meetingsContainer h2 {
   /* margin: 0;  */
+<<<<<<< HEAD
   padding-top: 7.5rem; 
+=======
+  padding-top: 7.5rem;
+>>>>>>> 59e366374664b3e75be7a00eeaaf2e83dd0cf4a4
 }
 
 .meetingsGrid {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 60vh;
 }
 
 .eachMeeting {
-  height: 25vh;
   width: 90%;
   border-radius: 0.3rem;
   margin: 0.5rem;
+  padding: 10px;
+  background-color: #0c1c65;
 }
 
-.eachMeeting h3 {
-  font-size: 0.85rem;
+.eachMeeting h3:first-child {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1rem;
+  padding: 5px;
+  letter-spacing: 2px;
 }
 
 .accepted {
-  border: 0.3rem solid greenyellow;
+  border: 0.1rem solid greenyellow;
 }
 
 .rejected {
-  border: 0.3rem solid red;
+  border: 0.1rem solid red;
 }
 
 .pending {
-  border: 0.3rem solid blueviolet;
+  border: 0.1rem solid blueviolet;
 }
 
 /* MeetingsDetails */
 
 .meetingDetailsContainer {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #000d54;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #000d54;
 }
-
+/* CALENDAR */
 
 /* MEDIA QUERIES */
 
@@ -735,7 +799,46 @@ label {
   .newMeeting {
     width: 400px;
   }
-  .newMeeting, .newMeetingForm {
+  .newMeeting,
+  .newMeetingForm {
     width: 650px;
+  }
+}
+
+@media (max-width: 330px) {
+ .cityInputForm  {
+   margin: 10px 20px;
+   padding: 10px 35px;
+
+ }
+ .flexFrom h2 {
+   padding-top: 140px;
+   font-size: 1.3rem;
+   margin-bottom: 30px;
+ }
+ .cityInputForm > div {
+   margin-top: 10px;
+   
+ }
+ .cityInputForm  input {
+   padding: 2px;
+ }
+ .cityInputForm  label {
+  padding: 2px;
+  font-size: 1rem;
+}
+.finalizeMeetingBtn {
+  margin-top: 20px;
+}
+}
+@media (max-width: 407px) {
+  #userBtns {
+    margin-left: 5px;
+  }
+  footer {
+    height: 25vh;
+  }
+  .restart {
+    margin-top: 0;
   }
 }
