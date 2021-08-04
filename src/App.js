@@ -16,7 +16,7 @@ function App() {
 
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
-  const buttonArray = ['timeZone', 'meetings', 'theme', 'restart']
+  const buttonArray = ['meetings', 'theme', 'restart']
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
   const history = useHistory()
@@ -27,15 +27,14 @@ function App() {
   //Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
   const handleClick = (e) => {
     e.preventDefault()
-    if (e.target.className !== "theme" && e.target.className !== "restart") {
+    if (e.target.className === "meetings") {
+      history.push("/" + e.target.className)
+    } else if (e.target.className === 'theme') {
+      darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
+    } else {
+      setWelcome(true)
       history.push("/" + e.target.className)
     }
-    e.target.className === "theme"
-      ? darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
-      : e.target.className === "restart"
-        ? setWelcome(true)
-        : setWelcome(false)
-
   }
 
 
@@ -68,7 +67,7 @@ function App() {
         {
           buttonArray.map((button, i) => {
             return (
-              <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+              <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
             )
           })
         }

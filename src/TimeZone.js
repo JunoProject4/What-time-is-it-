@@ -29,7 +29,7 @@ const TimeZone = (props) => {
         }
         await getQuotes()
             .then((res) => {
-                let formattedCity = city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")
+                let formattedCity = [city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" "), continent.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")]
                 apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26).replace(":", "")])
                 setApiFinal(apiInformation)
             })
@@ -120,28 +120,27 @@ const TimeZone = (props) => {
 
     return (
         <div className="component timeZoneContainer">
-            <div>
+            <div className="flexFrom">
                 <h2>Enter city and location (Asia, America, Africa, Europe, Australia)</h2>
                 <form className="cityInputForm" action="submit">
 
                     <div>
-                        <label htmlFor="city1">City 1</label>
+                        <label htmlFor="city1">City 1:</label>
                         <input name="city1" value={city1Input} type="text" placeholder="City1 Continent" required onChange={handleChange} />
                     </div>
                     <div>
-                        <label htmlFor="city2">City 2</label>
+                        <label htmlFor="city2">City 2:</label>
                         <input name="city2" value={city2Input} type="text" placeholder="City2 Continent" required onChange={handleChange} />
                     </div>
                     <div>
-                        <label htmlFor="city3">City 3</label>
+                        <label htmlFor="city3">City 3:</label>
                         <input name="city3" value={city3Input} type="text" placeholder="City3 Continent" required onChange={handleChange} />
                     </div>
 
                     <button name="submitCities" onClick={handleClick}>Send</button>
                 </form>
-                <button name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-            </div>
-            <div>
+                <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
+            <div className="localTimeDisplay">
                 <h3>Local time is: {localTime}</h3>
                 {
                     apiFinal.map((item, index) => {
@@ -153,16 +152,7 @@ const TimeZone = (props) => {
                     })
                     }
             </div>
-
-            {/* {
-                infoReady === true 
-                ? <Setup apiFinal={apiFinal} />
-                : null
-            } */}
-
-
-
-
+            </div>
 
         </div>
     )
