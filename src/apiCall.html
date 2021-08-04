@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css" />
+</head>
+
+<body>
+
+    <input type="search" id="place-search-input" placeholder="Start Searching..." />
+
+    <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+    <script>
+
+        placeSearch({
+            key: 'A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW',
+            container: document.querySelector('#place-search-input')
+        });
+
+
+        // let x =   [51.509648, -0.099076]
+
+        // const url = new URL('http://www.mapquestapi.com/search/v3/prediction')
+        // url.search = new URLSearchParams({
+        //     "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
+        //     "q": "london",
+        //     "collection": [
+        //         "category",
+        //         "airport",
+        //         "address",
+        //         "franchise",
+        //         "adminArea"
+        //     ],
+        //     "limit": "15",
+        //     "location": "51.509648, -0.099076",
+        //     "countryCode": "gb",
+
+
+        // })
+
+
+        // const url2 = new URL('http://www.mapquestapi.com/search/v2/search')
+        // url2.search = new URLSearchParams({
+        //     "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
+        //     "shapePoints": "51.509648, -0.099076",
+        //     "units": "k",
+        //     "radius": "100",
+        // })
+
+        // const apiCall2 = async () => {
+        //     const getQuotes2 = async () => {
+        //         const res = await fetch(url)
+        //         const data = await res.json()
+        //         return data
+        //     }
+        //     await getQuotes2()
+        //         .then((res) => {
+        //             console.log(res.searchResults)
+        //         })
+        //         .catch(() => {
+        //             console.log("an error")
+        //         })
+        //     return Promise.resolve()
+        // }
+
+        // apiCall2()
+
+
+
+
+
+        //     const latLongAPI = (city, continent) => {
+
+        //     const url = new URL('http://api.positionstack.com/v1/forward')
+        //     url.search = new URLSearchParams({
+        //             "access_key": "c63db7673c0364a276e740c39d28f688",
+        //             "query": city,
+        //             "continent": continent
+        //     })
+
+        //      const apiCall = async () => {
+        //         let latLong = []  
+        //         const getQuotes = async () => {
+        //             const res = await fetch(url)
+        //             const data = await res.json()
+        //             return data
+        //         }
+        //         await getQuotes()
+        //             .then((res) => {
+        //                 console.log(res)
+        //                 latLong.push(res.data[0].latitude, res.data[0].longitude)
+        //                 console.log(latLong)
+        //             })
+        //             .catch(() => {
+        //                 console.log("an error")
+        //             })
+        //         return Promise.resolve()
+        //     }
+        //     apiCall()
+
+        //     }
+
+
+
+        //   const mapQuestAPI = async () => {
+
+        //     const url2 = new URL('http://www.mapquestapi.com/search/v2/search')
+        //     url2.search = new URLSearchParams({
+        //         "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
+        //         "shapePoints": "51.509648, -0.099076",
+        //         "units": "k",
+        //         "radius": "100",
+        //     })
+
+        //     const apiCall2 = async () => {
+        //         const getQuotes2 = async () => {
+        //             const res = await fetch(url2)
+        //             const data = await res.json()
+        //             return data
+        //         }
+        //         await getQuotes2()
+        //             .then((res) => {
+        //                 console.log(res.searchResults)
+        //             })
+        //             .catch(() => {
+        //                 console.log("an error")
+        //             })
+        //         return Promise.resolve()
+        //     }
+
+        //     apiCall2()
+        // }
+
+        // latLongAPI("london", "europe")
+
+        // const url = new URL('http://api.positionstack.com/v1/forward')
+        //     url.search = new URLSearchParams({
+        //             "access_key": "c63db7673c0364a276e740c39d28f688",
+        //             "query": city,
+        //             "continent": continent
+        //     })
+
+        // const url2 = new URL('http://www.mapquestapi.com/search/v2/search')
+        // url2.search = new URLSearchParams({
+        //     "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
+        //     "shapePoints": "51.509648, -0.099076",
+        //     "units": "k",
+        //     "radius": "100",
+        // })
+
+
+        const doubleAPICall = async (city, continent) => {
+            const url = new URL('http://api.positionstack.com/v1/forward')
+            url.search = new URLSearchParams({
+                "access_key": "c63db7673c0364a276e740c39d28f688",
+                "query": city,
+                "continent": continent
+            })
+            
+            const firstAPI = await fetch(url).then(res => res.json()).then(res => `${res.data[0].latitude}, ${res.data[0].longitude}`)
+
+            const endingAPICall = async (points) => {
+                const url2 = new URL('http://www.mapquestapi.com/search/v2/search')
+                url2.search = new URLSearchParams({
+                    "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
+                    "shapePoints": points,
+                    "units": "k",
+                    "radius": "100",
+                })
+                
+                const secondAPI = await fetch(url2).then(res => res.json())
+                    .then(res => {
+                        let results = res.searchResults
+                        return results[Math.floor(Math.random() * results.length)].name
+
+                    })
+            }
+            
+            endingAPICall(firstAPI)
+        }
+
+        doubleAPICall(city, continent)
+
+
+
+
+// "51.509648, -0.099076"
+
+    </script>
+
+</body>
+
+</html>

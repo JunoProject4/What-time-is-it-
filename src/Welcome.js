@@ -56,7 +56,7 @@ const Welcome = (props) => {
             animate={{ opacity: 1, y: -10 }}
             transition={{ delay: 1, type: "spring" }}
           >
-            <p>Create New Meeting Time</p>
+            <p>Create New Meeting Time:</p>
             <FaStopwatch className="icons stopWatch" />
             <button name="newMeeting" onClick={handleClick}>
               New Meeting
@@ -64,7 +64,7 @@ const Welcome = (props) => {
           </motion.div>
           <motion.form
             action="submit"
-            className="newMeeting"
+            className="newMeetingForm"
             initial={{ opacity: 0, y: -250 }}
             animate={{ opacity: 1, y: -10 }}
             transition={{ delay: 0.5, type: "spring" }}

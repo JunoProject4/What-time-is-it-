@@ -49,6 +49,7 @@ function App() {
         <div className="ellipse1"></div>
         <div className="ellipse2"></div>
         <div className="ellipse3"></div>
+        
         <Welcome welcome={welcome} setWelcome={setWelcome} />
       </main>
 
@@ -57,7 +58,7 @@ function App() {
         {
           buttonArray.map((button, i) => {
             return (
-              <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+              <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
             )
           })
         }
