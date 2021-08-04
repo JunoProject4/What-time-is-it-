@@ -623,6 +623,11 @@ label {
   color: whitesmoke;
   font-size: 1.5rem;
 }
+.calendarIcon {
+  color: whitesmoke;
+  font-size: 1.8rem;
+
+}
 
 h2 {
   color: whitesmoke;
@@ -695,6 +700,23 @@ h2 {
   margin: 0 auto; 
 } */
 
+.calendar {
+  height: 80vh;
+  background-color: #000d54; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.calendarHeading {
+  padding-top: 70px;
+}
+.myCalendarForm {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px;
+}
+
 .finalizeMeeting {
   border: 3px solid red;
 }
@@ -710,8 +732,14 @@ h2 {
 
 .timePicker { 
   width: 60%; 
-  background-color: #0c1c65; 
-  margin: 3rem auto; 
+  background-color: rgb(255, 255, 255); 
+  padding: 50px 40px;
+  margin: 0 auto; 
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
  
 .timePickerInput:before {
@@ -720,12 +748,36 @@ h2 {
   background-color: white; 
    
 }
+.react-datepicker__input-container input {
+  background-color: transparent;
+  color: white;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  
+}
+
 
 .setMeeting {
-  margin: 0 auto; 
+  margin: 20px auto 0; 
   display: flex; 
   justify-content: center; 
   align-items: center;
+}
+#ej2_timepicker_0::placeholder {
+  font-size: 1.5rem;
+  color: #fc4f7f;
+}
+.e-input-group-icon:before {
+  font-size: 1.5rem;
+  transition: all .2s ease-in-out;
+  color: #fc4f7f;
+}
+.e-input-group-icon:hover:before {
+  transform: scale(1.3);
 }
 
 

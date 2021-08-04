@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import { useHistory } from 'react-router'
+import { FaCalendarWeek } from 'react-icons/fa';
 
 const TimeZone = (props) => {
 
@@ -94,16 +95,17 @@ const TimeZone = (props) => {
     return (
         <div className="component finalizingMeetingsContainer">
             <div className="calendar">
-                <form action="#" method="#" className="myForm" name="myForm">
-                    <DatePicker
+                
+                    <h2 className="calendarHeading">Calendar</h2>
+                <form action="#" method="#" className="myCalendarForm" name="myForm">
+                    <FaCalendarWeek className="icons calendarIcon"/>
+                    <DatePicker 
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
                         minDate={new Date()}
                         required
                     />
                 </form>
-
-
                 <div className="timePicker">
 
                 
