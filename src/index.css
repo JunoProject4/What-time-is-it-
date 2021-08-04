@@ -1,15 +1,4 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
 html {
@@ -19,6 +8,7 @@ html {
 }
 body {
   margin: 0;
+  font-family: 'Vollkorn', serif;
 }
 article,
 aside,
@@ -27,10 +17,6 @@ header,
 nav,
 section {
   display: block;
-}
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
 }
 figcaption,
 figure,
@@ -248,10 +234,7 @@ nav,
 section {
   display: block;
 }
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
+
 figcaption,
 figure,
 main {
@@ -480,6 +463,8 @@ main h3 {
 .darkMode main {
   background-color: purple;
 }
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 
 Button,
 a {
@@ -547,8 +532,8 @@ h2 {
 }
 h1 {
   color: whitesmoke;
-  font-size: 2.5rem;
-  position: absolute;
+  font-size: 2rem;
+   position: absolute; 
   left: 27%;
   z-index: 100;
 }
@@ -574,7 +559,7 @@ h1 {
 .newMeeting p {
   color: white;
 }
-form {
+.newMeetingForm{
   background-color: #0c1c65;
   border-radius: 10px;
   width: 60%;
@@ -622,6 +607,13 @@ footer {
 }
 
 
+/* CALENDAR SECTION */
+.calendar {
+  height: 80vh;
+  background-color: #000d54;
+}
+
+
 
 
 
@@ -630,7 +622,7 @@ footer {
     font-size: 3rem;
     left: 42%;
   }
-  .newMeeting {
+  .newMeeting, .newMeetingForm {
     width: 500px;
   }
   .newMeeting p {
@@ -664,4 +656,32 @@ footer {
     margin-left: 15px;
   }
 }
+@media (min-width: 1900px) {
+  h1 {
+    font-size: 3.5rem;
+    left: 44%;
+  }
+  #userBtns {
+    margin-top: 45px;
+    margin-left: 15px;
+  }
+  .newMeeting, .newMeetingForm {
+    width: 650px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

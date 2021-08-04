@@ -64,7 +64,7 @@ const Welcome = (props) => {
           </motion.div>
           <motion.form
             action="submit"
-            className="newMeeting"
+            className="newMeetingForm"
             initial={{ opacity: 0, y: -250 }}
             animate={{ opacity: 1, y: -10 }}
             transition={{ delay: 0.5, type: "spring" }}
