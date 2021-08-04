@@ -12,6 +12,8 @@ code {
 } */
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
+/* STARTER */
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -19,6 +21,7 @@ html {
 }
 body {
   margin: 0;
+  overflow: hidden;
 }
 article,
 aside,
@@ -39,6 +42,7 @@ figure,
 main {
   display: block;
 }
+
 figure {
   margin: 1em 40px;
 }
@@ -259,9 +263,12 @@ figure,
 main {
   display: block;
 }
-figure {
+
+/* figure {
   margin: 1em 40px;
-}
+  
+} */
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -351,11 +358,11 @@ textarea {
   height: 0;
 }
 
-* {
+/* * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 button,
 input {
   overflow: visible;
@@ -448,11 +455,11 @@ template {
   height: 0;
 }
 
-* {
+/* * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 
 .visuallyHidden:not(:focus):not(:active) {
   position: absolute;
@@ -468,9 +475,9 @@ template {
 }
 
 
-body {
+/* body {
   overflow: hidden;
-}
+} */
 
 main p,
 main h3 {
@@ -566,7 +573,7 @@ h1 {
 
 footer {
   height: 20vh;
-  background-color: #0c1c65; 
+  background-color: #0c1c65;  
 }
 
 /* MEETINGS/HOME */
