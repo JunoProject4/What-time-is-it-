@@ -8,6 +8,9 @@ const Meetings = (props) => {
     //Take props from Welcome, which is passed on by Calendar and will populate firebase
     const [meetings, setMeetings] = useState([])
 
+    console.log(props)
+    console.log(meetings)
+
 
 
     useEffect(() => {
