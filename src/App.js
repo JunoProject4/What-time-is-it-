@@ -44,13 +44,24 @@ function App() {
     // JSFunctionality
     <div className={darkMode}>
 
+      <header>
+        <h1>Timeless</h1>
+        <div className="ellipse1"></div>
+        <div className="ellipse2"></div>
+        <div className="ellipse3"></div>
+      </header>
+
       <main>
+        <Welcome welcome={welcome} setWelcome={setWelcome} />
+      </main>
+
+      {/* <main>
         <h1>Timeless</h1>
         <div className="ellipse1"></div>
         <div className="ellipse2"></div>
         <div className="ellipse3"></div>
         <Welcome welcome={welcome} setWelcome={setWelcome} />
-      </main>
+      </main> */}
 
 
       <footer>
