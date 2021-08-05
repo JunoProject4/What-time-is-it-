@@ -6,10 +6,10 @@ const IndividualMeetings = (props) => {
     const { info, id } = props
     const [warning, setWarning] = useState(true)
 
+    // // Modal alert for delete verification: NOTE: built with assistance from www.sweetalert2.github.io 
     const handleClick = (e) => {
         e.preventDefault()
         if (warning === true) {
-
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
