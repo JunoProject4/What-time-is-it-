@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 
 
 const TimeZone = (props) => {
-    // const [cityArray, setCityArray] = useState([["Lagos", "Africa"], ["London", "Europe"], ["Tokyo", "Asia"]])
     const [cityArray, setCityArray] = useState([])
     const [city1Input, setCity1Input] = useState("")
     const [city2Input, setCity2Input] = useState("")
@@ -14,9 +13,10 @@ const TimeZone = (props) => {
     // const [localTime, setLocalTime] = useState("")
     let apiInformation = []
     // const [apiFinal, setApiFinal] = useState([])
-    const {apiFinal, setApiFinal} = props
+    const { apiFinal, setApiFinal } = props
     const history = useHistory()
     // const [loading, setLoading] = useState(true)
+    const [showFinal, setShowFinal] = useState(false)
 
 
     const url = ("https://worldtimeapi.org/api/timezone/")
@@ -95,6 +95,9 @@ const TimeZone = (props) => {
 
         if (alertCount === 0) {
             setCityArray(copyArray)
+            setTimeout(() => {
+                setShowFinal(true)
+            }, 3000)
         }
     }
 
@@ -140,8 +143,14 @@ const TimeZone = (props) => {
 
                     <button name="submitCities" onClick={handleClick}>Send</button>
                 </form>
-                <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-            {/* <div className="localTimeDisplay">
+                {
+                    showFinal
+                        ? <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
+                        : null
+                }
+
+
+                {/* <div className="localTimeDisplay">
                 <h3>Local time is: {localTime}</h3>
                 {
                     apiFinal.map((item, index) => {
