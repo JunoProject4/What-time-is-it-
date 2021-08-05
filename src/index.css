@@ -247,11 +247,11 @@ section {
   font-size: 2em;
   margin: 0.67em 0;
 } */
-figcaption,
+/* figcaption,
 figure,
 main {
   display: block;
-}
+} */
 
 /* figure {
   margin: 1em 40px;
@@ -481,8 +481,9 @@ main h3 {
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
-Button,
-a {
+
+/* a, */
+Button {
   /* box-shadow: inset 0px 1px 0px 0px #97c4fe; */
   /* background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
   background-color: #3d94f6; */
@@ -565,14 +566,33 @@ h1 {
 }
 
 footer {
-  height: 20vh;
-  background-color: #0c1c65;  
-  background-color: #000d54;
-  display: flex;
+  /* height: 20vh; */
+  /* background-color: #0c1c65;  
+  background-color: #000d54; */
+  height: 20vh; 
+  background-color: #00a6f0; 
+  text-align: center; 
+  margin: 0; 
+  padding: 0; 
+  /* display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0;  */
 }
+
+footer a, 
+footer p {
+  color: #fff; 
+  margin-bottom: 0; 
+}
+
+footer a:hover, 
+footer a:focus {
+  text-decoration: none; 
+  background: transparent; 
+}
+
 /* buttons */
 #userBtns {
   margin: 10px;
@@ -776,7 +796,7 @@ h3 {
 .meetingStatus {
   display: flex; 
   justify-content: space-evenly; 
-  align-content: space-evenly;
+  align-content: space-evenly; 
   
 }
 

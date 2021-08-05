@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import firebase from "./firebase";
+import Swal from 'sweetalert2';
 
 const IndividualMeetings = (props) => {
     const { info, id } = props
@@ -8,12 +9,30 @@ const IndividualMeetings = (props) => {
     const handleClick = (e) => {
         e.preventDefault()
         if (warning === true) {
-            alert("Are you sure you want to delete?")
-            setWarning(false)
-        } else {
-            const dbRef = firebase.database().ref();
-            dbRef.child(e.target.name).remove();
-            setWarning(true)
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                }
+              })
+        //     alert("Are you sure you want to delete?")
+        //     setWarning(false)
+        // } else {
+        //     const dbRef = firebase.database().ref();
+        //     dbRef.child(e.target.name).remove();
+        //     setWarning(true)
         }
     }
 

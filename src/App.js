@@ -63,7 +63,12 @@ function App() {
       </main> */}
 
 
+
       <footer>
+        <p class="footerText">Created at <a href="https://junocollege.com/">Juno College</a> with <a href="http://worldtimeapi.org/">World Time API</a></p>
+      </footer>
+
+      {/* <footer>
         {
           buttonArray.map((button, i) => {
             return (
@@ -71,7 +76,7 @@ function App() {
             )
           })
         }
-      </footer>
+      </footer> */}
     </div>
     // </Router>
   );
