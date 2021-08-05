@@ -1,5 +1,7 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
+/* STARTER */
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -7,6 +9,7 @@ html {
 }
 body {
   margin: 0;
+  overflow: hidden;
   font-family: "Vollkorn", serif;
 }
 article,
@@ -28,6 +31,7 @@ figure,
 main {
   display: block;
 }
+
 figure {
   margin: 1em 40px;
 }
@@ -243,14 +247,17 @@ section {
   font-size: 2em;
   margin: 0.67em 0;
 } */
-figcaption,
+/* figcaption,
 figure,
 main {
   display: block;
-}
-figure {
+} */
+
+/* figure {
   margin: 1em 40px;
-}
+  
+} */
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -340,11 +347,11 @@ textarea {
   height: 0;
 }
 
-* {
+/* * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 button,
 input {
   overflow: visible;
@@ -437,11 +444,11 @@ template {
   height: 0;
 }
 
-* {
+/* * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 
 .visuallyHidden:not(:focus):not(:active) {
   position: absolute;
@@ -456,9 +463,11 @@ template {
   overflow: hidden;
 }
 
+
+/* body {
 body {
   overflow: hidden;
-}
+} */
 
 main p,
 main h3 {
@@ -472,8 +481,9 @@ main h3 {
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
-Button,
-a {
+
+/* a, */
+Button {
   /* box-shadow: inset 0px 1px 0px 0px #97c4fe; */
   /* background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
   background-color: #3d94f6; */
@@ -556,13 +566,33 @@ h1 {
 }
 
 footer {
-  height: 20vh;
-  background-color: #000d54;
-  display: flex;
+  /* height: 20vh; */
+  /* background-color: #0c1c65;  
+  background-color: #000d54; */
+  height: 20vh; 
+  background-color: #00a6f0; 
+  text-align: center; 
+  margin: 0; 
+  padding: 0; 
+  /* display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0;  */
 }
+
+footer a, 
+footer p {
+  color: #fff; 
+  margin-bottom: 0; 
+}
+
+footer a:hover, 
+footer a:focus {
+  text-decoration: none; 
+  background: transparent; 
+}
+
 /* buttons */
 #userBtns {
   margin: 10px;
@@ -622,6 +652,11 @@ label {
 .icons {
   color: whitesmoke;
   font-size: 1.5rem;
+}
+.calendarIcon {
+  color: whitesmoke;
+  font-size: 1.8rem;
+
 }
 
 h2 {
@@ -695,6 +730,23 @@ h2 {
   margin: 0 auto; 
 } */
 
+.calendar {
+  height: 80vh;
+  background-color: #000d54; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.calendarHeading {
+  padding-top: 70px;
+}
+.myCalendarForm {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px;
+}
+
 .finalizeMeeting {
   border: 3px solid red;
 }
@@ -710,8 +762,14 @@ h2 {
 
 .timePicker { 
   width: 60%; 
-  background-color: #0c1c65; 
-  margin: 3rem auto; 
+  background-color: rgb(255, 255, 255); 
+  padding: 50px 40px;
+  margin: 0 auto; 
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
  
 .timePickerInput:before {
@@ -720,12 +778,36 @@ h2 {
   background-color: white; 
    
 }
+.react-datepicker__input-container input {
+  background-color: transparent;
+  color: white;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  
+}
+
 
 .setMeeting {
-  margin: 0 auto; 
+  margin: 20px auto 0; 
   display: flex; 
   justify-content: center; 
   align-items: center;
+}
+#ej2_timepicker_0::placeholder {
+  font-size: 1.5rem;
+  color: #fc4f7f;
+}
+.e-input-group-icon:before {
+  font-size: 1.5rem;
+  transition: all .2s ease-in-out;
+  color: #fc4f7f;
+}
+.e-input-group-icon:hover:before {
+  transform: scale(1.3);
 }
 
 
@@ -756,25 +838,54 @@ h2 {
 .eachMeeting h3:first-child {
   font-size: 1.8rem;
 }
+
 h3 {
   font-size: 1rem;
   padding: 5px;
-  letter-spacing: 2px;
+  letter-spacing: 2px; 
 }
 
-.accepted {
+.wasSent {
   border: 0.1rem solid greenyellow;
 }
 
-.rejected {
+.notSent {
   border: 0.1rem solid red;
 }
 
-.pending {
+/* .pending {
   border: 0.1rem solid blueviolet;
+} */
+/* .meetingStatus {
+  display: flex; 
+  justify-content: space-evenly; 
+  align-content: space-evenly; 
+  
+} */
+
+/* .meetingStatus h3 {
+  flex-wrap: nowrap; 
+} */
+/* 
+.accepted {
+  border: 0.2rem solid greenyellow; 
 }
 
-/* MeetingsDetails */
+.rejected {
+  border: 0.2rem solid red;
+}
+
+.pending {
+  border: 0.2rem solid blueviolet;
+} */
+
+.meetingStatus button {
+  margin: 0; 
+  -ms-transform: translateX(-50%);
+  transform: translateX(50%);
+}
+
+/* MEETINGS DETAILS */
 
 .meetingDetailsContainer {
   height: 80vh;
@@ -784,7 +895,7 @@ h3 {
   justify-content: space-around;
   background-color: #000d54;
 }
-/* CALENDAR */
+
 
 /* MEDIA QUERIES */
 

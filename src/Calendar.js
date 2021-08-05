@@ -3,6 +3,9 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import { useHistory } from 'react-router'
+import { FaCalendarWeek } from 'react-icons/fa';
+import { SyncWaterfallHook } from 'tapable'
+import Swal from 'sweetalert2'; 
 
 const TimeZone = (props) => {
 
@@ -43,7 +46,11 @@ const TimeZone = (props) => {
             startTimeZone.setHours(startTimeZone.getHours()+array[2]/100)
             endTimeZone.setHours(endTimeZone.getHours()+array[2]/100)
             const timeObj = {
-                    location: array[0][0],
+                    location: array[0], 
+                    meetingDate: `${startTimeZone.toString().substring(0, 15)}`,
+                    meetingTime: `${startTimeZone.toString().substring(16, 24)}`,
+                    startTimeIso: startTimeZone.toISOString(),
+                    endTimeIso: endTimeZone.toISOString(),
                     startTime: startTimeZone,
                     endTime: endTimeZone,
                     timeDifference: array[2]/100
@@ -54,10 +61,23 @@ const TimeZone = (props) => {
 
         arrOfTimesToState.forEach(arr => {
             if(arr.startTime.getHours() < 8) {
-                alert(`This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} hours to accomodate for the time difference.`)
+                Swal.fire({
+                    title: 'Sorry!',
+                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} ${8-arr.startTime.getHours() === 1 ? 'hour' : 'hours' } to accomodate for the time difference.`,
+                    icon: 'error',
+                    confirmButtonText: "Ok"
+
+                })
+                // alert(`This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} hours to accomodate for the time difference.`)
             }
             if (arr.endTime.getHours() > 19) {
-                alert(`This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} hours to accomodate for the time difference.`)
+                Swal.fire({
+                    title: 'Sorry!',
+                    text: `This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} ${arr.endTime.getHours()-19 === 1 ? 'hour' : 'hours' } to accomodate for the time difference.`,
+                    icon: 'error',
+                    confirmButtonText: "Ok"
+                })
+                // alert(`This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} hours to accomodate for the time difference.`)
             }
         })
 
@@ -65,7 +85,13 @@ const TimeZone = (props) => {
             return arr.startTime.getHours() >= 8 && arr.endTime.getHours() <= 19;
         });
         if(checker(arrOfTimesToState)) {
-            alert(`The meeting falls within the alloted time in all timezones`)
+            Swal.fire({
+                title: 'Success!',
+                text: "The meeting falls within the alloted time in all timezones",
+                icon: "success",
+                confirmButtonText: "Ok"
+            })
+            // alert(`The meeting falls within the alloted time in all timezones`)
         }
         setApprovedTime(checker(arrOfTimesToState));
     }
@@ -94,16 +120,17 @@ const TimeZone = (props) => {
     return (
         <div className="component finalizingMeetingsContainer">
             <div className="calendar">
-                <form action="#" method="#" className="myForm" name="myForm">
-                    <DatePicker
+                
+                    <h2 className="calendarHeading">Calendar</h2>
+                <form action="#" method="#" className="myCalendarForm" name="myForm">
+                    <FaCalendarWeek className="icons calendarIcon"/>
+                    <DatePicker 
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
                         minDate={new Date()}
                         required
                     />
                 </form>
-
-
                 <div className="timePicker">
 
                 

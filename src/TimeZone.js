@@ -41,7 +41,7 @@ const TimeZone = (props) => {
         return Promise.resolve()
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         const getTime = async () => {
             Promise.all(cityArray.map(item => {
                 apiCall(item[0], item[1])

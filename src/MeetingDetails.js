@@ -12,7 +12,7 @@ const MeetingDetails = (props) => {
     console.log(gapi)
 
     var CLIENT_ID = '602044477009-updm2dii3nkt1culsmak0bvjahl4f90s.apps.googleusercontent.com';
-    var API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';  
+    var API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';
     var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
     var SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
@@ -34,9 +34,9 @@ const MeetingDetails = (props) => {
                 .then(() => {
 
                     var event = {
-                        'summary': 'Kick back with the Timeless Crew',
+                        'summary': 'Testing',
                         'location': 'Juno College',
-                        'description': 'Drank like crazyyyy',
+                        'description': "drankkkks",
                         'start': {
                             'dateTime': '2021-08-24T09:00:00-07:00',
                             'timeZone': 'America/Toronto'
@@ -45,13 +45,8 @@ const MeetingDetails = (props) => {
                             'dateTime': '2021-08-24T17:00:00-07:00',
                             'timeZone': 'America/Toronto'
                         },
-                        'recurrence': [
-                            'RRULE:FREQ=DAILY;COUNT=2'
-                        ],
                         'attendees': [
-                            { 'email': 'Stefan@juno.com' },
-                            { 'email': 'Kaarina@juno.com' },
-                            { 'email': 'Grant@juno.com' }
+                                {'email': 'friendlypirat3@gmail.com'},
                         ],
                         'reminders': {
                             'useDefault': false,
@@ -62,18 +57,18 @@ const MeetingDetails = (props) => {
                         }
                     }
 
-                    
+
 
                     var request = gapi.client.calendar.events.insert({
                         'calendarId': 'primary',
                         'resource': event
-                      });
-                      
-                      request.execute(function(event) {
+                    });
+
+                    request.execute(function (event) {
                         window.open(event.htmlLink)
-                      });
-                    
-                   
+                    });
+
+
                     //get events
                     // gapi.client.calendar.events.list({
                     //   'calendarId': 'primary',
@@ -86,7 +81,7 @@ const MeetingDetails = (props) => {
                     //   const events = response.result.items
                     //   console.log('EVENTS: ', events)
                     // })
-                    
+
 
 
                 })

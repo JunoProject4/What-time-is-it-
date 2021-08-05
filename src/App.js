@@ -16,7 +16,7 @@ function App() {
 
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
-  const buttonArray = ['meetings', 'theme', 'restart']
+  const buttonArray = ['theme', 'restart']
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
   const history = useHistory()
@@ -28,6 +28,7 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault()
     if (e.target.className === "meetings") {
+      setWelcome(false)
       history.push("/" + e.target.className)
     } else if (e.target.className === 'theme') {
       darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
@@ -63,7 +64,12 @@ function App() {
       </main> */}
 
 
+
       <footer>
+        <p class="footerText">Created at <a href="https://junocollege.com/">Juno College</a> with <a href="http://worldtimeapi.org/">World Time API</a></p>
+      </footer>
+
+      {/* <footer>
         {
           buttonArray.map((button, i) => {
             return (
@@ -71,7 +77,7 @@ function App() {
             )
           })
         }
-      </footer>
+      </footer> */}
     </div>
     // </Router>
   );
