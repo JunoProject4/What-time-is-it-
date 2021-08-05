@@ -12,6 +12,8 @@ import MeetingDetails from "./MeetingDetails"
 // import { useState, useEffect } from 'react'
 import firebase from "./firebase";
 import Calendar from "./Calendar";
+
+
 // const Welcome = (props) => {
 //     const { welcome, setWelcome } = props
 //     const history = useHistory()

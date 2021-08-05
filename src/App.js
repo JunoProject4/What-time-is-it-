@@ -63,21 +63,20 @@ function App() {
         <Welcome welcome={welcome} setWelcome={setWelcome} />
       </main> */}
 
+      {
+        buttonArray.map((button, i) => {
+          return (
+            <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+          )
+        })
+      }
 
 
       <footer>
         <p class="footerText">Created at <a href="https://junocollege.com/">Juno College</a> with <a href="http://worldtimeapi.org/">World Time API</a></p>
       </footer>
 
-      {/* <footer>
-        {
-          buttonArray.map((button, i) => {
-            return (
-              <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
-            )
-          })
-        }
-      </footer> */}
+     
     </div>
     // </Router>
   );

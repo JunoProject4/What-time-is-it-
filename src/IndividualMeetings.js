@@ -143,73 +143,13 @@ const IndividualMeetings = (props) => {
                     });
 
                     dbRef.child(e.target.name).update({ Status: 'Sent' })
-
-
-
-                    //get events
-                    // gapi.client.calendar.events.list({
-                    //   'calendarId': 'primary',
-                    //   'timeMin': (new Date()).toISOString(),
-                    //   'showDeleted': false,
-                    //   'singleEvents': true,
-                    //   'maxResults': 10,
-                    //   'orderBy': 'startTime'
-                    // }).then(response => {
-                    //   const events = response.result.items
-                    //   console.log('EVENTS: ', events)
-                    // })
-
-
-
                 })
         })
     }
 
     return (
         <div className="meetingStatus">
-            {/* {
-                info.Status === "Pending"
-                    ? <div className="eachMeeting pending">
-                        <h3>{info.Who}</h3>
-                        <h3>{info.When}, {info.Time}</h3>
-                        <h3>{info.Where.City}, {info.Where.Continent}</h3>
-                        <h3>PENDING</h3>
-                        {
-                            info.Place === undefined
-                                ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                : <h3 className="meetingPlace">Suggested Meeting Place: 
-                                <br/>{info.Place}</h3>
-                        }
-                        <button name={id} onClick={handleClick}>Delete</button>
-                    </div>
-                    : info.Status === "Accepted"
-                        ? <div className="eachMeeting accepted">
-                            <h3>{info.Who}</h3>
-                            <h3>{info.When}, {info.Time}</h3>
-                            <h3>{info.Where.City}, {info.Where.Continent}</h3>
-                            <h3>ACCEPTED</h3>
-                            {
-                                info.Place === undefined
-                                    ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                    : <h3 className="meetingPlace">Suggested Meeting Place:
-                                    <br/>{info.Place}</h3>
-                            }
-                            <button name={id} onClick={handleClick}>Delete</button>
-                        </div>
-                        : <div className="eachMeeting rejected">
-                            <h3>{info.Who}</h3>
-                            <h3>{info.When}, {info.Time}</h3>
-                            <h3>{info.Where.City}, {info.Where.Continent}</h3>
-                            <h3>REJECTED</h3>
-                            {
-                                info.Place === undefined
-                                    ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                    : <h3 className="meetingPlace">Suggested Meeting Place: <br/>{info.Place}</h3>
-                            }
-                            <button name={id} onClick={handleClick}>Delete</button>
-                        </div>
->>>>>>> 23b6b1765fbee587fcb706065a54feb6442af569 */}
-
+  
             <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
                 <p>{info.location[0]}, {info.location[1]}</p>
                 <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
@@ -227,52 +167,6 @@ const IndividualMeetings = (props) => {
             </div>
         </div>
 
-
-
-
-        // <div>
-        //     {
-        //         info.Status === "Pending"
-        //             ? <div className="eachMeeting pending">
-        //                 <h3>{info.location}</h3>
-        //                 <h3>{info.When}, {info.Time}</h3>
-        //                 <h3>{info.Where.City}, {info.Where.Continent}</h3>
-        //                 <h3>PENDING</h3>
-        //                 {
-        //                     info.Place === undefined
-        //                         ? <button name={id} onClick={handleClick2}>Pick a place</button>
-        //                         : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
-        //                 }
-        //                 <button name={id} onClick={handleClick}>Delete</button>
-        //             </div>
-        //             : info.Status === "Accepted"
-        //                 ? <div className="eachMeeting accepted">
-        //                     <h3>{info.location}</h3>
-        //                     <h3>{info.When}, {info.Time}</h3>
-        //                     <h3>{info.Where.City}, {info.Where.Continent}</h3>
-        //                     <h3>ACCEPTED</h3>
-        //                     {
-        //                         info.Place === undefined
-        //                             ? <button name={id} onClick={handleClick2}>Pick a place</button>
-        //                             : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
-        //                     }
-        //                     <button name={id} onClick={handleClick}>Delete</button>
-        //                 </div>
-        //                 : <div className="eachMeeting rejected">
-        //                     <h3>{info.location}</h3>
-        //                     <h3>{info.When}, {info.Time}</h3>
-        //                     <h3>{info.Where.City}, {info.Where.Continent}</h3>
-        //                     <h3>REJECTED</h3>
-        //                     {
-        //                         info.Place === undefined
-        //                             ? <button name={id} onClick={handleClick2}>Pick a place</button>
-        //                             : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
-        //                     }
-        //                     <button name={id} onClick={handleClick}>Delete</button>
-        //                 </div>
-
-        //     }
-        // </div>
     )
 }
 

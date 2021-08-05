@@ -565,6 +565,26 @@ h1 {
   width: 100%;
 }
 
+/* BUTTONS */
+
+#userBtns.theme {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+} 
+
+#userBtns.restart {
+  position: absolute; 
+  top: 0; 
+}
+
+#userBtns {
+  margin: 10px;
+}
+.finalizeMeetingBtn {
+  margin: 0 auto;
+}
+
 footer {
   /* height: 20vh; */
   /* background-color: #0c1c65;  
@@ -593,13 +613,13 @@ footer a:focus {
   background: transparent; 
 }
 
-/* buttons */
+/* buttons
 #userBtns {
   margin: 10px;
 }
 .finalizeMeetingBtn {
   margin: 0 auto;
-}
+} */
 
 /* MEETINGS/HOME */
 
@@ -790,7 +810,6 @@ h2 {
   
 }
 
-
 .setMeeting {
   margin: 20px auto 0; 
   display: flex; 
@@ -821,19 +840,21 @@ h2 {
 .meetingsGrid {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
 
 .eachMeeting {
-  width: 90%;
+  width: 100%;
+  height: 100%; 
   border-radius: 0.3rem;
   margin: 0.5rem;
   padding: 10px;
   background-color: #0c1c65;
 }
+
 
 .eachMeeting h3:first-child {
   font-size: 1.8rem;
