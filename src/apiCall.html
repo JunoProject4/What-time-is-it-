@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+// app.url.searchParams.set('params[show]', tvShow)
+//     const res = await fetch(app.url)
+//     const data = await res.json()
+//     return data
+
+//     app.requestedURL = "http://api.chrisvalleskey.com/fillerama/get.php?"
+//     app.url = new URL("https://proxy.hackeryou.com")
+//     app.url.search = new URLSearchParams({
+//         reqUrl: app.requestedURL,
+//         'params[format]': 'json',
+//     })
+
+
+const doubleAPICall = async (city, continent) => {
+            const url = new URL("https://proxy.hackeryou.com")
+            const requestedURL = 'http://api.positionstack.com/v1/forward'
+            url.search = new URLSearchParams({
+                reqUrl: requestedURL,
+                'params[access_key]': "c63db7673c0364a276e740c39d28f688",
+                'params[query]': city,
+                'params[continent]': continent
+            })
+
+            const firstAPI = await fetch(url).then(res => res.json()).then(res => `${res.data[0].latitude}, ${res.data[0].longitude}`)
+
+            console.log(firstAPI)
+
+       
+        }
+
+        doubleAPICall("london", "europe")
+    </script>
+
+
+</body>
+
+</html>

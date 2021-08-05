@@ -40,17 +40,19 @@ const IndividualMeetings = (props) => {
         const dbRef = firebase.database().ref();
 
         const doubleAPICall = async (city, continent) => {
-            const url = new URL('http://api.positionstack.com/v1/forward')
+            const url = new URL("https://proxy.hackeryou.com")
+            const requestedURL = 'http://api.positionstack.com/v1/forward'
             url.search = new URLSearchParams({
-                "access_key": "c63db7673c0364a276e740c39d28f688",
-                "query": city,
-                "continent": continent
+                reqUrl: requestedURL,
+                'params[access_key]': "c63db7673c0364a276e740c39d28f688",
+                'params[query]': city,
+                'params[continent]': continent
             })
 
             const firstAPI = await fetch(url).then(res => res.json()).then(res => `${res.data[0].latitude}, ${res.data[0].longitude}`)
 
             const endingAPICall = async (points) => {
-                const url2 = new URL('http://www.mapquestapi.com/search/v2/search')
+                const url2 = new URL('httpss://www.mapquestapi.com/search/v2/search')
                 url2.search = new URLSearchParams({
                     "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
                     "shapePoints": points,
