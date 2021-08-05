@@ -9,7 +9,7 @@ html {
 }
 body {
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: "Vollkorn", serif;
 }
 article,
@@ -633,7 +633,7 @@ footer a:focus {
 }
 
 .meetingsContainer {
-  height: 80vh;
+  
   background-color: #000d54;
 }
 
@@ -820,19 +820,30 @@ h2 {
 .meetingsGrid {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 15px 40px;
+  
 }
 
 .eachMeeting {
-  width: 90%;
+  /* width: 90%; */
+  text-align: center;
   border-radius: 0.3rem;
-  margin: 0.5rem;
-  padding: 10px;
+  margin-bottom: 1rem;
+  padding: 50px;
   background-color: #0c1c65;
 }
+.eachMeeting button {
+  margin-top: 15px;
+  margin: 15px 5px;
+  font-size: 1.2rem;
+}
+.eachMeeting p{
+ font-size: 1.2rem;
+}
+
 
 .eachMeeting h3:first-child {
   font-size: 1.8rem;
@@ -878,11 +889,11 @@ h3 {
   border: 0.2rem solid blueviolet;
 } */
 
-.meetingStatus button {
+/* .meetingStatus button {
   margin: 0;
   -ms-transform: translateX(-50%);
   transform: translateX(50%);
-}
+} */
 
 /* MEETINGS DETAILS */
 
