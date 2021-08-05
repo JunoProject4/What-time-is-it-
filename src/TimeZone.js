@@ -17,6 +17,7 @@ const TimeZone = (props) => {
     const history = useHistory()
     // const [loading, setLoading] = useState(true)
     const [showFinal, setShowFinal] = useState(false)
+    const [showLoader, setShowLoader] = useState(false)
 
 
     const url = ("https://worldtimeapi.org/api/timezone/")
@@ -99,6 +100,7 @@ const TimeZone = (props) => {
                 setShowFinal(true)
             }, 3000)
         }
+        setShowLoader(true)
     }
 
     const handleClick2 = () => {
@@ -146,7 +148,9 @@ const TimeZone = (props) => {
                 {
                     showFinal
                         ? <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-                        : null
+                        : showLoader ? 
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div> :
+                        null
                 }
 
 
