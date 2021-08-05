@@ -563,6 +563,26 @@ h1 {
   width: 100%;
 }
 
+/* BUTTONS */
+
+#userBtns.theme {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+} 
+
+#userBtns.restart {
+  position: absolute; 
+  top: 0; 
+}
+
+#userBtns {
+  margin: 10px;
+}
+.finalizeMeetingBtn {
+  margin: 0 auto;
+}
+
 footer {
   /* height: 20vh; */
   /* background-color: #0c1c65;  
@@ -592,13 +612,13 @@ footer a:focus {
   background: transparent;
 }
 
-/* buttons */
+/* buttons
 #userBtns {
   margin: 10px;
 }
 .finalizeMeetingBtn {
   margin: 0 auto;
-}
+} */
 
 /* MEETINGS/HOME */
 
@@ -843,6 +863,7 @@ h2 {
 .eachMeeting p{
  font-size: 1.2rem;
 }
+
 
 
 .eachMeeting h3:first-child {

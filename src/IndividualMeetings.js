@@ -1,16 +1,16 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import firebase from "./firebase";
 import Swal from 'sweetalert2';
 import { FaCalendarPlus, FaTrashAlt, FaRegHandshake } from 'react-icons/fa';
 
 const IndividualMeetings = (props) => {
     const { info, id } = props
-    const [warning, setWarning] = useState(true)
+    // const [warning, setWarning] = useState(true)
 
     // // Modal alert for delete verification: NOTE: built with assistance from www.sweetalert2.github.io 
     const handleClickDelete = (e) => {
         e.preventDefault()
-        if (warning === true) {
+   
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -26,32 +26,34 @@ const IndividualMeetings = (props) => {
                     'Your file has been deleted.',
                     'success'
                   )
+                  const dbRef = firebase.database().ref();
+                  dbRef.child(e.target.name).remove();
                 }
               })
         //     alert("Are you sure you want to delete?")
         //     setWarning(false)
         // } else {
-        //     const dbRef = firebase.database().ref();
-        //     dbRef.child(e.target.name).remove();
-        //     setWarning(true)
-        }
+      
+        
     }
 
     const handleClickPlace = (e) => {
         const dbRef = firebase.database().ref();
 
         const doubleAPICall = async (city, continent) => {
-            const url = new URL('http://api.positionstack.com/v1/forward')
+            const url = new URL("https://proxy.hackeryou.com")
+            const requestedURL = 'http://api.positionstack.com/v1/forward'
             url.search = new URLSearchParams({
-                "access_key": "c63db7673c0364a276e740c39d28f688",
-                "query": city,
-                "continent": continent
+                reqUrl: requestedURL,
+                'params[access_key]': "c63db7673c0364a276e740c39d28f688",
+                'params[query]': city,
+                'params[continent]': continent
             })
 
             const firstAPI = await fetch(url).then(res => res.json()).then(res => `${res.data[0].latitude}, ${res.data[0].longitude}`)
 
             const endingAPICall = async (points) => {
-                const url2 = new URL('http://www.mapquestapi.com/search/v2/search')
+                const url2 = new URL('https://www.mapquestapi.com/search/v2/search')
                 url2.search = new URLSearchParams({
                     "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
                     "shapePoints": points,
@@ -59,7 +61,7 @@ const IndividualMeetings = (props) => {
                     "radius": "100",
                 })
 
-                const secondAPI = await fetch(url2).then(res => res.json())
+                await fetch(url2).then(res => res.json())
                     .then(res => {
                         let results = res.searchResults
                         if (results !== undefined) {
@@ -144,74 +146,15 @@ const IndividualMeetings = (props) => {
                     });
 
                     dbRef.child(e.target.name).update({ Status: 'Sent' })
-
-
-
-                    //get events
-                    // gapi.client.calendar.events.list({
-                    //   'calendarId': 'primary',
-                    //   'timeMin': (new Date()).toISOString(),
-                    //   'showDeleted': false,
-                    //   'singleEvents': true,
-                    //   'maxResults': 10,
-                    //   'orderBy': 'startTime'
-                    // }).then(response => {
-                    //   const events = response.result.items
-                    //   console.log('EVENTS: ', events)
-                    // })
-
-
-
                 })
         })
     }
 
     return (
         <div className="meetingStatus">
-            {/* {
-                info.Status === "Pending"
-                    ? <div className="eachMeeting pending">
-                        <h3>{info.Who}</h3>
-                        <h3>{info.When}, {info.Time}</h3>
-                        <h3>{info.Where.City}, {info.Where.Continent}</h3>
-                        <h3>PENDING</h3>
-                        {
-                            info.Place === undefined
-                                ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                : <h3 className="meetingPlace">Suggested Meeting Place: 
-                                <br/>{info.Place}</h3>
-                        }
-                        <button name={id} onClick={handleClick}>Delete</button>
-                    </div>
-                    : info.Status === "Accepted"
-                        ? <div className="eachMeeting accepted">
-                            <h3>{info.Who}</h3>
-                            <h3>{info.When}, {info.Time}</h3>
-                            <h3>{info.Where.City}, {info.Where.Continent}</h3>
-                            <h3>ACCEPTED</h3>
-                            {
-                                info.Place === undefined
-                                    ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                    : <h3 className="meetingPlace">Suggested Meeting Place:
-                                    <br/>{info.Place}</h3>
-                            }
-                            <button name={id} onClick={handleClick}>Delete</button>
-                        </div>
-                        : <div className="eachMeeting rejected">
-                            <h3>{info.Who}</h3>
-                            <h3>{info.When}, {info.Time}</h3>
-                            <h3>{info.Where.City}, {info.Where.Continent}</h3>
-                            <h3>REJECTED</h3>
-                            {
-                                info.Place === undefined
-                                    ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                    : <h3 className="meetingPlace">Suggested Meeting Place: <br/>{info.Place}</h3>
-                            }
-                            <button name={id} onClick={handleClick}>Delete</button>
-                        </div>
->>>>>>> 23b6b1765fbee587fcb706065a54feb6442af569 */}
-
+  
             <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
+                <p>{info.title}</p>
                 <p>{info.location[0]}, {info.location[1]}</p>
                 <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
                 {
@@ -228,52 +171,6 @@ const IndividualMeetings = (props) => {
             </div>
         </div>
 
-
-
-
-        // <div>
-        //     {
-        //         info.Status === "Pending"
-        //             ? <div className="eachMeeting pending">
-        //                 <h3>{info.location}</h3>
-        //                 <h3>{info.When}, {info.Time}</h3>
-        //                 <h3>{info.Where.City}, {info.Where.Continent}</h3>
-        //                 <h3>PENDING</h3>
-        //                 {
-        //                     info.Place === undefined
-        //                         ? <button name={id} onClick={handleClick2}>Pick a place</button>
-        //                         : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
-        //                 }
-        //                 <button name={id} onClick={handleClick}>Delete</button>
-        //             </div>
-        //             : info.Status === "Accepted"
-        //                 ? <div className="eachMeeting accepted">
-        //                     <h3>{info.location}</h3>
-        //                     <h3>{info.When}, {info.Time}</h3>
-        //                     <h3>{info.Where.City}, {info.Where.Continent}</h3>
-        //                     <h3>ACCEPTED</h3>
-        //                     {
-        //                         info.Place === undefined
-        //                             ? <button name={id} onClick={handleClick2}>Pick a place</button>
-        //                             : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
-        //                     }
-        //                     <button name={id} onClick={handleClick}>Delete</button>
-        //                 </div>
-        //                 : <div className="eachMeeting rejected">
-        //                     <h3>{info.location}</h3>
-        //                     <h3>{info.When}, {info.Time}</h3>
-        //                     <h3>{info.Where.City}, {info.Where.Continent}</h3>
-        //                     <h3>REJECTED</h3>
-        //                     {
-        //                         info.Place === undefined
-        //                             ? <button name={id} onClick={handleClick2}>Pick a place</button>
-        //                             : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
-        //                     }
-        //                     <button name={id} onClick={handleClick}>Delete</button>
-        //                 </div>
-
-        //     }
-        // </div>
     )
 }
 

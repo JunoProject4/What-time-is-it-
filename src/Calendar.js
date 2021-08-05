@@ -4,29 +4,26 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import { useHistory } from 'react-router'
 import { FaCalendarWeek } from 'react-icons/fa';
-import { SyncWaterfallHook } from 'tapable'
+// import { SyncWaterfallHook } from 'tapable'
 import Swal from 'sweetalert2'; 
 
 const TimeZone = (props) => {
-
-    console.log(props)
 
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectStartTime, setSelectStartTime] = useState(null);
     const [selectEndTime, setSelectEndTime] = useState(null);
     const [arrayOfTimes, setArrayOfTimes] = useState([]);
     const [approvedTime, setApprovedTime] = useState(false);
+    const [meetingName, setMeetingName] = useState('');
+    console.log(meetingName)
 
     const history = useHistory()
 
-    console.log(approvedTime)
-    console.log(arrayOfTimes)
-
     const { apiFinal } = props
-    const [localTime, setLocalTime] = useState("")
+    // const [localTime, setLocalTime] = useState("")
     const [difference, setDifference] = useState([])
 
-    const time = (new Date('01/01/2021 8:00 AM'));
+    // const time = (new Date('01/01/2021 8:00 AM'));
     const minTime = (new Date('1/1/2021 8:00 AM'));
     const maxTime = (new Date('1/1/2021 7:00 PM'));
 
@@ -97,8 +94,27 @@ const TimeZone = (props) => {
     }
 
     const onSubmitDates = () => {
-        history.push('/Meetings');
-        props.setMeetingInfo(arrayOfTimes)
+
+        Swal.fire({
+            title: 'Enter your Meeting Name',
+            input: 'text',
+            inputLabel: 'Your Meeting Name',
+            inputValue: "My Meeting",
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Please enter Meeting Name!'
+                } else {
+                    const copyArray = [...arrayOfTimes]
+                    copyArray.forEach(time => {
+                        time.title= value;
+                    })
+                    props.setMeetingName(value)
+                    props.setMeetingInfo(copyArray)
+                    history.push('/Meetings');
+                }
+            }
+        })
     }
 
     // useEffect(() => {
@@ -112,10 +128,10 @@ const TimeZone = (props) => {
     }, [apiFinal])
 
 
-    useEffect(() => {
-        let time = Date().substring(16, 24)
-        setLocalTime(time)
-    }, [])
+    // useEffect(() => {
+    //     let time = Date().substring(16, 24)
+    //     setLocalTime(time)
+    // }, [])
 
     return (
         <div className="component finalizingMeetingsContainer">
