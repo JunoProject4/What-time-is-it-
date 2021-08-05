@@ -1,5 +1,7 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 
+/* STARTER */
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -7,6 +9,7 @@ html {
 }
 body {
   margin: 0;
+  overflow: hidden;
   font-family: "Vollkorn", serif;
 }
 article,
@@ -28,6 +31,7 @@ figure,
 main {
   display: block;
 }
+
 figure {
   margin: 1em 40px;
 }
@@ -243,14 +247,17 @@ section {
   font-size: 2em;
   margin: 0.67em 0;
 } */
-figcaption,
+/* figcaption,
 figure,
 main {
   display: block;
-}
-figure {
+} */
+
+/* figure {
   margin: 1em 40px;
-}
+  
+} */
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -340,11 +347,11 @@ textarea {
   height: 0;
 }
 
-* {
+/* * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 button,
 input {
   overflow: visible;
@@ -437,11 +444,11 @@ template {
   height: 0;
 }
 
-* {
+/* * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 
 .visuallyHidden:not(:focus):not(:active) {
   position: absolute;
@@ -456,9 +463,11 @@ template {
   overflow: hidden;
 }
 
+
+/* body {
 body {
   overflow: hidden;
-}
+} */
 
 main p,
 main h3 {
@@ -472,8 +481,9 @@ main h3 {
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
-Button,
-a {
+
+/* a, */
+Button {
   /* box-shadow: inset 0px 1px 0px 0px #97c4fe; */
   /* background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
   background-color: #3d94f6; */
@@ -556,13 +566,33 @@ h1 {
 }
 
 footer {
-  height: 20vh;
-  background-color: #000d54;
-  display: flex;
+  /* height: 20vh; */
+  /* background-color: #0c1c65;  
+  background-color: #000d54; */
+  height: 20vh; 
+  background-color: #00a6f0; 
+  text-align: center; 
+  margin: 0; 
+  padding: 0; 
+  /* display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0;  */
 }
+
+footer a, 
+footer p {
+  color: #fff; 
+  margin-bottom: 0; 
+}
+
+footer a:hover, 
+footer a:focus {
+  text-decoration: none; 
+  background: transparent; 
+}
+
 /* buttons */
 #userBtns {
   margin: 10px;
@@ -787,25 +817,54 @@ h2 {
 .eachMeeting h3:first-child {
   font-size: 1.8rem;
 }
+
 h3 {
   font-size: 1rem;
   padding: 5px;
-  letter-spacing: 2px;
+  letter-spacing: 2px; 
 }
 
-.accepted {
+.wasSent {
   border: 0.1rem solid greenyellow;
 }
 
-.rejected {
+.notSent {
   border: 0.1rem solid red;
 }
 
-.pending {
+/* .pending {
   border: 0.1rem solid blueviolet;
+} */
+/* .meetingStatus {
+  display: flex; 
+  justify-content: space-evenly; 
+  align-content: space-evenly; 
+  
+} */
+
+/* .meetingStatus h3 {
+  flex-wrap: nowrap; 
+} */
+/* 
+.accepted {
+  border: 0.2rem solid greenyellow; 
 }
 
-/* MeetingsDetails */
+.rejected {
+  border: 0.2rem solid red;
+}
+
+.pending {
+  border: 0.2rem solid blueviolet;
+} */
+
+.meetingStatus button {
+  margin: 0; 
+  -ms-transform: translateX(-50%);
+  transform: translateX(50%);
+}
+
+/* MEETINGS DETAILS */
 
 .meetingDetailsContainer {
   height: 80vh;
@@ -815,7 +874,7 @@ h3 {
   justify-content: space-around;
   background-color: #000d54;
 }
-/* CALENDAR */
+
 
 /* MEDIA QUERIES */
 
