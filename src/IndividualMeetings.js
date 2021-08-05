@@ -52,7 +52,7 @@ const IndividualMeetings = (props) => {
             const firstAPI = await fetch(url).then(res => res.json()).then(res => `${res.data[0].latitude}, ${res.data[0].longitude}`)
 
             const endingAPICall = async (points) => {
-                const url2 = new URL('httpss://www.mapquestapi.com/search/v2/search')
+                const url2 = new URL('https://www.mapquestapi.com/search/v2/search')
                 url2.search = new URLSearchParams({
                     "key": "A7nNTuYa0Q2rEtx3QWCApAtca3kCCqaW",
                     "shapePoints": points,
