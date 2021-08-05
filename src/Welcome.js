@@ -34,7 +34,7 @@ const Welcome = (props) => {
     setMeetingNumberInput(e.target.value);
   };
 
-  console.log(meetingInfo)
+  // console.log(meetingInfo)
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ const Welcome = (props) => {
               checkMeetingState.push({ key: key, info: data[key] })
             }
           }
-          console.log(checkMeetingState)
+          // console.log(checkMeetingState)
           setCheckMeeting(checkMeetingState)
         })
         setWelcome(false)
@@ -142,7 +142,7 @@ const Welcome = (props) => {
             exact
             path="/meetings"
             render={() => (
-              <Meetings setWelcome={setWelcome} welcome={welcome} meetingInfo={meetingInfo}/>
+              <Meetings setWelcome={setWelcome} welcome={welcome} meetingInfo={meetingInfo} setMeetingInfo={setMeetingInfo}/>
             )}
           />
 

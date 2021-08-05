@@ -34,9 +34,9 @@ const MeetingDetails = (props) => {
                 .then(() => {
 
                     var event = {
-                        'summary': 'Kick back with the Timeless Crew',
+                        'summary': 'Testing',
                         'location': 'Juno College',
-                        'description': 'Drank like crazyyyy',
+                        'description': "drankkkks",
                         'start': {
                             'dateTime': '2021-08-24T09:00:00-07:00',
                             'timeZone': 'America/Toronto'
@@ -45,13 +45,8 @@ const MeetingDetails = (props) => {
                             'dateTime': '2021-08-24T17:00:00-07:00',
                             'timeZone': 'America/Toronto'
                         },
-                        'recurrence': [
-                            'RRULE:FREQ=DAILY;COUNT=2'
-                        ],
                         'attendees': [
-                            { 'email': 'Stefan@juno.com' },
-                            { 'email': 'Kaarina@juno.com' },
-                            { 'email': 'Grant@juno.com' }
+                            { 'email': 'friendlypirat3@gmail.com' }
                         ],
                         'reminders': {
                             'useDefault': false,

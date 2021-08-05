@@ -43,7 +43,11 @@ const TimeZone = (props) => {
             startTimeZone.setHours(startTimeZone.getHours()+array[2]/100)
             endTimeZone.setHours(endTimeZone.getHours()+array[2]/100)
             const timeObj = {
-                    location: array[0][0],
+                    location: array[0], 
+                    meetingDate: `${startTimeZone.toString().substring(0, 15)}`,
+                    meetingTime: `${startTimeZone.toString().substring(16, 24)}`,
+                    startTimeIso: startTimeZone.toISOString(),
+                    endTimeIso: endTimeZone.toISOString(),
                     startTime: startTimeZone,
                     endTime: endTimeZone,
                     timeDifference: array[2]/100

@@ -28,6 +28,7 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault()
     if (e.target.className === "meetings") {
+      setWelcome(false)
       history.push("/" + e.target.className)
     } else if (e.target.className === 'theme') {
       darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
