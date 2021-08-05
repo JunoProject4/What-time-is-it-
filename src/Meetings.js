@@ -34,6 +34,7 @@ const Meetings = (props) => {
     return (
         <div className="component meetingsContainer">
             <h2>Meetings</h2>
+            <h2>Place Search, Add to Calendar/Send Invites, Delete</h2>
             <div className="meetingsGrid">
                 {
                     meetings.map(x => {

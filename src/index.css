@@ -9,7 +9,7 @@ html {
 }
 body {
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: "Vollkorn", serif;
 }
 article,
@@ -463,7 +463,6 @@ template {
   overflow: hidden;
 }
 
-
 /* body {
 body {
   overflow: hidden;
@@ -480,7 +479,6 @@ main h3 {
 } */
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
-
 
 /* a, */
 Button {
@@ -537,7 +535,7 @@ header {
 
 .ellipse2 {
   background-color: #fc4f7f;
-   
+
   position: absolute;
   height: 255px;
   width: 400px;
@@ -589,11 +587,11 @@ footer {
   /* height: 20vh; */
   /* background-color: #0c1c65;  
   background-color: #000d54; */
-  height: 20vh; 
-  background-color: #00a6f0; 
-  text-align: center; 
-  margin: 0; 
-  padding: 0; 
+  height: 5vh;
+  background-color: #000d54;
+  text-align: center;
+  margin: 0;
+  padding: 0;
   /* display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -601,16 +599,17 @@ footer {
   margin-bottom: 0;  */
 }
 
-footer a, 
+footer a,
 footer p {
-  color: #fff; 
-  margin-bottom: 0; 
+  color: #fff;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-footer a:hover, 
+footer a:hover,
 footer a:focus {
-  text-decoration: none; 
-  background: transparent; 
+  text-decoration: none;
+  background: transparent;
 }
 
 /* buttons
@@ -624,17 +623,23 @@ footer a:focus {
 /* MEETINGS/HOME */
 
 .newMeetingSection {
-  height: 80vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   background-color: #000d54;
 }
+.newMeetingSection button {
+  margin-bottom: 0;
+}
+.newMeetingForm button {
+  width: 147px;
+}
 .newMeeting {
   background-color: #0c1c65;
-  width: 60%;
-  height: 200px;
+
+  padding: 40px 70px 20px;
   border-radius: 10px;
   margin-top: 140px;
   display: flex;
@@ -644,22 +649,27 @@ footer a:focus {
 }
 .newMeeting p {
   color: white;
+  margin-bottom: 20px;
 }
 
 .meetingsContainer {
-  height: 80vh;
+  
   background-color: #000d54;
 }
 
 .newMeetingForm {
   background-color: #0c1c65;
   border-radius: 10px;
-  width: 60%;
- height: 200px;
+  /* width: 60%; */
+  /* height: 200px; */
+  padding: 40px 78px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+.newMeetingForm label {
+  margin-bottom: 20px;
 }
 
 label {
@@ -676,12 +686,16 @@ label {
 .calendarIcon {
   color: whitesmoke;
   font-size: 1.8rem;
-
+}
+.stopWatch,
+.calendarTimes {
+  margin-bottom: 15px;
 }
 
 h2 {
+  font-size: 1rem;
   color: whitesmoke;
-  padding-top: 160px;
+  padding-top: 90px;
   letter-spacing: 1.5px;
   text-align: center;
   margin: 0;
@@ -690,7 +704,7 @@ h2 {
 /* TIME ZONE  */
 
 .timeZoneContainer {
-  height: 80vh;
+  height: 95vh;
   background-color: #000d54;
   display: flex;
   flex-direction: column;
@@ -700,66 +714,52 @@ h2 {
 .localTimeDisplay {
   text-align: center;
 }
-.localTimeDisplay h3 {
-  padding-top: 25px;
+.localTimeDisplay  h3 {
+  padding-top: 5px;
 }
 .cityInputForm {
-  
   background-color: #0c1c65;
-  padding: 20px 50px;
+  padding: 10px 50px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin: 20px auto 50px;
-  
+  margin: 15px auto 30px;
 }
 .cityInputForm > div {
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .cityInputForm input {
   border-radius: 5px;
-  padding: 6px;
+  padding: 4px;
   border: none;
   background-color: whitesmoke;
- display: flex;
- margin-bottom: 15px;
- margin-top: 10px;
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 .cityInputForm label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 1.5px;
 }
-.cityInputForm  button {
+.cityInputForm button {
   margin: 0 auto;
 }
 
 /* CALENDAR */
 
-/* Was slated for deletion but  keep commentted out in case */
-/* .calendar {
-  margin: 0 auto; 
-}
-
-.finalizingMeetingsContainer {
-  background-color: #000d54; 
-  margin: 0 auto; 
-}
-
-.myForm {
-  margin: 0 auto; 
-} */
-
 .calendar {
-  height: 80vh;
-  background-color: #000d54; 
+  height: 95vh;
+  background-color: #000d54;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 .calendarHeading {
-  padding-top: 70px;
+  font-size: 1.5rem;
+  padding-top: 90px;
+  
 }
 .myCalendarForm {
   display: flex;
@@ -772,31 +772,33 @@ h2 {
 }
 
 .timeApiInfo h3 {
-  color: red;
-}
-.flexFrom {
+  color: whitesmoke;
   
+}
+
+
+.flexFrom {
   display: flex;
   flex-direction: column;
 }
 
-.timePicker { 
-  width: 60%; 
-  background-color: rgb(255, 255, 255); 
-  padding: 50px 40px;
-  margin: 0 auto; 
+.timePicker {
+  width: 400px;
+  background-color: rgb(255, 255, 255);
+  padding: 30px 40px;
+  margin: 0 auto;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
- 
+
 .timePickerInput:before {
   width: auto;
-  margin: 0 auto; 
-  background-color: white; 
-   
+  margin: 0 auto;
+  background-color: white;
 }
 .react-datepicker__input-container input {
   background-color: transparent;
@@ -807,28 +809,26 @@ h2 {
   cursor: pointer;
   padding: 5px;
   margin-right: 10px;
-  
 }
 
 .setMeeting {
-  margin: 20px auto 0; 
-  display: flex; 
-  justify-content: center; 
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 #ej2_timepicker_0::placeholder {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fc4f7f;
 }
 .e-input-group-icon:before {
   font-size: 1.5rem;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   color: #fc4f7f;
 }
 .e-input-group-icon:hover:before {
   transform: scale(1.3);
 }
-
 
 /* Meetings and IndividualMeetings */
 
@@ -841,19 +841,29 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 15px 40px;
+  
 }
 
 .eachMeeting {
-  width: 100%;
-  height: 100%; 
+  /* width: 90%; */
+  text-align: center;
   border-radius: 0.3rem;
-  margin: 0.5rem;
-  padding: 10px;
+  margin-bottom: 1rem;
+  padding: 50px;
   background-color: #0c1c65;
 }
+.eachMeeting button {
+  margin-top: 15px;
+  margin: 15px 5px;
+  font-size: 1.2rem;
+}
+.eachMeeting p{
+ font-size: 1.2rem;
+}
+
 
 
 .eachMeeting h3:first-child {
@@ -863,7 +873,7 @@ h2 {
 h3 {
   font-size: 1rem;
   padding: 5px;
-  letter-spacing: 2px; 
+  letter-spacing: 1px;
 }
 
 .wasSent {
@@ -900,11 +910,11 @@ h3 {
   border: 0.2rem solid blueviolet;
 } */
 
-.meetingStatus button {
-  margin: 0; 
+/* .meetingStatus button {
+  margin: 0;
   -ms-transform: translateX(-50%);
   transform: translateX(50%);
-}
+} */
 
 /* MEETINGS DETAILS */
 
@@ -917,54 +927,64 @@ h3 {
   background-color: #000d54;
 }
 
-
 /* MEDIA QUERIES */
 
-@media (min-width: 1000px) {
-  /* h1 {
-    left: 38%;
-  } */
+
+@media screen and (max-width: 384px), screen and (max-height: 854px) {
+  .newMeetingSection {
+    justify-content: space-evenly;
+  }
+  .flexFrom h2 {
+    padding: 0px 20px 35px;
+  }
   .newMeeting {
-    width: 400px;
+    padding: 40px 40px 20px;
   }
-  .newMeeting,
   .newMeetingForm {
-    width: 650px;
+    padding: 40px 45px 20px;
+  }
+  .cityInputForm {
+    padding: 10px 40px;
+  }
+  .cityInputForm input {
+    padding: 2px;
+  }
+  .calendar {
+    justify-content: flex-start;
+  }
+  .react-datepicker__input-container input {
+    width: 170px;
+    
+  }
+  .calendarHeading {
+    padding: 120px 0 45px;
+  }
+  .timePicker {
+    width: 350px;
+    margin: 50px auto 0;
+  }
+  .timePicker button {
+    width: 80%;
+    font-size: 10px;
+  }
+  #ej2_timepicker_0::placeholder {
+    font-size: .9rem;
+    color: #fc4f7f;
+  }
+  .apiHeadings h3 {
+    width: 70%;
+    text-align: center;
+    margin: 15px auto;
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 330px) {
- .cityInputForm  {
-   margin: 10px 20px;
-   padding: 10px 35px;
-
- }
- .flexFrom h2 {
-   padding-top: 140px;
-   font-size: 1.3rem;
-   margin-bottom: 30px;
- }
- .cityInputForm > div {
-   margin-top: 10px;
-   
- }
- .cityInputForm  input {
-   padding: 2px;
- }
- .cityInputForm  label {
-  padding: 2px;
-  font-size: 1rem;
-}
-.finalizeMeetingBtn {
-  margin-top: 20px;
-}
-}
 @media (max-width: 407px) {
   #userBtns {
     margin-left: 5px;
   }
   footer {
-    height: 25vh;
+    height: 5vh;
   }
   .restart {
     margin-top: 0;

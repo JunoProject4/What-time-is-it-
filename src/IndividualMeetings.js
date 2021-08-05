@@ -1,6 +1,7 @@
 // import { useState } from 'react';
 import firebase from "./firebase";
 import Swal from 'sweetalert2';
+import { FaCalendarPlus, FaTrashAlt, FaRegHandshake } from 'react-icons/fa';
 
 const IndividualMeetings = (props) => {
     const { info, id } = props
@@ -158,15 +159,15 @@ const IndividualMeetings = (props) => {
                 <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
                 {
                     info.Place === undefined
-                        ? <button name={id} onClick={handleClickPlace}>Suggest local place</button>
+                        ? <button name={id} onClick={handleClickPlace}><FaRegHandshake className="handshakeIcon"/></button>
                         : <p className="meetingPlace">Meeting Place: {info.Place}</p>
                 }
                 {
                     info.Status === undefined
-                        ? <button name={id} onClick={handleClickCalendar}>Add to Calendar and send invites</button>
+                        ? <button name={id} onClick={handleClickCalendar}><FaCalendarPlus/></button>
                         : <p>Invitations sent</p>
                 }
-                <button name={id} onClick={handleClickDelete}>Delete</button>
+                <button name={id} onClick={handleClickDelete}><FaTrashAlt/></button>
             </div>
         </div>
 
