@@ -1,19 +1,38 @@
 import { useState } from 'react';
 import firebase from "./firebase";
+import Swal from 'sweetalert2';
 
 const IndividualMeetings = (props) => {
     const { info, id } = props
     const [warning, setWarning] = useState(true)
 
+    // // Modal alert for delete verification: NOTE: built with assistance from www.sweetalert2.github.io 
     const handleClickDelete = (e) => {
         e.preventDefault()
         if (warning === true) {
-            alert("Are you sure you want to delete?")
-            setWarning(false)
-        } else {
-            const dbRef = firebase.database().ref();
-            dbRef.child(e.target.name).remove();
-            setWarning(true)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                }
+              })
+        //     alert("Are you sure you want to delete?")
+        //     setWarning(false)
+        // } else {
+        //     const dbRef = firebase.database().ref();
+        //     dbRef.child(e.target.name).remove();
+        //     setWarning(true)
         }
     }
 
@@ -147,7 +166,49 @@ const IndividualMeetings = (props) => {
     }
 
     return (
-        <div className="eachMeetingContainer">
+        <div className="meetingStatus">
+            {/* {
+                info.Status === "Pending"
+                    ? <div className="eachMeeting pending">
+                        <h3>{info.Who}</h3>
+                        <h3>{info.When}, {info.Time}</h3>
+                        <h3>{info.Where.City}, {info.Where.Continent}</h3>
+                        <h3>PENDING</h3>
+                        {
+                            info.Place === undefined
+                                ? <button name={id} onClick={handleClick2}>Pick a place</button>
+                                : <h3 className="meetingPlace">Suggested Meeting Place: 
+                                <br/>{info.Place}</h3>
+                        }
+                        <button name={id} onClick={handleClick}>Delete</button>
+                    </div>
+                    : info.Status === "Accepted"
+                        ? <div className="eachMeeting accepted">
+                            <h3>{info.Who}</h3>
+                            <h3>{info.When}, {info.Time}</h3>
+                            <h3>{info.Where.City}, {info.Where.Continent}</h3>
+                            <h3>ACCEPTED</h3>
+                            {
+                                info.Place === undefined
+                                    ? <button name={id} onClick={handleClick2}>Pick a place</button>
+                                    : <h3 className="meetingPlace">Suggested Meeting Place:
+                                    <br/>{info.Place}</h3>
+                            }
+                            <button name={id} onClick={handleClick}>Delete</button>
+                        </div>
+                        : <div className="eachMeeting rejected">
+                            <h3>{info.Who}</h3>
+                            <h3>{info.When}, {info.Time}</h3>
+                            <h3>{info.Where.City}, {info.Where.Continent}</h3>
+                            <h3>REJECTED</h3>
+                            {
+                                info.Place === undefined
+                                    ? <button name={id} onClick={handleClick2}>Pick a place</button>
+                                    : <h3 className="meetingPlace">Suggested Meeting Place: <br/>{info.Place}</h3>
+                            }
+                            <button name={id} onClick={handleClick}>Delete</button>
+                        </div>
+>>>>>>> 23b6b1765fbee587fcb706065a54feb6442af569 */}
 
             <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
                 <p>{info.location[0]}, {info.location[1]}</p>

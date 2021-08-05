@@ -4,6 +4,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import { useHistory } from 'react-router'
 import { FaCalendarWeek } from 'react-icons/fa';
+import { SyncWaterfallHook } from 'tapable'
+import Swal from 'sweetalert2'; 
 
 const TimeZone = (props) => {
 
@@ -59,10 +61,23 @@ const TimeZone = (props) => {
 
         arrOfTimesToState.forEach(arr => {
             if(arr.startTime.getHours() < 8) {
-                alert(`This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} hours to accomodate for the time difference.`)
+                Swal.fire({
+                    title: 'Sorry!',
+                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} ${8-arr.startTime.getHours() === 1 ? 'hour' : 'hours' } to accomodate for the time difference.`,
+                    icon: 'error',
+                    confirmButtonText: "Ok"
+
+                })
+                // alert(`This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} hours to accomodate for the time difference.`)
             }
             if (arr.endTime.getHours() > 19) {
-                alert(`This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} hours to accomodate for the time difference.`)
+                Swal.fire({
+                    title: 'Sorry!',
+                    text: `This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} ${arr.endTime.getHours()-19 === 1 ? 'hour' : 'hours' } to accomodate for the time difference.`,
+                    icon: 'error',
+                    confirmButtonText: "Ok"
+                })
+                // alert(`This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} hours to accomodate for the time difference.`)
             }
         })
 
@@ -70,7 +85,13 @@ const TimeZone = (props) => {
             return arr.startTime.getHours() >= 8 && arr.endTime.getHours() <= 19;
         });
         if(checker(arrOfTimesToState)) {
-            alert(`The meeting falls within the alloted time in all timezones`)
+            Swal.fire({
+                title: 'Success!',
+                text: "The meeting falls within the alloted time in all timezones",
+                icon: "success",
+                confirmButtonText: "Ok"
+            })
+            // alert(`The meeting falls within the alloted time in all timezones`)
         }
         setApprovedTime(checker(arrOfTimesToState));
     }
