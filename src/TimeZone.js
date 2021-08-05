@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-// import Setup from './Setup'
-// import Calendar from './Calendar'
 import { useHistory } from "react-router-dom";
 
 
@@ -9,25 +7,19 @@ const TimeZone = (props) => {
     const [city1Input, setCity1Input] = useState("")
     const [city2Input, setCity2Input] = useState("")
     const [city3Input, setCity3Input] = useState("")
-    // const [infoReady, setInfoReady] = useState(false)
-    // const [localTime, setLocalTime] = useState("")
-    let apiInformation = []
-    // const [apiFinal, setApiFinal] = useState([])
+    const [showFinal, setShowFinal] = useState(false)
     const { apiFinal, setApiFinal } = props
     const history = useHistory()
-    // const [loading, setLoading] = useState(true)
-    const [showFinal, setShowFinal] = useState(false)
-
-
-    const url = ("https://worldtimeapi.org/api/timezone/")
+    let apiInformation = []
 
     const apiCall = async (city, continent) => {
-        const getQuotes = async () => {
+        const url = ("https://worldtimeapi.org/api/timezone/")
+        const getTimeZones = async () => {
             const res = await fetch(url + continent + "/" + city)
             const data = await res.json()
             return data
         }
-        await getQuotes()
+        await getTimeZones()
             .then((res) => {
                 let formattedCity = [city.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" "), continent.replace("_", " ").split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" ")]
                 apiInformation.push([formattedCity, res.datetime.substring(11, 19), res.datetime.slice(26).replace(":", "")])
@@ -47,7 +39,6 @@ const TimeZone = (props) => {
                 return apiCall(item[0], item[1])
             }))
         }
-        // await getTime()
         getTime()
     }, [cityArray])
 
@@ -93,11 +84,11 @@ const TimeZone = (props) => {
             alert("Invalid search parameters on City 3")
         }
 
-        if (alertCount === 0) {
+        if (alertCount === 0 && emptyCount <= 3) {
             setCityArray(copyArray)
             setTimeout(() => {
                 setShowFinal(true)
-            }, 3000)
+            }, 7500)
         }
     }
 
@@ -105,27 +96,12 @@ const TimeZone = (props) => {
         history.push('/calendar')
     }
 
-    // useEffect(() => {
-    //     // setTimeout(() => {
-    //     //     setInfoReady(!infoReady)
-    //     // }, 3500)
-
-    //     setTimeout(() => {
-    //         setInfoReady(!infoReady)
-    //     }, 8000)
-
-    // }, [apiFinal])
-
-    // useEffect(() => {
-    // let time = [Date().substring(16, 24), Date().substring(28,33)]
-    // setLocalTime(time)
-    // }, [])
-
-
     return (
         <div className="component timeZoneContainer">
             <div className="flexFrom">
-                <h2>Enter city and location (Asia, America, Africa, Europe, Australia)</h2>
+                <h2>Enter up to 3 cities and locations (Asia, America, Africa, Europe, Australia) </h2> 
+                <h2>Use _ for spaces.</h2>
+                
                 <form className="cityInputForm" action="submit">
 
                     <div>
@@ -149,19 +125,6 @@ const TimeZone = (props) => {
                         : null
                 }
 
-
-                {/* <div className="localTimeDisplay">
-                <h3>Local time is: {localTime}</h3>
-                {
-                    apiFinal.map((item, index) => {
-                        console.log("what is going on??")
-                        console.log(item)
-                        return (
-                            <h3 key={index}>Time in {item[0]}: {item[1]}</h3>
-                        )
-                    })
-                    }
-            </div> */}
             </div>
 
         </div>
