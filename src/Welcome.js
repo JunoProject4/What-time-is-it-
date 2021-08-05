@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import TimeZone from "./TimeZone";
 import Calendar from "./Calendar";
 
+//Welcome is where the user starts, he/she/they can go to start a new meeting or check current meetings.  Welcome holds a couple states that are passed around by the child as they need it.
 const Welcome = (props) => {
   const { welcome, setWelcome } = props;
   const history = useHistory();

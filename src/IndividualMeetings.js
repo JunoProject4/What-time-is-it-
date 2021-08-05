@@ -1,11 +1,10 @@
-// import { useState } from 'react';
 import firebase from "./firebase";
 import Swal from 'sweetalert2';
 import { FaCalendarPlus, FaTrashAlt, FaRegHandshake } from 'react-icons/fa';
 
+//This is where all the meetings are made.  They are passed props object with all the firebase info of each meeting, and uses that info to populate the information.  It also has a Double API call allowing users to Pick a random place.  There is also a submit button that connects user to Google Calendar.
 const IndividualMeetings = (props) => {
     const { info, id } = props
-    // const [warning, setWarning] = useState(true)
 
     const handleClickDelete = (e) => {
         e.preventDefault()
@@ -29,11 +28,6 @@ const IndividualMeetings = (props) => {
                 dbRef.child(id).remove();
             }
         })
-        //     alert("Are you sure you want to delete?")
-        //     setWarning(false)
-        // } else {
-
-
     }
 
     const handleClickPlace = (e) => {
@@ -82,7 +76,7 @@ const IndividualMeetings = (props) => {
     }
 
     //Uses Google Calendar API to record meeting to User's Google Calendar
-    //and send out invites via email (We put a dummy email for now to not cause junk)
+    //and send out invites via email (We put a dummy email for now to not cause junk) but users can change it in their events tab in Google Calendar
     //but will be adding a form input to collect invitation emails
     const gapi = window.gapi
     const email = "friendlypirat3@gmail.com"
@@ -92,12 +86,9 @@ const IndividualMeetings = (props) => {
     const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
     const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
-
     const handleClickCalendar = (e) => {
         const dbRef = firebase.database().ref();
         gapi.load('client:auth2', () => {
-            console.log('loaded client')
-
             gapi.client.init({
                 apiKey: API_KEY,
                 clientId: CLIENT_ID,
@@ -110,7 +101,7 @@ const IndividualMeetings = (props) => {
             gapi.auth2.getAuthInstance().signIn()
                 .then(() => {
 
-                    var event = {
+                    const event = {
                         'summary': 'Testing',
                         'location': `${info.Place === undefined ? "TBD" : info.Place}`,
                         'description': "Greatest meeting",
@@ -175,42 +166,3 @@ const IndividualMeetings = (props) => {
 }
 
 export default IndividualMeetings
-
-
-    // <div className="meetingStatus">
-
-    // <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
-    //     <p>{info.title}</p>
-    //     <p>{info.location[0]}, {info.location[1]}</p>
-    //     <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
-    //     {
-    //         info.Place === undefined
-    //             ? <button name={id} onClick={handleClickPlace}><FaRegHandshake className="handshakeIcon"/></button>
-    //             : <p className="meetingPlace">Meeting Place: {info.Place}</p>
-    //     }
-    //     {
-    //         info.Status === undefined
-    //             ? <button name={id} onClick={handleClickCalendar}><FaCalendarPlus/></button>
-    //             : <p>Invitations sent</p>
-    //     }
-    //     <button name={id} onClick={handleClickDelete}><FaTrashAlt/></button>
-    // </div>
-    // </div>
-
-
-
-//     < div className = { info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent" } >
-// <p>{info.title}</p>
-// <p>{info.location[0]}, {info.location[1]}</p>
-// <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
-// {
-//     info.Place === undefined
-//         ? <button name={id} onClick={handleClickPlace}>place</button>
-//         : <p className="meetingPlace">Meeting Place: {info.Place}</p>
-// }
-// {
-//     info.Status === undefined
-//         ? <button name={id} onClick={handleClickCalendar}>calendar</button>
-//         : <p>Invitations sent</p>
-// }
-// <button name={id} onClick={handleClickDelete}>trash</button>

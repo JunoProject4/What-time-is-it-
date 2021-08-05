@@ -10,8 +10,11 @@ const TimeZone = (props) => {
     const [showFinal, setShowFinal] = useState(false)
     const { apiFinal, setApiFinal } = props
     const history = useHistory()
+    const inputArray = [['city1', 'City 1', 'city1Input'], ['city2', 'City 2', 'city2Input'], ['city3', 'City 3', 'city3Input']]
     let apiInformation = []
 
+
+    //API Call to get Time from the user Inputs, user is allowed up to 3 choices, res has to be formatted back into something that is readable.  If there is an error, it returns No information Avilable.  This APICall sets the 'apiFinal' which is a state housed in Welcome and passed to Calendar to use later.
     const apiCall = async (city, continent) => {
         const url = ("https://worldtimeapi.org/api/timezone/")
         const getTimeZones = async () => {
@@ -33,14 +36,17 @@ const TimeZone = (props) => {
         return Promise.resolve()
     }
 
+    //Runs the ApiCall everytime CityArray is updated
     useEffect(() => {
         const getTime = async () => {
             Promise.all(cityArray.map(item => {
-                return apiCall(item[0], item[1])
+                apiCall(item[0], item[1])
+                return Promise.resolve()
             }))
         }
         getTime()
     }, [cityArray])
+
 
     const handleChange = (e) => {
         e.target.name === "city1"
@@ -50,6 +56,7 @@ const TimeZone = (props) => {
                 : setCity3Input(e.target.value)
     }
 
+    //When Send is clicked, it checks to make sure if user inputted everything correctly, if not then an alert goes up and cityArray is not run.  If all continues are met then cityArray gets set and the ApiCall runs and finalize meeting appears, allowing us to move to setting the meeting parameters.
     const handleClick = (e) => {
         e.preventDefault()
         let alertCount = 0
@@ -88,7 +95,7 @@ const TimeZone = (props) => {
             setCityArray(copyArray)
             setTimeout(() => {
                 setShowFinal(true)
-            }, 7500)
+            }, 8000)
         }
     }
 
@@ -99,34 +106,27 @@ const TimeZone = (props) => {
     return (
         <div className="component timeZoneContainer">
             <div className="flexFrom">
-                <h2>Enter up to 3 cities and locations (Asia, America, Africa, Europe, Australia) </h2> 
+                <h2>Enter up to 3 cities and locations (Asia, America, Africa, Europe, Australia) </h2>
                 <h2>Use _ for spaces.</h2>
-                
                 <form className="cityInputForm" action="submit">
-
-                    <div>
-                        <label htmlFor="city1">City 1:</label>
-                        <input name="city1" value={city1Input} type="text" placeholder="City1 Continent" required onChange={handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="city2">City 2:</label>
-                        <input name="city2" value={city2Input} type="text" placeholder="City2 Continent" required onChange={handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="city3">City 3:</label>
-                        <input name="city3" value={city3Input} type="text" placeholder="City3 Continent" required onChange={handleChange} />
-                    </div>
-
-                    <button name="submitCities" onClick={handleClick}>Send</button>
+                    {
+                        inputArray.map(x => {
+                            return (
+                                <div>
+                                    <label htmlFor={x[0]}>{x[1]}</label>
+                                    <input name={x[0]} value={window[x[2]]} type="text" placeholder={`${x[1]} Continent`} required onChange={handleChange} />
+                                </div>
+                            )
+                        })
+                    }
+                    <button name="submitCities" onClick={handleClick}>Send</button> 
                 </form>
                 {
                     showFinal
                         ? <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
                         : null
                 }
-
             </div>
-
         </div>
     )
 }

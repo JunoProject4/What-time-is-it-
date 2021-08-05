@@ -4,8 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import { useHistory } from 'react-router'
 import { FaCalendarWeek } from 'react-icons/fa';
-// import { SyncWaterfallHook } from 'tapable'
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 const TimeZone = (props) => {
 
@@ -20,10 +19,9 @@ const TimeZone = (props) => {
     const history = useHistory()
 
     const { apiFinal } = props
-    // const [localTime, setLocalTime] = useState("")
     const [difference, setDifference] = useState([])
+    const [errorArray, setErrorArray] = useState([])
 
-    // const time = (new Date('01/01/2021 8:00 AM'));
     const minTime = (new Date('1/1/2021 8:00 AM'));
     const maxTime = (new Date('1/1/2021 7:00 PM'));
 
@@ -40,55 +38,52 @@ const TimeZone = (props) => {
         difference.forEach(array => {
             const startTimeZone = new Date(definedStartDate)
             const endTimeZone = new Date(definedEndDate)
-            startTimeZone.setHours(startTimeZone.getHours()+array[2]/100)
-            endTimeZone.setHours(endTimeZone.getHours()+array[2]/100)
+            startTimeZone.setHours(startTimeZone.getHours() + array[2] / 100)
+            endTimeZone.setHours(endTimeZone.getHours() + array[2] / 100)
             const timeObj = {
-                    location: array[0], 
-                    meetingDate: `${startTimeZone.toString().substring(0, 15)}`,
-                    meetingTime: `${startTimeZone.toString().substring(16, 24)}`,
-                    startTimeIso: startTimeZone.toISOString(),
-                    endTimeIso: endTimeZone.toISOString(),
-                    startTime: startTimeZone,
-                    endTime: endTimeZone,
-                    timeDifference: array[2]/100
-                }
+                location: array[0],
+                meetingDate: `${startTimeZone.toString().substring(0, 15)}`,
+                meetingTime: `${startTimeZone.toString().substring(16, 24)}`,
+                startTimeIso: startTimeZone.toISOString(),
+                endTimeIso: endTimeZone.toISOString(),
+                startTime: startTimeZone,
+                endTime: endTimeZone,
+                timeDifference: array[2] / 100
+            }
             arrOfTimesToState.push(timeObj)
         })
         setArrayOfTimes(arrOfTimesToState);
 
         arrOfTimesToState.forEach(arr => {
-            if(arr.startTime.getHours() < 8) {
+            if (arr.startTime.getHours() < 8) {
                 Swal.fire({
                     title: 'Sorry!',
-                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} ${8-arr.startTime.getHours() === 1 ? 'hour' : 'hours' } to accomodate for the time difference.`,
+                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8 - arr.startTime.getHours()} ${8 - arr.startTime.getHours() === 1 ? 'hour' : 'hours'} to accomodate for the time difference.`,
                     icon: 'error',
                     confirmButtonText: "Ok"
 
                 })
-                // alert(`This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8-arr.startTime.getHours()} hours to accomodate for the time difference.`)
             }
             if (arr.endTime.getHours() > 19) {
                 Swal.fire({
                     title: 'Sorry!',
-                    text: `This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} ${arr.endTime.getHours()-19 === 1 ? 'hour' : 'hours' } to accomodate for the time difference.`,
+                    text: `This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours() - 19} ${arr.endTime.getHours() - 19 === 1 ? 'hour' : 'hours'} to accomodate for the time difference.`,
                     icon: 'error',
                     confirmButtonText: "Ok"
                 })
-                // alert(`This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours()-19} hours to accomodate for the time difference.`)
             }
         })
 
         const checker = (array) => array.every(arr => {
             return arr.startTime.getHours() >= 8 && arr.endTime.getHours() <= 19;
         });
-        if(checker(arrOfTimesToState)) {
+        if (checker(arrOfTimesToState)) {
             Swal.fire({
                 title: 'Success!',
                 text: "The meeting falls within the alloted time in all timezones",
                 icon: "success",
                 confirmButtonText: "Ok"
             })
-            // alert(`The meeting falls within the alloted time in all timezones`)
         }
         setApprovedTime(checker(arrOfTimesToState));
     }
@@ -107,7 +102,7 @@ const TimeZone = (props) => {
                 } else {
                     const copyArray = [...arrayOfTimes]
                     copyArray.forEach(time => {
-                        time.title= value;
+                        time.title = value;
                     })
                     props.setMeetingName(value)
                     props.setMeetingInfo(copyArray)
@@ -117,30 +112,23 @@ const TimeZone = (props) => {
         })
     }
 
-    // useEffect(() => {
-    //     props.setWelcome(false)
-    // }, [])
     useEffect(() => {
-        let time = [Date().substring(16, 24), Date().substring(28,33)]
-        let timeDifference = apiFinal.filter(x => x.length === 3).map(y => y = [y[0] , y[1] , (y[2] - time[1] )])
-        
+        let time = [Date().substring(16, 24), Date().substring(28, 33)]
+        let timeDifference = apiFinal.filter(x => x.length === 3).map(y => y = [y[0], y[1], (y[2] - time[1])])
+        let error = []
+        apiFinal.filter(x => x.length === 2).map(y => error.push(y[0]))
         setDifference(timeDifference)
-    }, [apiFinal])
-
-
-    // useEffect(() => {
-    //     let time = Date().substring(16, 24)
-    //     setLocalTime(time)
-    // }, [])
+        setErrorArray(error)
+    }, [])
 
     return (
         <div className="component finalizingMeetingsContainer">
             <div className="calendar">
-                
-                    <h2 className="calendarHeading">Calendar</h2>
+
+                <h2 className="calendarHeading">Calendar</h2>
                 <form action="#" method="#" className="myCalendarForm" name="myForm">
-                    <FaCalendarWeek className="icons calendarIcon"/>
-                    <DatePicker 
+                    <FaCalendarWeek className="icons calendarIcon" />
+                    <DatePicker
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
                         minDate={new Date()}
@@ -148,10 +136,8 @@ const TimeZone = (props) => {
                     />
                 </form>
                 <div className="timePicker">
-
-                
                     <TimePickerComponent
-                    className="timePicker"
+                        className="timePicker"
                         selected={selectStartTime}
                         onChange={time => {
                             setSelectStartTime(time.value)
@@ -161,43 +147,45 @@ const TimeZone = (props) => {
                         min={minTime}
                         max={maxTime}
                     />
-
-                {
-                    selectStartTime ?
-                    <TimePickerComponent
-                        selected={selectEndTime}
-                        onChange={time => {
-                            setSelectEndTime(time.value)
-                            setApprovedTime(false)
-                        }}
-                        placeholder="Select an End Time"
-                        min={selectStartTime}
-                        max={maxTime}
-                    /> :
-                    null
-                }
-
-                {
-                    approvedTime ?
-                    <button onClick={onSubmitDates}>Set Meeting</button> : 
-                    <button onClick={defineTime} className="setMeeting">Check Availability</button>
-                }
+                    {
+                        selectStartTime ?
+                            <TimePickerComponent
+                                selected={selectEndTime}
+                                onChange={time => {
+                                    setSelectEndTime(time.value)
+                                    setApprovedTime(false)
+                                }}
+                                placeholder="Select an End Time"
+                                min={selectStartTime}
+                                max={maxTime}
+                            /> :
+                            null
+                    }
+                    {
+                        approvedTime ?
+                            <button onClick={onSubmitDates}>Set Meeting</button> :
+                            <button onClick={defineTime} className="setMeeting">Check Availability</button>
+                    }
 
                 </div>
-            <div className="timeApiInfo">
-                {/* <h3>{difference[0]} {difference[1]} {difference[2]}</h3> */}
-                {
-                    difference.map((x, index) => {
-                        return (
-                            <div className="apiHeadings">
-                                
-                                <h3 key={index}>The time at {x[0][0]}, {x[0][1]} is {x[1]} and the difference is {x[2]}</h3>
+                <div className="timeApiInfo">
+                    {
+                        difference.map((x, index) => {
+                            return (
+                                <div className="apiHeadings">
+                                    <h3 key={index}>The time at {x[0][0]}, {x[0][1]} is {x[1]} and the difference is {x[2]}</h3>
+                                </div>
+                            )
+                        })
+                    }
+                    {
+                        errorArray.length
+                            ? <div className="apiHeadings">
+                                <h3>{errorArray} : Meeting N/A due to no information</h3>
                             </div>
-                        )
-                    })
-                }
-
-            </div>
+                            : null
+                    }
+                </div>
             </div>
         </div>
     )
