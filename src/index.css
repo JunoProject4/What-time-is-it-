@@ -579,6 +579,11 @@ h1 {
 .finalizeMeetingBtn {
   margin: 0 auto;
 }
+.meetingSetBtn {
+  
+  margin: 10px auto;
+  display: inline-block;
+}
 
 footer {
   
@@ -920,8 +925,8 @@ h3 {
     margin: 50px auto 0;
   }
   .timePicker button {
-    width: 80%;
-    font-size: 14px;
+    width: 70%;
+    font-size: 13px;
   }
   #ej2_timepicker_0::placeholder {
     font-size: .9rem;

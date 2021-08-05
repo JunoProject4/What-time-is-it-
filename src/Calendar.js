@@ -179,7 +179,7 @@ const TimeZone = (props) => {
 
                 {
                     approvedTime ?
-                    <button onClick={onSubmitDates}>Set Meeting</button> : 
+                    <button onClick={onSubmitDates} className="meetingSetBtn">Set Meeting</button> : 
                     <button onClick={defineTime} className="setMeeting">Check Availability</button>
                 }
 
