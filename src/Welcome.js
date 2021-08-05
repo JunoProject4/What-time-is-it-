@@ -30,6 +30,8 @@ const Welcome = (props) => {
 
   const [meetingInfo, setMeetingInfo] = useState([])
 
+  const [meetingName, setMeetingName] = useState('');
+
   const handleChange = (e) => {
     setMeetingNumberInput(e.target.value);
   };
@@ -127,6 +129,7 @@ const Welcome = (props) => {
                 welcome={welcome}
                 apiFinal={apiFinal}
                 setMeetingInfo={setMeetingInfo}
+                setMeetingName={setMeetingName}
               />
             )}
           />
@@ -135,7 +138,7 @@ const Welcome = (props) => {
             exact
             path="/meetings"
             render={() => (
-              <Meetings setWelcome={setWelcome} welcome={welcome} meetingInfo={meetingInfo} setMeetingInfo={setMeetingInfo}/>
+              <Meetings setWelcome={setWelcome} welcome={welcome} meetingInfo={meetingInfo} setMeetingInfo={setMeetingInfo} meetingName={meetingName}/>
             )}
           />
 

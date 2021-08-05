@@ -8,6 +8,7 @@ const Meetings = (props) => {
     //Take props from Welcome, which is passed on by Calendar and will populate firebase
     const [meetings, setMeetings] = useState([])
     const {meetingInfo, setMeetingInfo} = props
+    
 
     useEffect(() => {
       
@@ -32,7 +33,7 @@ const Meetings = (props) => {
 
     return (
         <div className="component meetingsContainer">
-            <h2>Meetings</h2>
+            <h2>My Meetings</h2>
             <h3></h3>
             <div className="meetingsGrid">
                 {
