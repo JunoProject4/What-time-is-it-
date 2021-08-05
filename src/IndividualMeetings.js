@@ -56,7 +56,7 @@ const IndividualMeetings = (props) => {
     }
 
     return (
-        <div>
+        <div className="meetingStatus">
             {
                 info.Status === "Pending"
                     ? <div className="eachMeeting pending">
@@ -67,7 +67,8 @@ const IndividualMeetings = (props) => {
                         {
                             info.Place === undefined
                                 ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
+                                : <h3 className="meetingPlace">Suggested Meeting Place: 
+                                <br/>{info.Place}</h3>
                         }
                         <button name={id} onClick={handleClick}>Delete</button>
                     </div>
@@ -80,7 +81,8 @@ const IndividualMeetings = (props) => {
                             {
                                 info.Place === undefined
                                     ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                    : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
+                                    : <h3 className="meetingPlace">Suggested Meeting Place:
+                                    <br/>{info.Place}</h3>
                             }
                             <button name={id} onClick={handleClick}>Delete</button>
                         </div>
@@ -92,7 +94,7 @@ const IndividualMeetings = (props) => {
                             {
                                 info.Place === undefined
                                     ? <button name={id} onClick={handleClick2}>Pick a place</button>
-                                    : <h3 className="meetingPlace">Suggested Meeting Place: {info.Place}</h3>
+                                    : <h3 className="meetingPlace">Suggested Meeting Place: <br/>{info.Place}</h3>
                             }
                             <button name={id} onClick={handleClick}>Delete</button>
                         </div>

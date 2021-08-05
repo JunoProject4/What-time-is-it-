@@ -766,25 +766,43 @@ h2 {
 .eachMeeting h3:first-child {
   font-size: 1.8rem;
 }
+
 h3 {
   font-size: 1rem;
   padding: 5px;
-  letter-spacing: 2px;
+  letter-spacing: 2px; 
 }
 
+.meetingStatus {
+  display: flex; 
+  justify-content: space-evenly; 
+  align-content: space-evenly;
+  
+}
+
+/* .meetingStatus h3 {
+  flex-wrap: nowrap; 
+} */
+
 .accepted {
-  border: 0.1rem solid greenyellow;
+  border: 0.2rem solid greenyellow; 
 }
 
 .rejected {
-  border: 0.1rem solid red;
+  border: 0.2rem solid red;
 }
 
 .pending {
-  border: 0.1rem solid blueviolet;
+  border: 0.2rem solid blueviolet;
 }
 
-/* MeetingsDetails */
+.meetingStatus button {
+  margin: 0; 
+  -ms-transform: translateX(-50%);
+  transform: translateX(50%);
+}
+
+/* MEETINGS DETAILS */
 
 .meetingDetailsContainer {
   height: 80vh;
@@ -794,7 +812,7 @@ h3 {
   justify-content: space-around;
   background-color: #000d54;
 }
-/* CALENDAR */
+
 
 /* MEDIA QUERIES */
 
