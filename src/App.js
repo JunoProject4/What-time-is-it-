@@ -6,7 +6,7 @@ import Welcome from "./Welcome"
 // import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 // import { FaGlobeEurope } from 'react-icons/fa';
-
+import { FaCalendarPlus, FaTrashAlt, FaRegHandshake, FaArrowLeft  } from 'react-icons/fa';
 
 //Our Starting point, will hold the Welcome screen with 2 options that Grant suggested (in progress and not showing).  For now it houses 3 components, timezone/set up(likely to be merged) and meetings, they render depending on the URL path.  There are 5 buttons at the bottom that either select a URL path and renders a component, or changes theme or restarts 
 
@@ -50,13 +50,7 @@ function App() {
         <Welcome welcome={welcome} setWelcome={setWelcome} />
       </main>
 
-      {/* <main>
-        <h1>Timeless</h1>
-        <div className="ellipse1"></div>
-        <div className="ellipse2"></div>
-        <div className="ellipse3"></div>
-        <Welcome welcome={welcome} setWelcome={setWelcome} />
-      </main> */}
+      
 
 {
         buttonArray.map((button, i) => {
