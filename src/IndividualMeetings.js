@@ -213,6 +213,7 @@ const IndividualMeetings = (props) => {
 >>>>>>> 23b6b1765fbee587fcb706065a54feb6442af569 */}
 
             <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
+                <p>{info.title}</p>
                 <p>{info.location[0]}, {info.location[1]}</p>
                 <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
                 {

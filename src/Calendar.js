@@ -9,18 +9,15 @@ import Swal from 'sweetalert2';
 
 const TimeZone = (props) => {
 
-    console.log(props)
-
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectStartTime, setSelectStartTime] = useState(null);
     const [selectEndTime, setSelectEndTime] = useState(null);
     const [arrayOfTimes, setArrayOfTimes] = useState([]);
     const [approvedTime, setApprovedTime] = useState(false);
+    const [meetingName, setMeetingName] = useState('');
+    console.log(meetingName)
 
     const history = useHistory()
-
-    console.log(approvedTime)
-    console.log(arrayOfTimes)
 
     const { apiFinal } = props
     // const [localTime, setLocalTime] = useState("")
@@ -97,8 +94,27 @@ const TimeZone = (props) => {
     }
 
     const onSubmitDates = () => {
-        history.push('/Meetings');
-        props.setMeetingInfo(arrayOfTimes)
+
+        Swal.fire({
+            title: 'Enter your Meeting Name',
+            input: 'text',
+            inputLabel: 'Your Meeting Name',
+            inputValue: "My Meeting",
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Please enter Meeting Name!'
+                } else {
+                    const copyArray = [...arrayOfTimes]
+                    copyArray.forEach(time => {
+                        time.title= value;
+                    })
+                    props.setMeetingName(value)
+                    props.setMeetingInfo(copyArray)
+                    history.push('/Meetings');
+                }
+            }
+        })
     }
 
     // useEffect(() => {

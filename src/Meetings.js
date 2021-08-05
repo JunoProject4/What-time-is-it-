@@ -7,7 +7,8 @@ import IndividualMeetings from "./IndividualMeetings"
 const Meetings = (props) => {
     //Take props from Welcome, which is passed on by Calendar and will populate firebase
     const [meetings, setMeetings] = useState([])
-    const {meetingInfo} = props
+    const {meetingInfo, setMeetingInfo} = props
+    
 
     useEffect(() => {
       
