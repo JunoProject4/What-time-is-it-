@@ -762,17 +762,17 @@ h3 {
   letter-spacing: 2px;
 }
 
-.accepted {
+.wasSent {
   border: 0.1rem solid greenyellow;
 }
 
-.rejected {
+.notSent {
   border: 0.1rem solid red;
 }
 
-.pending {
+/* .pending {
   border: 0.1rem solid blueviolet;
-}
+} */
 
 /* MeetingsDetails */
 

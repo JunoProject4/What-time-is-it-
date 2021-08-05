@@ -12,7 +12,7 @@ const IndividualMeetings = (props) => {
             setWarning(false)
         } else {
             const dbRef = firebase.database().ref();
-            dbRef.child(e.target.id).remove();
+            dbRef.child(e.target.name).remove();
             setWarning(true)
         }
     }
@@ -42,7 +42,12 @@ const IndividualMeetings = (props) => {
                 const secondAPI = await fetch(url2).then(res => res.json())
                     .then(res => {
                         let results = res.searchResults
-                        dbRef.child(e.target.name).update({ Place: results[Math.floor(Math.random() * results.length)].name })
+                        if (results !== undefined) {
+                        dbRef.child(e.target.name).update({ Place: results[Math.floor(Math.random() * results.length)].name }) 
+                    } else {
+                        dbRef.child(e.target.name).update({ Place: "No suggestions available"})
+                    }
+
                     })
             }
             endingAPICall(firstAPI)
@@ -58,13 +63,13 @@ const IndividualMeetings = (props) => {
     //Uses Google Calendar API to record meeting to User's Google Calendar
     //and send out invites via email (We put a dummy email for now to not cause junk)
     //but will be adding a form input to collect invitation emails
-    var gapi = window.gapi
+    const gapi = window.gapi
     const email = "friendlypirat3@gmail.com"
 
-    var CLIENT_ID = '602044477009-updm2dii3nkt1culsmak0bvjahl4f90s.apps.googleusercontent.com';
-    var API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';
-    var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-    var SCOPES = "https://www.googleapis.com/auth/calendar.events";
+    const CLIENT_ID = '602044477009-updm2dii3nkt1culsmak0bvjahl4f90s.apps.googleusercontent.com';
+    const API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';
+    const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+    const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
 
     const handleClickCalendar = (e) => {
@@ -97,7 +102,8 @@ const IndividualMeetings = (props) => {
                             'timeZone': `${info.location[1]}/${info.location[0]}`
                         },
                         'attendees': [
-                            { 'email': email }
+                            { 'email': email },
+                            { 'email': 'friendlypirate@msn' },
                         ],
                         'reminders': {
                             'useDefault': false,
@@ -108,9 +114,7 @@ const IndividualMeetings = (props) => {
                         }
                     }
 
-
-
-                    var request = gapi.client.calendar.events.insert({
+                    const request = gapi.client.calendar.events.insert({
                         'calendarId': 'primary',
                         'resource': event
                     });
@@ -119,7 +123,7 @@ const IndividualMeetings = (props) => {
                         window.open(event.htmlLink)
                     });
 
-                    dbRef.child(e.target.name).update({ Status: 'Sent'})
+                    dbRef.child(e.target.name).update({ Status: 'Sent' })
 
 
 
@@ -143,20 +147,23 @@ const IndividualMeetings = (props) => {
     }
 
     return (
-      <div className="eachMeeting notSent">
-            <p>{info.location[0]}, {info.location[1]}</p>
-            <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
-            {
-                info.Place === undefined
-                    ? <button name={id} onClick={handleClickPlace}>Suggest local place</button>
-                    : <p className="meetingPlace">Suggested Meeting Place: {info.Place}</p>
-            }
-            {
-                info.Status === undefined
-                    ? <button name={id}  onClick={handleClickCalendar}>Add to Calendar and send invites</button>
-                    : <p>Invitations sent</p>
-            }
-            <button name={id} onClick={handleClickDelete}>Delete</button>
+        <div className="eachMeetingContainer">
+
+            <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
+                <p>{info.location[0]}, {info.location[1]}</p>
+                <p>{info.meetingDate}, at {info.meetingTime[0] === "0" ? info.meetingTime.slice(1) : info.meetingTime}</p>
+                {
+                    info.Place === undefined
+                        ? <button name={id} onClick={handleClickPlace}>Suggest local place</button>
+                        : <p className="meetingPlace">Meeting Place: {info.Place}</p>
+                }
+                {
+                    info.Status === undefined
+                        ? <button name={id} onClick={handleClickCalendar}>Add to Calendar and send invites</button>
+                        : <p>Invitations sent</p>
+                }
+                <button name={id} onClick={handleClickDelete}>Delete</button>
+            </div>
         </div>
 
 

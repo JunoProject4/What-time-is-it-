@@ -38,40 +38,40 @@ const Welcome = (props) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    e.target.name === "newMeeting" ? history.push("/timezone") : history.push("/meetings")
     setWelcome(false);
-    history.push("/timezone")
   }
 
 
-  const handleClick2 = (e) => {
-    e.preventDefault()
-    let checkMeetingState = []
-    const dbRef = firebase.database().ref();
-    // dbRef.child('Test5').set("setting random value")
+  // const handleClick2 = (e) => {
+  //   e.preventDefault()
+  //   let checkMeetingState = []
+  //   const dbRef = firebase.database().ref();
+  //   // dbRef.child('Test5').set("setting random value")
 
-    dbRef.on("value", (snapshot) => {
-      if (snapshot.child(meetingNumberInput).exists()) {
-        console.log("it worked")
+  //   dbRef.on("value", (snapshot) => {
+  //     if (snapshot.child(meetingNumberInput).exists()) {
+  //       console.log("it worked")
 
-        dbRef.on("value", (response) => {
-          const data = response.val()
-          for (let key in data) {
-            if (meetingNumberInput === key) {
-              checkMeetingState.push({ key: key, info: data[key] })
-            }
-          }
-          // console.log(checkMeetingState)
-          setCheckMeeting(checkMeetingState)
-        })
-        setWelcome(false)
-        history.push("/meetingdetails")
-        // history.push("/meetings/" + meetingNumberInput);
-        // setMeetingNumberInput("");
-      } else {
-        alert("Meeting does not exist")
-      }
-    });
-  }
+  //       dbRef.on("value", (response) => {
+  //         const data = response.val()
+  //         for (let key in data) {
+  //           if (meetingNumberInput === key) {
+  //             checkMeetingState.push({ key: key, info: data[key] })
+  //           }
+  //         }
+  //         // console.log(checkMeetingState)
+  //         setCheckMeeting(checkMeetingState)
+  //       })
+  //       setWelcome(false)
+  //       history.push("/meetingdetails")
+  //       // history.push("/meetings/" + meetingNumberInput);
+  //       // setMeetingNumberInput("");
+  //     } else {
+  //       alert("Meeting does not exist")
+  //     }
+  //   });
+  // }
 
 
   return (
@@ -97,16 +97,9 @@ const Welcome = (props) => {
             animate={{ opacity: 1, y: -10 }}
             transition={{ delay: 0.5, type: "spring" }}
           >
-            <label htmlFor="meetingNumber">View Existing Meeting:</label>
+            <label htmlFor="meetingNumber">View Existing Meetings:</label>
             <FaCalendarTimes className="icons calendarTimes" />
-            <input
-              type="text"
-              name="meetingNumber"
-              value={meetingNumberInput}
-              onChange={handleChange}
-              required
-            />
-            <button name="meetingCheck" onClick={handleClick2}>
+            <button name="meetingCheck" onClick={handleClick}>
               Check
             </button>
           </motion.form>

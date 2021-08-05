@@ -12,7 +12,7 @@ const MeetingDetails = (props) => {
     console.log(gapi)
 
     var CLIENT_ID = '602044477009-updm2dii3nkt1culsmak0bvjahl4f90s.apps.googleusercontent.com';
-    var API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';  
+    var API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';
     var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
     var SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
@@ -46,7 +46,7 @@ const MeetingDetails = (props) => {
                             'timeZone': 'America/Toronto'
                         },
                         'attendees': [
-                            { 'email': 'friendlypirat3@gmail.com' }
+                                {'email': 'friendlypirat3@gmail.com'},
                         ],
                         'reminders': {
                             'useDefault': false,
@@ -57,18 +57,18 @@ const MeetingDetails = (props) => {
                         }
                     }
 
-                    
+
 
                     var request = gapi.client.calendar.events.insert({
                         'calendarId': 'primary',
                         'resource': event
-                      });
-                      
-                      request.execute(function(event) {
+                    });
+
+                    request.execute(function (event) {
                         window.open(event.htmlLink)
-                      });
-                    
-                   
+                    });
+
+
                     //get events
                     // gapi.client.calendar.events.list({
                     //   'calendarId': 'primary',
@@ -81,7 +81,7 @@ const MeetingDetails = (props) => {
                     //   const events = response.result.items
                     //   console.log('EVENTS: ', events)
                     // })
-                    
+
 
 
                 })
