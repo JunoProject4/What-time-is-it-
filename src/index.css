@@ -527,7 +527,7 @@ header {
 
 .ellipse2 {
   background-color: #fc4f7f;
-   
+
   position: absolute;
   height: 255px;
   width: 400px;
@@ -605,7 +605,7 @@ footer {
   background-color: #0c1c65;
   border-radius: 10px;
   width: 60%;
- height: 200px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -626,7 +626,6 @@ label {
 .calendarIcon {
   color: whitesmoke;
   font-size: 1.8rem;
-
 }
 
 h2 {
@@ -654,14 +653,12 @@ h2 {
   padding-top: 25px;
 }
 .cityInputForm {
-  
   background-color: #0c1c65;
   padding: 20px 50px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 20px auto 50px;
-  
 }
 .cityInputForm > div {
   margin-top: 20px;
@@ -672,37 +669,23 @@ h2 {
   padding: 6px;
   border: none;
   background-color: whitesmoke;
- display: flex;
- margin-bottom: 15px;
- margin-top: 10px;
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 .cityInputForm label {
   font-size: 1.2rem;
   letter-spacing: 1.5px;
 }
-.cityInputForm  button {
+.cityInputForm button {
   margin: 0 auto;
 }
 
 /* CALENDAR */
 
-/* Was slated for deletion but  keep commentted out in case */
-/* .calendar {
-  margin: 0 auto; 
-}
-
-.finalizingMeetingsContainer {
-  background-color: #000d54; 
-  margin: 0 auto; 
-}
-
-.myForm {
-  margin: 0 auto; 
-} */
-
 .calendar {
   height: 80vh;
-  background-color: #000d54; 
+  background-color: #000d54;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -725,28 +708,27 @@ h2 {
   color: red;
 }
 .flexFrom {
-  
   display: flex;
   flex-direction: column;
 }
 
-.timePicker { 
-  width: 60%; 
-  background-color: rgb(255, 255, 255); 
+.timePicker {
+  width: 60%;
+  background-color: rgb(255, 255, 255);
   padding: 50px 40px;
-  margin: 0 auto; 
+  margin: 0 auto;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
- 
+
 .timePickerInput:before {
   width: auto;
-  margin: 0 auto; 
-  background-color: white; 
-   
+  margin: 0 auto;
+  background-color: white;
 }
 .react-datepicker__input-container input {
   background-color: transparent;
@@ -757,14 +739,12 @@ h2 {
   cursor: pointer;
   padding: 5px;
   margin-right: 10px;
-  
 }
 
-
 .setMeeting {
-  margin: 20px auto 0; 
-  display: flex; 
-  justify-content: center; 
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 #ej2_timepicker_0::placeholder {
@@ -773,13 +753,12 @@ h2 {
 }
 .e-input-group-icon:before {
   font-size: 1.5rem;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   color: #fc4f7f;
 }
 .e-input-group-icon:hover:before {
   transform: scale(1.3);
 }
-
 
 /* Meetings and IndividualMeetings */
 
@@ -854,30 +833,28 @@ h3 {
 }
 
 @media (max-width: 330px) {
- .cityInputForm  {
-   margin: 10px 20px;
-   padding: 10px 35px;
-
- }
- .flexFrom h2 {
-   padding-top: 140px;
-   font-size: 1.3rem;
-   margin-bottom: 30px;
- }
- .cityInputForm > div {
-   margin-top: 10px;
-   
- }
- .cityInputForm  input {
-   padding: 2px;
- }
- .cityInputForm  label {
-  padding: 2px;
-  font-size: 1rem;
-}
-.finalizeMeetingBtn {
-  margin-top: 20px;
-}
+  .cityInputForm {
+    margin: 10px 20px;
+    padding: 10px 35px;
+  }
+  .flexFrom h2 {
+    padding-top: 140px;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+  }
+  .cityInputForm > div {
+    margin-top: 10px;
+  }
+  .cityInputForm input {
+    padding: 2px;
+  }
+  .cityInputForm label {
+    padding: 2px;
+    font-size: 1rem;
+  }
+  .finalizeMeetingBtn {
+    margin-top: 20px;
+  }
 }
 @media (max-width: 407px) {
   #userBtns {
