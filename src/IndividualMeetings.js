@@ -4,12 +4,12 @@ import Swal from 'sweetalert2';
 
 const IndividualMeetings = (props) => {
     const { info, id } = props
-    const [warning, setWarning] = useState(true)
+    // const [warning, setWarning] = useState(true)
 
     // // Modal alert for delete verification: NOTE: built with assistance from www.sweetalert2.github.io 
     const handleClickDelete = (e) => {
         e.preventDefault()
-        if (warning === true) {
+   
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -25,15 +25,15 @@ const IndividualMeetings = (props) => {
                     'Your file has been deleted.',
                     'success'
                   )
+                  const dbRef = firebase.database().ref();
+                  dbRef.child(e.target.name).remove();
                 }
               })
         //     alert("Are you sure you want to delete?")
         //     setWarning(false)
         // } else {
-        //     const dbRef = firebase.database().ref();
-        //     dbRef.child(e.target.name).remove();
-        //     setWarning(true)
-        }
+      
+        
     }
 
     const handleClickPlace = (e) => {
