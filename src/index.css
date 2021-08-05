@@ -763,7 +763,7 @@ h2 {
 }
 
 .timePicker {
-  width: 200px;
+  width: 400px;
   background-color: rgb(255, 255, 255);
   padding: 30px 40px;
   margin: 0 auto;
@@ -897,6 +897,7 @@ h3 {
 
 /* MEDIA QUERIES */
 
+
 @media screen and (max-width: 384px), screen and (max-height: 854px) {
   .newMeetingSection {
     justify-content: space-evenly;
@@ -946,31 +947,6 @@ h3 {
   }
 }
 
-@media (max-width: 350px) {
-  .cityInputForm {
-    margin: 10px 20px;
-    padding: 10px 35px;
-  }
-  .flexFrom h2 {
-    padding-top: 140px;
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-  }
-  .cityInputForm > div {
-    margin-top: 10px;
-  }
-  .cityInputForm input {
-    padding: 2px;
-  }
-  .cityInputForm label {
-    padding: 2px;
-    font-size: 1rem;
-  }
-  .finalizeMeetingBtn {
-    margin-top: 20px;
-  }
-  
-}
 @media (max-width: 407px) {
   #userBtns {
     margin-left: 5px;
