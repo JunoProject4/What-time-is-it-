@@ -98,6 +98,7 @@ const TimeZone = (props) => {
             setCityArray(copyArray)
             setTimeout(() => {
                 setShowFinal(true)
+                setShowLoader(false)
             }, 3000)
         }
         setShowLoader(true)
