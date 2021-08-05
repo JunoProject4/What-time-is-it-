@@ -637,6 +637,7 @@ footer a:focus {
 
 .meetingsContainer {
   background-color: #000d54;
+  height: 95vh;
 }
 
 .newMeetingForm {

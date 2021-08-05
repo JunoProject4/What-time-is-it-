@@ -7,6 +7,8 @@ import Welcome from "./Welcome"
 import { useHistory } from 'react-router-dom';
 // import { FaGlobeEurope } from 'react-icons/fa';
 import { FaCalendarPlus, FaTrashAlt, FaRegHandshake, FaArrowLeft  } from 'react-icons/fa';
+import { motion } from "framer-motion";
+
 
 //Our Starting point, will hold the Welcome screen with 2 options that Grant suggested (in progress and not showing).  For now it houses 3 components, timezone/set up(likely to be merged) and meetings, they render depending on the URL path.  There are 5 buttons at the bottom that either select a URL path and renders a component, or changes theme or restarts 
 
@@ -62,7 +64,11 @@ function App() {
 
 
       <footer>
-        <p class="footerText">Created at <a href="https://junocollege.com/">Juno College</a> with <a href="http://worldtimeapi.org/">World Time API</a></p>
+        <motion.p 
+        initial={{ opacity: 0, x: -250 }}
+        animate={{ opacity: 1, x: -10 }}
+        transition={{ delay: 1.5, type: "spring" }}
+        class="footerText">Created at <a href="https://junocollege.com/">Juno College</a> with <a href="http://worldtimeapi.org/">World Time API</a></motion.p>
       </footer>
     </div>
     // </Router>
