@@ -738,8 +738,8 @@ h2 {
 }
 .calendarHeading {
   font-size: 1.5rem;
-  padding: 0;
-  padding-bottom: 20px;
+  padding-top: 90px;
+  
 }
 .myCalendarForm {
   display: flex;
@@ -755,6 +755,7 @@ h2 {
   color: whitesmoke;
   
 }
+
 
 .flexFrom {
   display: flex;
@@ -896,16 +897,48 @@ h3 {
 
 /* MEDIA QUERIES */
 
-/* @media (-width: 1000px) {
- 
+@media screen and (max-width: 384px), screen and (max-height: 854px) {
+  .newMeetingSection {
+    justify-content: space-evenly;
+  }
+  .flexFrom h2 {
+    padding: 50px 20px 35px;
+  }
   .newMeeting {
-    width: 400px;
+    padding: 40px 40px 20px;
   }
-  .newMeeting,
   .newMeetingForm {
-    width: 650px;
+    padding: 40px 45px 20px;
   }
-} */
+  .cityInputForm {
+    padding: 10px 40px;
+  }
+  .cityInputForm input {
+    padding: 2px;
+  }
+  .calendar {
+    justify-content: flex-start;
+  }
+  .react-datepicker__input-container {
+    width: 150px;
+    padding-bottom: 15px;
+  }
+  .calendarHeading {
+    padding: 190px 0 80px;
+  }
+  .timePicker {
+    width: 80%;
+  }
+  .timePicker button {
+    width: 80%;
+    font-size: 10px;
+  }
+  #ej2_timepicker_0::placeholder {
+    font-size: .9rem;
+    color: #fc4f7f;
+  }
+  
+}
 
 @media (max-width: 330px) {
   .cityInputForm {
