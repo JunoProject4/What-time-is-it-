@@ -21,11 +21,6 @@ section {
   display: block;
 }
 
-/* h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-} */
-
 figcaption,
 figure,
 main {
@@ -243,20 +238,6 @@ nav,
 section {
   display: block;
 }
-/* h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-} */
-/* figcaption,
-figure,
-main {
-  display: block;
-} */
-
-/* figure {
-  margin: 1em 40px;
-  
-} */
 
 hr {
   box-sizing: content-box;
@@ -347,11 +328,6 @@ textarea {
   height: 0;
 }
 
-/* * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-} */
 button,
 input {
   overflow: visible;
@@ -444,12 +420,6 @@ template {
   height: 0;
 }
 
-/* * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-} */
-
 .visuallyHidden:not(:focus):not(:active) {
   position: absolute;
   width: 1px;
@@ -463,33 +433,21 @@ template {
   overflow: hidden;
 }
 
-/* body {
-body {
-  overflow: hidden;
-} */
-
 main p,
 main h3 {
   margin: 0;
   color: white;
 }
 
-/* .darkMode main {
-  background-color: purple;
-} */
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
 /* a, */
 Button {
-  /* box-shadow: inset 0px 1px 0px 0px #97c4fe; */
-  /* background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
-  background-color: #3d94f6; */
   box-shadow: inset 0px 1px 0px 0px;
   background: linear-gradient(to bottom, #fc4f7f 5%, #f180a0 100%);
   background-color: #fc4f7f;
   border-radius: 6px;
-  /* border: 1px solid #337fed; */
   border: 1px solid #b63d5f;
   display: inline-block;
   cursor: pointer;
@@ -560,7 +518,6 @@ h1 {
   position: absolute;
   z-index: 100;
   text-align: center;
-  width: 100%;
 }
 
 /* BUTTONS */
@@ -570,10 +527,18 @@ h1 {
   top: 0; 
   right: 0; 
 } 
-
+ 
 #userBtns.restart {
+  color: white; 
+  background-color: white; 
   position: absolute; 
-  top: 0; 
+  top: 0;  
+  left: 0;  
+} 
+
+#userBtns.restart::before {
+  content: "↩︎";
+  color: white; 
 }
 
 #userBtns {
@@ -584,19 +549,11 @@ h1 {
 }
 
 footer {
-  /* height: 20vh; */
-  /* background-color: #0c1c65;  
-  background-color: #000d54; */
   height: 5vh;
   background-color: #000d54;
   text-align: center;
   margin: 0;
   padding: 0;
-  /* display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0;  */
 }
 
 footer a,
@@ -611,14 +568,6 @@ footer a:focus {
   text-decoration: none;
   background: transparent;
 }
-
-/* buttons
-#userBtns {
-  margin: 10px;
-}
-.finalizeMeetingBtn {
-  margin: 0 auto;
-} */
 
 /* MEETINGS/HOME */
 
@@ -660,8 +609,6 @@ footer a:focus {
 .newMeetingForm {
   background-color: #0c1c65;
   border-radius: 10px;
-  /* width: 60%; */
-  /* height: 200px; */
   padding: 40px 78px 20px;
   display: flex;
   flex-direction: column;
@@ -884,37 +831,6 @@ h3 {
   border: 0.1rem solid red;
 }
 
-/* .pending {
-  border: 0.1rem solid blueviolet;
-} */
-/* .meetingStatus {
-  display: flex; 
-  justify-content: space-evenly; 
-  align-content: space-evenly; 
-  
-} */
-
-/* .meetingStatus h3 {
-  flex-wrap: nowrap; 
-} */
-/* 
-.accepted {
-  border: 0.2rem solid greenyellow; 
-}
-
-.rejected {
-  border: 0.2rem solid red;
-}
-
-.pending {
-  border: 0.2rem solid blueviolet;
-} */
-
-/* .meetingStatus button {
-  margin: 0;
-  -ms-transform: translateX(-50%);
-  transform: translateX(50%);
-} */
 
 /* MEETINGS DETAILS */
 
@@ -927,8 +843,13 @@ h3 {
   background-color: #000d54;
 }
 
-/* MEDIA QUERIES */
 
+/* LIGHT MODE */
+.app lightmode {
+  background-color: white; 
+}
+
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 384px), screen and (max-height: 854px) {
   .newMeetingSection {
