@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
 import firebase from "./firebase";
 import IndividualMeetings from "./IndividualMeetings"
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 
 
 const Meetings = (props) => {
     //Take props from Welcome, which is passed on by Calendar and will populate firebase
     const [meetings, setMeetings] = useState([])
-    const {meetingInfo, setMeetingInfo} = props
+    const {meetingInfo} = props
 
     useEffect(() => {
       
         const dbRef = firebase.database().ref();
         // meetingInfo.map((x, index)=> dbRef.child(index).set(x))  
         meetingInfo.map(x=> dbRef.push(x))    
-    }, [])
+    }, [meetingInfo])
 
     useEffect(() => {
         const dbRef = firebase.database().ref();
@@ -26,14 +26,13 @@ const Meetings = (props) => {
                 newState.push({ key: key, info: data[key] });
             }
             setMeetings(newState)
-
+            
         });
     }, [])
 
     return (
         <div className="component meetingsContainer">
             <h2>Meetings</h2>
-            <h3></h3>
             <div className="meetingsGrid">
                 {
                     meetings.map(x => {

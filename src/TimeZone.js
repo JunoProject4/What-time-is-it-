@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Setup from './Setup'
-import Calendar from './Calendar'
+// import Setup from './Setup'
+// import Calendar from './Calendar'
 import { useHistory } from "react-router-dom";
 
 
@@ -10,8 +10,8 @@ const TimeZone = (props) => {
     const [city1Input, setCity1Input] = useState("")
     const [city2Input, setCity2Input] = useState("")
     const [city3Input, setCity3Input] = useState("")
-    const [infoReady, setInfoReady] = useState(false)
-    const [localTime, setLocalTime] = useState("")
+    // const [infoReady, setInfoReady] = useState(false)
+    // const [localTime, setLocalTime] = useState("")
     let apiInformation = []
     // const [apiFinal, setApiFinal] = useState([])
     const {apiFinal, setApiFinal} = props
@@ -44,7 +44,7 @@ const TimeZone = (props) => {
     useEffect(() => {
         const getTime = async () => {
             Promise.all(cityArray.map(item => {
-                apiCall(item[0], item[1])
+                return apiCall(item[0], item[1])
             }))
         }
         // await getTime()
@@ -62,13 +62,14 @@ const TimeZone = (props) => {
     const handleClick = (e) => {
         e.preventDefault()
         let alertCount = 0
+        let emptyCount = 0
         let copyArray = []
         const check = (/(^[a-zA-Z_]+\s[a-zA-Z_]+)$/)
 
         if (city1Input.match(check)) {
             copyArray.push(city1Input.split(" "))
         } else if (city1Input === "") {
-            alertCount = alertCount
+            emptyCount++
         } else {
             alertCount++
             alert("Invalid search parameters on City 1")
@@ -77,7 +78,7 @@ const TimeZone = (props) => {
         if (city2Input.match(check)) {
             copyArray.push(city2Input.split(" "))
         } else if (city2Input === "") {
-            alertCount = alertCount
+            emptyCount++
         } else {
             alertCount++
             alert("Invalid search parameters on City 2")
@@ -86,7 +87,7 @@ const TimeZone = (props) => {
         if (city3Input.match(check)) {
             copyArray.push(city3Input.split(" "))
         } else if (city3Input === "") {
-            alertCount = alertCount
+            emptyCount++
         } else {
             alertCount++
             alert("Invalid search parameters on City 3")
@@ -101,21 +102,21 @@ const TimeZone = (props) => {
         history.push('/calendar')
     }
 
-    useEffect(() => {
-        // setTimeout(() => {
-        //     setInfoReady(!infoReady)
-        // }, 3500)
+    // useEffect(() => {
+    //     // setTimeout(() => {
+    //     //     setInfoReady(!infoReady)
+    //     // }, 3500)
 
-        setTimeout(() => {
-            setInfoReady(!infoReady)
-        }, 8000)
+    //     setTimeout(() => {
+    //         setInfoReady(!infoReady)
+    //     }, 8000)
 
-    }, [apiFinal])
+    // }, [apiFinal])
 
-    useEffect(() => {
-    let time = [Date().substring(16, 24), Date().substring(28,33)]
-    setLocalTime(time)
-    }, [])
+    // useEffect(() => {
+    // let time = [Date().substring(16, 24), Date().substring(28,33)]
+    // setLocalTime(time)
+    // }, [])
 
 
     return (
@@ -140,7 +141,7 @@ const TimeZone = (props) => {
                     <button name="submitCities" onClick={handleClick}>Send</button>
                 </form>
                 <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-            <div className="localTimeDisplay">
+            {/* <div className="localTimeDisplay">
                 <h3>Local time is: {localTime}</h3>
                 {
                     apiFinal.map((item, index) => {
@@ -151,7 +152,7 @@ const TimeZone = (props) => {
                         )
                     })
                     }
-            </div>
+            </div> */}
             </div>
 
         </div>

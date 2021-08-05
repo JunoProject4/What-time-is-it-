@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Welcome from "./Welcome"
 // import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { FaGlobeEurope } from 'react-icons/fa';
+// import { FaGlobeEurope } from 'react-icons/fa';
 
 
 
@@ -16,27 +16,27 @@ function App() {
 
   //Arrary set up for button and darkMode stage
   // const buttonArray = ['timeZone', 'setup', 'meetings', 'theme', 'restart']
-  const buttonArray = ['theme', 'restart']
+  // const buttonArray = ['theme', 'restart']
   const [welcome, setWelcome] = useState(true)
   const [darkMode, setDarkMode] = useState("app lightMode")
-  const history = useHistory()
+  // const history = useHistory()
 
   // const [test, setTest] = useState("ayyooooo")
 
 
   //Function to handle different buttons, right now it only affects the theme, but will have more functionality for clicking the "Links" when we decide.
-  const handleClick = (e) => {
-    e.preventDefault()
-    if (e.target.className === "meetings") {
-      setWelcome(false)
-      history.push("/" + e.target.className)
-    } else if (e.target.className === 'theme') {
-      darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
-    } else {
-      setWelcome(true)
-      history.push("/" + e.target.className)
-    }
-  }
+  // const handleClick = (e) => {
+  //   e.preventDefault()
+  //   if (e.target.className === "meetings") {
+  //     setWelcome(false)
+  //     history.push("/" + e.target.className)
+  //   } else if (e.target.className === 'theme') {
+  //     darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
+  //   } else {
+  //     setWelcome(true)
+  //     history.push("/" + e.target.className)
+  //   }
+  // }
 
 
   return (

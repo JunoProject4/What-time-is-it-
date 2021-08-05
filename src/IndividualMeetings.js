@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import firebase from "./firebase";
 import Swal from 'sweetalert2';
 
@@ -58,7 +58,7 @@ const IndividualMeetings = (props) => {
                     "radius": "100",
                 })
 
-                const secondAPI = await fetch(url2).then(res => res.json())
+                await fetch(url2).then(res => res.json())
                     .then(res => {
                         let results = res.searchResults
                         if (results !== undefined) {

@@ -1,16 +1,16 @@
 import Meetings from "./Meetings";
-import { Route, Link, useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { FaCalendarTimes, FaStopwatch, FaGlobeEurope } from "react-icons/fa";
+import { FaCalendarTimes, FaStopwatch } from "react-icons/fa";
 import { motion } from "framer-motion";
 import TimeZone from "./TimeZone";
-import MeetingDetails from "./MeetingDetails"
+// import MeetingDetails from "./MeetingDetails"
 // // import Setup from "./Setup"
 //  JSFunctionality
 // import Meetings from "./Meetings"
 // import { Route, Link, useHistory } from "react-router-dom"
 // import { useState, useEffect } from 'react'
-import firebase from "./firebase";
+// import firebase from "./firebase";
 import Calendar from "./Calendar";
 // const Welcome = (props) => {
 //     const { welcome, setWelcome } = props
@@ -23,16 +23,16 @@ const Welcome = (props) => {
   const { welcome, setWelcome } = props;
   const history = useHistory();
   // const [welcome, setWelcome] = useState(true)
-  const [meetingNumberInput, setMeetingNumberInput] = useState("");
+  // const [meetingNumberInput, setMeetingNumberInput] = useState("");
   const [apiFinal, setApiFinal] = useState([]);
 
-  const [checkMeeting, setCheckMeeting] = useState([])
+  // const [checkMeeting, setCheckMeeting] = useState([])
 
   const [meetingInfo, setMeetingInfo] = useState([])
 
-  const handleChange = (e) => {
-    setMeetingNumberInput(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setMeetingNumberInput(e.target.value);
+  // };
 
   // console.log(meetingInfo)
 
@@ -139,13 +139,13 @@ const Welcome = (props) => {
             )}
           />
 
-          <Route
+          {/* <Route
             exact
             path="/meetingdetails"
             render={() => (
               <MeetingDetails info={checkMeeting} />
             )}
-          />
+          /> */}
         </div>
       )}
     </div>

@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars'
 import { useHistory } from 'react-router'
 import { FaCalendarWeek } from 'react-icons/fa';
-import { SyncWaterfallHook } from 'tapable'
+// import { SyncWaterfallHook } from 'tapable'
 import Swal from 'sweetalert2'; 
 
 const TimeZone = (props) => {
@@ -23,10 +23,10 @@ const TimeZone = (props) => {
     console.log(arrayOfTimes)
 
     const { apiFinal } = props
-    const [localTime, setLocalTime] = useState("")
+    // const [localTime, setLocalTime] = useState("")
     const [difference, setDifference] = useState([])
 
-    const time = (new Date('01/01/2021 8:00 AM'));
+    // const time = (new Date('01/01/2021 8:00 AM'));
     const minTime = (new Date('1/1/2021 8:00 AM'));
     const maxTime = (new Date('1/1/2021 7:00 PM'));
 
@@ -112,10 +112,10 @@ const TimeZone = (props) => {
     }, [apiFinal])
 
 
-    useEffect(() => {
-        let time = Date().substring(16, 24)
-        setLocalTime(time)
-    }, [])
+    // useEffect(() => {
+    //     let time = Date().substring(16, 24)
+    //     setLocalTime(time)
+    // }, [])
 
     return (
         <div className="component finalizingMeetingsContainer">
