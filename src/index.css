@@ -463,7 +463,6 @@ template {
   overflow: hidden;
 }
 
-
 /* body {
 body {
   overflow: hidden;
@@ -480,7 +479,6 @@ main h3 {
 } */
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
-
 
 /* a, */
 Button {
@@ -569,11 +567,11 @@ footer {
   /* height: 20vh; */
   /* background-color: #0c1c65;  
   background-color: #000d54; */
-  height: 20vh; 
-  background-color: #00a6f0; 
-  text-align: center; 
-  margin: 0; 
-  padding: 0; 
+  height: 5vh;
+  background-color: #000d54;
+  text-align: center;
+  margin: 0;
+  padding: 0;
   /* display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -581,16 +579,17 @@ footer {
   margin-bottom: 0;  */
 }
 
-footer a, 
+footer a,
 footer p {
-  color: #fff; 
-  margin-bottom: 0; 
+  color: #fff;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-footer a:hover, 
+footer a:hover,
 footer a:focus {
-  text-decoration: none; 
-  background: transparent; 
+  text-decoration: none;
+  background: transparent;
 }
 
 /* buttons */
@@ -604,17 +603,23 @@ footer a:focus {
 /* MEETINGS/HOME */
 
 .newMeetingSection {
-  height: 80vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   background-color: #000d54;
 }
+.newMeetingSection button {
+  margin-bottom: 0;
+}
+.newMeetingForm button {
+  width: 147px;
+}
 .newMeeting {
   background-color: #0c1c65;
-  width: 60%;
-  height: 200px;
+
+  padding: 40px 70px 20px;
   border-radius: 10px;
   margin-top: 140px;
   display: flex;
@@ -624,6 +629,7 @@ footer a:focus {
 }
 .newMeeting p {
   color: white;
+  margin-bottom: 20px;
 }
 
 .meetingsContainer {
@@ -634,12 +640,16 @@ footer a:focus {
 .newMeetingForm {
   background-color: #0c1c65;
   border-radius: 10px;
-  width: 60%;
-  height: 200px;
+  /* width: 60%; */
+  /* height: 200px; */
+  padding: 40px 78px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+.newMeetingForm label {
+  margin-bottom: 20px;
 }
 
 label {
@@ -657,10 +667,15 @@ label {
   color: whitesmoke;
   font-size: 1.8rem;
 }
+.stopWatch,
+.calendarTimes {
+  margin-bottom: 15px;
+}
 
 h2 {
+  font-size: 1rem;
   color: whitesmoke;
-  padding-top: 160px;
+  padding-top: 90px;
   letter-spacing: 1.5px;
   text-align: center;
   margin: 0;
@@ -669,7 +684,7 @@ h2 {
 /* TIME ZONE  */
 
 .timeZoneContainer {
-  height: 80vh;
+  height: 95vh;
   background-color: #000d54;
   display: flex;
   flex-direction: column;
@@ -679,24 +694,24 @@ h2 {
 .localTimeDisplay {
   text-align: center;
 }
-.localTimeDisplay h3 {
-  padding-top: 25px;
+.localTimeDisplay  h3 {
+  padding-top: 5px;
 }
 .cityInputForm {
   background-color: #0c1c65;
-  padding: 20px 50px;
+  padding: 10px 50px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin: 20px auto 50px;
+  margin: 15px auto 30px;
 }
 .cityInputForm > div {
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .cityInputForm input {
   border-radius: 5px;
-  padding: 6px;
+  padding: 4px;
   border: none;
   background-color: whitesmoke;
   display: flex;
@@ -704,7 +719,7 @@ h2 {
   margin-top: 10px;
 }
 .cityInputForm label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 1.5px;
 }
 .cityInputForm button {
@@ -714,15 +729,17 @@ h2 {
 /* CALENDAR */
 
 .calendar {
-  height: 80vh;
+  height: 95vh;
   background-color: #000d54;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 .calendarHeading {
-  padding-top: 70px;
+  font-size: 1.5rem;
+  padding: 0;
+  padding-bottom: 20px;
 }
 .myCalendarForm {
   display: flex;
@@ -735,17 +752,19 @@ h2 {
 }
 
 .timeApiInfo h3 {
-  color: red;
+  color: whitesmoke;
+  
 }
+
 .flexFrom {
   display: flex;
   flex-direction: column;
 }
 
 .timePicker {
-  width: 60%;
+  width: 40%;
   background-color: rgb(255, 255, 255);
-  padding: 50px 40px;
+  padding: 30px 40px;
   margin: 0 auto;
   border-radius: 10px;
   display: flex;
@@ -778,7 +797,7 @@ h2 {
   align-items: center;
 }
 #ej2_timepicker_0::placeholder {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fc4f7f;
 }
 .e-input-group-icon:before {
@@ -821,7 +840,7 @@ h2 {
 h3 {
   font-size: 1rem;
   padding: 5px;
-  letter-spacing: 2px; 
+  letter-spacing: 1px;
 }
 
 .wasSent {
@@ -859,7 +878,7 @@ h3 {
 } */
 
 .meetingStatus button {
-  margin: 0; 
+  margin: 0;
   -ms-transform: translateX(-50%);
   transform: translateX(50%);
 }
@@ -875,13 +894,10 @@ h3 {
   background-color: #000d54;
 }
 
-
 /* MEDIA QUERIES */
 
-@media (min-width: 1000px) {
-  /* h1 {
-    left: 38%;
-  } */
+/* @media (-width: 1000px) {
+ 
   .newMeeting {
     width: 400px;
   }
@@ -889,7 +905,7 @@ h3 {
   .newMeetingForm {
     width: 650px;
   }
-}
+} */
 
 @media (max-width: 330px) {
   .cityInputForm {
@@ -920,7 +936,7 @@ h3 {
     margin-left: 5px;
   }
   footer {
-    height: 25vh;
+    height: 5vh;
   }
   .restart {
     margin-top: 0;

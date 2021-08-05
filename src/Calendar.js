@@ -168,17 +168,20 @@ const TimeZone = (props) => {
                 }
 
                 </div>
-            </div>
             <div className="timeApiInfo">
                 {/* <h3>{difference[0]} {difference[1]} {difference[2]}</h3> */}
                 {
                     difference.map((x, index) => {
                         return (
-                            <h3 key={index}>The time at {x[0][0]}, {x[0][1]} is {x[1]} and the difference is {x[2]}</h3>
+                            <div className="apiHeadings">
+                                
+                                <h3 key={index}>The time at {x[0][0]}, {x[0][1]} is {x[1]} and the difference is {x[2]}</h3>
+                            </div>
                         )
                     })
                 }
 
+            </div>
             </div>
         </div>
     )
