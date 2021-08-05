@@ -556,8 +556,8 @@ h1 {
   font-size: 2.5rem;
   position: absolute;
   z-index: 100;
-  text-align: center;
-  width: 100%;
+  
+  
 }
 
 /* BUTTONS */
@@ -607,7 +607,10 @@ footer a:focus {
   text-decoration: none;
   background: transparent;
 }
-
+.mainHead {
+  display: flex;
+  justify-content: center;
+}
 
 /* MEETINGS/HOME */
 

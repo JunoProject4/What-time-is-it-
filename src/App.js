@@ -42,7 +42,13 @@ function App() {
     <div className={darkMode}>
 
       <header>
-        <h1>Timeless</h1>
+        <div className="mainHead">
+        <motion.h1
+        initial={{ opacity: 0, x: -250 }}
+        animate={{ opacity: 1, x: -10 }}
+        transition={{ delay: 1.3, type: "spring" }}>Timeless</motion.h1>
+
+        </div>
         <div className="ellipse1"></div>
         <div className="ellipse2"></div>
         <div className="ellipse3"></div>
