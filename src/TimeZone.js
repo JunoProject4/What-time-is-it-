@@ -7,14 +7,13 @@ const TimeZone = (props) => {
     const [city2Input, setCity2Input] = useState("")
     const [city3Input, setCity3Input] = useState("")
     const [showFinal, setShowFinal] = useState(false)
+    const [showLoader, setShowLoader] = useState(false)
     const { apiFinal, setApiFinal } = props
     const history = useHistory()
     const inputArray = [['city1', 'City 1', 'city1Input'], ['city2', 'City 2', 'city2Input'], ['city3', 'City 3', 'city3Input']]
     let apiInformation = []
     let copyArray = []
-    // const [loading, setLoading] = useState(true)
-    // const [showFinal, setShowFinal] = useState(false)
-    const [showLoader, setShowLoader] = useState(false)
+
 
 
     // const url = ("https://worldtimeapi.org/api/timezone/")
@@ -98,15 +97,14 @@ const TimeZone = (props) => {
             alert("Invalid search parameters on City 3")
         }
 
-        if (alertCount === 0) {
+        if (alertCount === 0 && copyArray.length) {
             setCityArray(copyArray)
             multipleApis()
+            setShowLoader(true)
             setTimeout(() => {
-                setShowFinal(true)
                 setShowLoader(false)
-            }, 3000)
+            }, 20000)
         }
-        setShowLoader(true)
     }
 
     const handleClick2 = () => {
@@ -133,9 +131,9 @@ const TimeZone = (props) => {
                 {
                     showFinal
                         ? <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-                        : showLoader ? 
-                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div> :
-                        null
+                        : showLoader ?
+                            <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
+                            null
                 }
             </div>
         </div>

@@ -22,10 +22,8 @@ function App() {
     if (e.target.className === 'theme') {
       darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
     } else {
-      console.log("light mode activated")
       setWelcome(true)
       history.push("/" + e.target.className)
-      
     }
   }
 
