@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useHistory } from "react-router-dom";
 
 const TimeZone = (props) => {
@@ -105,8 +105,7 @@ const TimeZone = (props) => {
     return (
         <div className="component timeZoneContainer">
             <div className="flexFrom">
-                <h2>Enter up to 3 cities and locations (Asia, America, Africa, Europe, Australia) </h2>
-                <h2>Use _ for spaces.</h2>
+                <h2>Up to 3 cities and continents(America is one continent, use _ for spaces)</h2>
                 <form className="cityInputForm" action="submit">
                     {
                         inputArray.map((x, index) => {
