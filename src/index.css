@@ -21,12 +21,6 @@ section {
   display: block;
 }
 
-<<<<<<< HEAD =======>>>>>>>c76def8b493c1bf977cf7c4923f1817c0e9d788a figcaption,
-figure,
-main {
-  display: block;
-}
-
 figure {
   margin: 1em 40px;
 }
@@ -604,7 +598,7 @@ footer a:focus {
 .meetingsContainer {
   height: 95vh;
   background-color: #000d54;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .newMeetingForm {
@@ -695,7 +689,7 @@ h2 {
   margin: 0 auto;
 }
 
-/* TimeZone Animation */
+/* TimeZone Animation/loader */
 
 .lds-ring {
   display: inline-block;
