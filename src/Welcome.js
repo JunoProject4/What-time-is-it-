@@ -58,8 +58,6 @@ const Welcome = (props) => {
             path="/timezone"
             render={() => (
               <TimeZone
-                // setWelcome={setWelcome}
-                // welcome={welcome}
                 setApiFinal={setApiFinal}
                 apiFinal={apiFinal}
               />
@@ -70,8 +68,6 @@ const Welcome = (props) => {
             path="/calendar"
             render={() => (
               <Calendar
-                // setWelcome={setWelcome}
-                // welcome={welcome}
                 apiFinal={apiFinal}
                 setMeetingInfo={setMeetingInfo}
                 setMeetingName={setMeetingName}

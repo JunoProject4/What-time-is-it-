@@ -7,17 +7,12 @@ const TimeZone = (props) => {
     const [city2Input, setCity2Input] = useState("")
     const [city3Input, setCity3Input] = useState("")
     const [showFinal, setShowFinal] = useState(false)
+    const [showLoader, setShowLoader] = useState(false)
     const { apiFinal, setApiFinal } = props
     const history = useHistory()
     const inputArray = [['city1', 'City 1', 'city1Input'], ['city2', 'City 2', 'city2Input'], ['city3', 'City 3', 'city3Input']]
     let apiInformation = []
     let copyArray = []
-    // const [loading, setLoading] = useState(true)
-    // const [showFinal, setShowFinal] = useState(false)
-    const [showLoader, setShowLoader] = useState(false)
-
-
-    // const url = ("https://worldtimeapi.org/api/timezone/")
 
     //API Call to get Time from the user Inputs, user is allowed up to 3 choices, res has to be formatted back into something that is readable.  If there is an error, it returns No information Avilable.  This APICall sets the 'apiFinal' which is a state housed in Welcome and passed to Calendar to use later.
     const apiCall = async (city, continent) => {
@@ -44,7 +39,7 @@ const TimeZone = (props) => {
         copyArray.length === 3
             ? Promise.all([
                 apiCall(copyArray[0][0], copyArray[0][1]),
-                apiCall(copyArray[1][0], copyArray[1][1]),
+                apiCall(copyArray[1][0], copyArray[1][1]), 
                 apiCall(copyArray[2][0], copyArray[2][1])
             ]).then((res) => {
                 setShowFinal(true)
@@ -98,15 +93,14 @@ const TimeZone = (props) => {
             alert("Invalid search parameters on City 3")
         }
 
-        if (alertCount === 0) {
+        if (alertCount === 0 && copyArray.length) {
             setCityArray(copyArray)
             multipleApis()
+            setShowLoader(true)
             setTimeout(() => {
-                setShowFinal(true)
                 setShowLoader(false)
-            }, 3000)
+            }, 20000)
         }
-        setShowLoader(true)
     }
 
     const handleClick2 = () => {
@@ -116,7 +110,8 @@ const TimeZone = (props) => {
     return (
         <div className="component timeZoneContainer">
             <div className="flexFrom">
-                <h2>Up to 3 cities and continents(America is one continent, use _ for spaces)</h2>
+                <h2>Up to 3 cities and continents (use _ for spaces)</h2>
+                <h3>*America, Africa, Asia, Australia, Europe*</h3>
                 <form className="cityInputForm" action="submit">
                     {
                         inputArray.map((x, index) => {
@@ -133,9 +128,9 @@ const TimeZone = (props) => {
                 {
                     showFinal
                         ? <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-                        : showLoader ? 
-                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div> :
-                        null
+                        : showLoader ?
+                            <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
+                            null
                 }
             </div>
         </div>
