@@ -21,6 +21,10 @@ section {
   display: block;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c76def8b493c1bf977cf7c4923f1817c0e9d788a
 figcaption,
 figure,
 main {
@@ -239,7 +243,6 @@ section {
   display: block;
 }
 
-
 hr {
   box-sizing: content-box;
   height: 0;
@@ -329,11 +332,6 @@ textarea {
   height: 0;
 }
 
-/* * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-} */
 button,
 input {
   overflow: visible;
@@ -426,12 +424,6 @@ template {
   height: 0;
 }
 
-/* * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-} */
-
 .visuallyHidden:not(:focus):not(:active) {
   position: absolute;
   width: 1px;
@@ -445,33 +437,21 @@ template {
   overflow: hidden;
 }
 
-/* body {
-body {
-  overflow: hidden;
-} */
-
 main p,
 main h3 {
   margin: 0;
   color: white;
 }
 
-/* .darkMode main {
-  background-color: purple;
-} */
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
 /* a, */
 Button {
-  /* box-shadow: inset 0px 1px 0px 0px #97c4fe; */
-  /* background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
-  background-color: #3d94f6; */
   box-shadow: inset 0px 1px 0px 0px;
   background: linear-gradient(to bottom, #fc4f7f 5%, #f180a0 100%);
   background-color: #fc4f7f;
   border-radius: 6px;
-  /* border: 1px solid #337fed; */
   border: 1px solid #b63d5f;
   display: inline-block;
   cursor: pointer;
@@ -541,6 +521,7 @@ h1 {
   font-size: 2.5rem;
   position: absolute;
   z-index: 100;
+  
 }
 
 /* BUTTONS */
@@ -587,10 +568,12 @@ footer a:focus {
   text-decoration: none;
   background: transparent;
 }
+
 .mainHead {
   display: flex;
   justify-content: center;
 }
+
 
 /* MEETINGS/HOME */
 
@@ -715,6 +698,45 @@ h2 {
 }
 .cityInputForm button {
   margin: 0 auto;
+}
+
+/* TimeZone Animation */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  margin: 0 auto;
+  right: 15px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* CALENDAR */
