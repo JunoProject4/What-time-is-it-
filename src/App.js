@@ -6,6 +6,7 @@ import { FaCalendarPlus, FaTrashAlt, FaRegHandshake, FaArrowLeft  } from 'react-
 import { motion } from "framer-motion";
 
 
+
 //Our Starting point, will hold the Welcome screen with 2 options that Grant suggested (in progress and not showing).  For now it houses 3 components, timezone/set up(likely to be merged) and meetings, they render depending on the URL path.  There are 5 buttons at the bottom that either select a URL path and renders a component, or changes theme or restarts 
 
 //Houses Header, footer and Main
@@ -21,8 +22,10 @@ function App() {
     if (e.target.className === 'theme') {
       darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
     } else {
+      console.log("light mode activated")
       setWelcome(true)
       history.push("/" + e.target.className)
+      
     }
   }
 
@@ -49,7 +52,7 @@ function App() {
       {
         buttonArray.map((button, i) => {
           return (
-            <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}</button>
+            <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}<fa-undo/></button>
           )
         })
       }
