@@ -9,7 +9,7 @@ html {
 }
 body {
   margin: 0;
-  /* overflow: hidden; */
+  overflow-x: hidden;
   font-family: "Vollkorn", serif;
 }
 article,
@@ -21,10 +21,7 @@ section {
   display: block;
 }
 
-/* h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-} */
+
 
 figcaption,
 figure,
@@ -559,8 +556,8 @@ h1 {
   font-size: 2.5rem;
   position: absolute;
   z-index: 100;
-  text-align: center;
-  width: 100%;
+  
+  
 }
 
 /* BUTTONS */
@@ -582,21 +579,20 @@ h1 {
 .finalizeMeetingBtn {
   margin: 0 auto;
 }
+.meetingSetBtn {
+  
+  margin: 10px auto;
+  display: inline-block;
+}
 
 footer {
-  /* height: 20vh; */
-  /* background-color: #0c1c65;  
-  background-color: #000d54; */
+  
   height: 5vh;
   background-color: #000d54;
   text-align: center;
   margin: 0;
   padding: 0;
-  /* display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0;  */
+  
 }
 
 footer a,
@@ -611,14 +607,10 @@ footer a:focus {
   text-decoration: none;
   background: transparent;
 }
-
-/* buttons
-#userBtns {
-  margin: 10px;
+.mainHead {
+  display: flex;
+  justify-content: center;
 }
-.finalizeMeetingBtn {
-  margin: 0 auto;
-} */
 
 /* MEETINGS/HOME */
 
@@ -638,7 +630,6 @@ footer a:focus {
 }
 .newMeeting {
   background-color: #0c1c65;
-
   padding: 40px 70px 20px;
   border-radius: 10px;
   margin-top: 140px;
@@ -650,18 +641,17 @@ footer a:focus {
 .newMeeting p {
   color: white;
   margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .meetingsContainer {
-  
   background-color: #000d54;
+  height: 95vh;
 }
 
 .newMeetingForm {
   background-color: #0c1c65;
   border-radius: 10px;
-  /* width: 60%; */
-  /* height: 200px; */
   padding: 40px 78px 20px;
   display: flex;
   flex-direction: column;
@@ -670,6 +660,7 @@ footer a:focus {
 }
 .newMeetingForm label {
   margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 label {
@@ -695,7 +686,7 @@ label {
 h2 {
   font-size: 1rem;
   color: whitesmoke;
-  padding-top: 90px;
+  padding-top: 20px;
   letter-spacing: 1.5px;
   text-align: center;
   margin: 0;
@@ -770,16 +761,16 @@ h2 {
 .finalizeMeeting {
   border: 3px solid red;
 }
-
 .timeApiInfo h3 {
   color: whitesmoke;
   
 }
-
-
 .flexFrom {
   display: flex;
   flex-direction: column;
+}
+.flexFrom h2 {
+  font-size: 1.3rem;
 }
 
 .timePicker {
@@ -833,26 +824,31 @@ h2 {
 /* Meetings and IndividualMeetings */
 
 .meetingsContainer h2 {
-  /* margin: 0;  */
-  padding-top: 7.5rem;
+  padding-top: 150px;
+  font-size: 1.8rem;
+  
 }
-
+.meetingsContainer h4 {
+  padding-top: 70px;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  text-align: center;
+}
 .meetingsGrid {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   padding: 15px 40px;
   
 }
-
 .eachMeeting {
-  /* width: 90%; */
+  
   text-align: center;
   border-radius: 0.3rem;
   margin-bottom: 1rem;
-  padding: 50px;
+  padding: 40px 30px;
   background-color: #0c1c65;
 }
 .eachMeeting button {
@@ -882,39 +878,9 @@ h3 {
 
 .notSent {
   border: 0.1rem solid red;
-}
-
-/* .pending {
-  border: 0.1rem solid blueviolet;
-} */
-/* .meetingStatus {
-  display: flex; 
-  justify-content: space-evenly; 
-  align-content: space-evenly; 
   
-} */
-
-/* .meetingStatus h3 {
-  flex-wrap: nowrap; 
-} */
-/* 
-.accepted {
-  border: 0.2rem solid greenyellow; 
 }
 
-.rejected {
-  border: 0.2rem solid red;
-}
-
-.pending {
-  border: 0.2rem solid blueviolet;
-} */
-
-/* .meetingStatus button {
-  margin: 0;
-  -ms-transform: translateX(-50%);
-  transform: translateX(50%);
-} */
 
 /* MEETINGS DETAILS */
 
@@ -941,7 +907,7 @@ h3 {
     padding: 40px 40px 20px;
   }
   .newMeetingForm {
-    padding: 40px 45px 20px;
+    padding: 40px 51px 20px;
   }
   .cityInputForm {
     padding: 10px 40px;
@@ -960,12 +926,12 @@ h3 {
     padding: 120px 0 45px;
   }
   .timePicker {
-    width: 350px;
+    width: 335px;
     margin: 50px auto 0;
   }
   .timePicker button {
-    width: 80%;
-    font-size: 10px;
+    width: 70%;
+    font-size: 13px;
   }
   #ej2_timepicker_0::placeholder {
     font-size: .9rem;
@@ -978,15 +944,15 @@ h3 {
     font-size: 0.9rem;
   }
 }
-
-@media (max-width: 407px) {
-  #userBtns {
-    margin-left: 5px;
+@media screen and (max-width: 384px) {
+  .newMeeting p {
+    
+    
+    font-size: 1.1rem;
   }
-  footer {
-    height: 5vh;
-  }
-  .restart {
-    margin-top: 0;
+  .newMeetingForm label {
+    font-size: 1.1rem;
   }
 }
+
+

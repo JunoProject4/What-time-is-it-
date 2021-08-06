@@ -144,25 +144,26 @@ const TimeZone = (props) => {
                         min={minTime}
                         max={maxTime}
                     />
-                    {
-                        selectStartTime ?
-                            <TimePickerComponent
-                                selected={selectEndTime}
-                                onChange={time => {
-                                    setSelectEndTime(time.value)
-                                    setApprovedTime(false)
-                                }}
-                                placeholder="Select an End Time"
-                                min={selectStartTime}
-                                max={maxTime}
-                            /> :
-                            null
-                    }
-                    {
-                        approvedTime ?
-                            <button onClick={onSubmitDates}>Set Meeting</button> :
-                            <button onClick={defineTime} className="setMeeting">Check Availability</button>
-                    }
+                {
+                    selectStartTime ?
+                    <TimePickerComponent
+                        selected={selectEndTime}
+                        onChange={time => {
+                            setSelectEndTime(time.value)
+                            setApprovedTime(false)
+                        }}
+                        placeholder="Select an End Time"
+                        min={selectStartTime}
+                        max={maxTime}
+                    /> :
+                    null
+                }
+
+                {
+                    approvedTime ?
+                    <button onClick={onSubmitDates} className="meetingSetBtn">Set Meeting</button> : 
+                    <button onClick={defineTime} className="setMeeting">Check Availability</button>
+                }
 
                 </div>
                 <div className="timeApiInfo">
