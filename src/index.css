@@ -587,7 +587,7 @@ h1 {
 
 footer {
   
-  height: 5vh;
+  height: 11vh;
   background-color: #000d54;
   text-align: center;
   margin: 0;
@@ -646,7 +646,7 @@ footer a:focus {
 
 .meetingsContainer {
   background-color: #000d54;
-  height: 95vh;
+  
 }
 
 .newMeetingForm {
