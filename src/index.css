@@ -6,6 +6,7 @@ html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -853,14 +854,14 @@ h2 {
 .swal2-container,
 .swal2-center,
 .swal2-popup {
-  width: inherit; 
-} 
+  width: inherit;
+}
 
 /* Meetings and IndividualMeetings */
 
 .meetingsContainer h2 {
   padding-top: 150px;
-  font-size: 1.8rem; 
+  font-size: 1.8rem;
 }
 
 .meetingsContainer h4 {
@@ -948,10 +949,10 @@ h3 {
 }
 
 .lightMode h1,
-.lightMode h2, 
+.lightMode h2,
 .lightMode h3,
 .lightMode h4 {
-  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
 }
 
 .lightMode button {
@@ -962,13 +963,13 @@ h3 {
 
 @media (max-width: 460px) {
   .flexFrom {
-    margin-top: 2rem; 
+    margin-top: 2rem;
   }
 }
 
 @media screen and (max-width: 384px), screen and (max-height: 854px) {
   h1 {
-    margin-top: 2.5rem; 
+    margin-top: 2.5rem;
   }
   .newMeetingSection {
     justify-content: space-evenly;
@@ -1018,16 +1019,9 @@ h3 {
 }
 @media screen and (max-width: 384px) {
   .newMeeting p {
-      font-size: 1.1rem;
+    font-size: 1.1rem;
   }
   .newMeetingForm label {
     font-size: 1.1rem;
   }
 }
-
-
-
-
-
-
-
