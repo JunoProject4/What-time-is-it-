@@ -21,8 +21,6 @@ section {
   display: block;
 }
 
-
-
 figcaption,
 figure,
 main {
@@ -556,21 +554,19 @@ h1 {
   font-size: 2.5rem;
   position: absolute;
   z-index: 100;
-  
-  
 }
 
 /* BUTTONS */
 
 #userBtns.theme {
-  position: absolute; 
-  top: 0; 
-  right: 0; 
-} 
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 #userBtns.restart {
-  position: absolute; 
-  top: 0; 
+  position: absolute;
+  top: 0;
 }
 
 #userBtns {
@@ -580,19 +576,16 @@ h1 {
   margin: 0 auto;
 }
 .meetingSetBtn {
-  
   margin: 10px auto;
   display: inline-block;
 }
 
 footer {
-  
-  height: 11vh;
+  height: 5vh;
   background-color: #000d54;
   text-align: center;
   margin: 0;
   padding: 0;
-  
 }
 
 footer a,
@@ -645,8 +638,8 @@ footer a:focus {
 }
 
 .meetingsContainer {
+  height: 95vh;
   background-color: #000d54;
-  
 }
 
 .newMeetingForm {
@@ -705,7 +698,7 @@ h2 {
 .localTimeDisplay {
   text-align: center;
 }
-.localTimeDisplay  h3 {
+.localTimeDisplay h3 {
   padding-top: 5px;
 }
 .cityInputForm {
@@ -750,7 +743,6 @@ h2 {
 .calendarHeading {
   font-size: 1.5rem;
   padding-top: 90px;
-  
 }
 .myCalendarForm {
   display: flex;
@@ -763,7 +755,6 @@ h2 {
 }
 .timeApiInfo h3 {
   color: whitesmoke;
-  
 }
 .flexFrom {
   display: flex;
@@ -826,7 +817,6 @@ h2 {
 .meetingsContainer h2 {
   padding-top: 150px;
   font-size: 1.8rem;
-  
 }
 .meetingsContainer h4 {
   padding-top: 70px;
@@ -841,10 +831,8 @@ h2 {
   justify-content: space-evenly;
   align-items: center;
   padding: 15px 40px;
-  
 }
 .eachMeeting {
-  
   text-align: center;
   border-radius: 0.3rem;
   margin-bottom: 1rem;
@@ -856,11 +844,9 @@ h2 {
   margin: 15px 5px;
   font-size: 1.2rem;
 }
-.eachMeeting p{
- font-size: 1.2rem;
+.eachMeeting p {
+  font-size: 1.2rem;
 }
-
-
 
 .eachMeeting h3:first-child {
   font-size: 1.8rem;
@@ -878,9 +864,7 @@ h3 {
 
 .notSent {
   border: 0.1rem solid red;
-  
 }
-
 
 /* MEETINGS DETAILS */
 
@@ -894,7 +878,6 @@ h3 {
 }
 
 /* MEDIA QUERIES */
-
 
 @media screen and (max-width: 384px), screen and (max-height: 854px) {
   .newMeetingSection {
@@ -920,7 +903,6 @@ h3 {
   }
   .react-datepicker__input-container input {
     width: 170px;
-    
   }
   .calendarHeading {
     padding: 120px 0 45px;
@@ -934,7 +916,7 @@ h3 {
     font-size: 13px;
   }
   #ej2_timepicker_0::placeholder {
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: #fc4f7f;
   }
   .apiHeadings h3 {
@@ -946,13 +928,9 @@ h3 {
 }
 @media screen and (max-width: 384px) {
   .newMeeting p {
-    
-    
     font-size: 1.1rem;
   }
   .newMeetingForm label {
     font-size: 1.1rem;
   }
 }
-
-
