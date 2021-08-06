@@ -641,6 +641,7 @@ footer a:focus {
 .newMeeting p {
   color: white;
   margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .meetingsContainer {
@@ -659,6 +660,7 @@ footer a:focus {
 }
 .newMeetingForm label {
   margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 label {
@@ -905,7 +907,7 @@ h3 {
     padding: 40px 40px 20px;
   }
   .newMeetingForm {
-    padding: 40px 45px 20px;
+    padding: 40px 51px 20px;
   }
   .cityInputForm {
     padding: 10px 40px;
@@ -940,6 +942,16 @@ h3 {
     text-align: center;
     margin: 15px auto;
     font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 384px) {
+  .newMeeting p {
+    
+    
+    font-size: 1.1rem;
+  }
+  .newMeetingForm label {
+    font-size: 1.1rem;
   }
 }
 
