@@ -14,10 +14,6 @@ const TimeZone = (props) => {
     let apiInformation = []
     let copyArray = []
 
-
-
-    // const url = ("https://worldtimeapi.org/api/timezone/")
-
     //API Call to get Time from the user Inputs, user is allowed up to 3 choices, res has to be formatted back into something that is readable.  If there is an error, it returns No information Avilable.  This APICall sets the 'apiFinal' which is a state housed in Welcome and passed to Calendar to use later.
     const apiCall = async (city, continent) => {
         const url = ("https://worldtimeapi.org/api/timezone/")
@@ -43,7 +39,7 @@ const TimeZone = (props) => {
         copyArray.length === 3
             ? Promise.all([
                 apiCall(copyArray[0][0], copyArray[0][1]),
-                apiCall(copyArray[1][0], copyArray[1][1]),
+                apiCall(copyArray[1][0], copyArray[1][1]), 
                 apiCall(copyArray[2][0], copyArray[2][1])
             ]).then((res) => {
                 setShowFinal(true)
@@ -114,7 +110,8 @@ const TimeZone = (props) => {
     return (
         <div className="component timeZoneContainer">
             <div className="flexFrom">
-                <h2>Up to 3 cities and continents(America is one continent, use _ for spaces)</h2>
+                <h2>Up to 3 cities and continents (use _ for spaces)</h2>
+                <h3>*America, Africa, Asia, Australia, Europe*</h3>
                 <form className="cityInputForm" action="submit">
                     {
                         inputArray.map((x, index) => {

@@ -5,7 +5,16 @@ import { FaCalendarPlus, FaTrashAlt, FaRegHandshake } from 'react-icons/fa';
 //This is where all the meetings are made.  They are passed props object with all the firebase info of each meeting, and uses that info to populate the information.  It also has a Double API call allowing users to Pick a random place.  There is also a submit button that connects user to Google Calendar.
 const IndividualMeetings = (props) => {
     const { info, id } = props
+    
+    //Google API Vars
+    const gapi = window.gapi
+    const email = "friendlypirat3@gmail.com"
+    const CLIENT_ID = '602044477009-updm2dii3nkt1culsmak0bvjahl4f90s.apps.googleusercontent.com';
+    const API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';
+    const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+    const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
+    //If clicked, runs a modal asking user if they are sure they want to delete for double confirmation
     const handleClickDelete = (e) => {
         e.preventDefault()
 
@@ -30,6 +39,7 @@ const IndividualMeetings = (props) => {
         })
     }
 
+    //When clicked, runs two APIs, one two get Locations Longitude/Latitude, the next to pick a random place close to that location.  It then adds the value in firecase according to ID.
     const handleClickPlace = (e) => {
         const dbRef = firebase.database().ref();
 
@@ -75,17 +85,8 @@ const IndividualMeetings = (props) => {
             })
     }
 
-    //Uses Google Calendar API to record meeting to User's Google Calendar
+    //When clicked, uses Google Calendar API to record meeting to User's Google Calendar
     //and send out invites via email (We put a dummy email for now to not cause junk) but users can change it in their events tab in Google Calendar
-    //but will be adding a form input to collect invitation emails
-    const gapi = window.gapi
-    const email = "friendlypirat3@gmail.com"
-
-    const CLIENT_ID = '602044477009-updm2dii3nkt1culsmak0bvjahl4f90s.apps.googleusercontent.com';
-    const API_KEY = 'AIzaSyDhDasC0ZkvGKYTs6KZhLLNE2O9Espwc3g';
-    const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-    const SCOPES = "https://www.googleapis.com/auth/calendar.events";
-
     const handleClickCalendar = (e) => {
         const dbRef = firebase.database().ref();
         gapi.load('client:auth2', () => {
@@ -96,13 +97,12 @@ const IndividualMeetings = (props) => {
                 scope: SCOPES,
             })
 
-            gapi.client.load('calendar', 'v3', () => console.log('bam!'))
-
+            gapi.client.load('calendar', 'v3')
             gapi.auth2.getAuthInstance().signIn()
                 .then(() => {
 
                     const event = {
-                        'summary': 'Testing',
+                        'summary': info.title,
                         'location': `${info.Place === undefined ? "TBD" : info.Place}`,
                         'description': "Greatest meeting",
                         'start': {
@@ -141,9 +141,7 @@ const IndividualMeetings = (props) => {
     }
 
     return (
-
         <div className="meetingStatus">
-
             <div className={info.Status === undefined ? "eachMeeting notSent" : "eachMeeting wasSent"}>
                 <p>{info.title}</p>
                 <p>{info.location[0]}, {info.location[1]}</p>
@@ -161,7 +159,6 @@ const IndividualMeetings = (props) => {
                 <button name="delete" onClick={handleClickDelete}><i><FaTrashAlt /></i></button>
             </div>
         </div>
-
     )
 }
 
