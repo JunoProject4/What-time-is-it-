@@ -14,10 +14,7 @@ const TimeZone = (props) => {
     const [arrayOfTimes, setArrayOfTimes] = useState([]);
     const [approvedTime, setApprovedTime] = useState(false);
     const [meetingName, setMeetingName] = useState('');
-    console.log(meetingName)
-
     const history = useHistory()
-
     const { apiFinal } = props
     const [difference, setDifference] = useState([])
     const [errorArray, setErrorArray] = useState([])
@@ -116,7 +113,7 @@ const TimeZone = (props) => {
         let time = [Date().substring(16, 24), Date().substring(28, 33)]
         let timeDifference = apiFinal.filter(x => x.length === 3).map(y => y = [y[0], y[1], (y[2] - time[1])])
         let error = []
-        apiFinal.filter(x => x.length === 2).map(y => error.push(y[0]))
+        apiFinal.filter(x => x.length === 2).map(y => error.push(`${y[0]}, `))
         setDifference(timeDifference)
         setErrorArray(error)
     }, [])
@@ -181,7 +178,7 @@ const TimeZone = (props) => {
                     {
                         errorArray.length
                             ? <div className="apiHeadings">
-                                <h3>{errorArray} : Meeting N/A due to no information</h3>
+                                <h3>{errorArray} : N/A due to no information. Check spelling.</h3>
                             </div>
                             : null
                     }
