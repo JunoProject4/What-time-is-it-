@@ -610,6 +610,7 @@ footer a:focus {
 .meetingsContainer {
   height: 95vh;
   background-color: #000d54;
+  overflow: scroll;
 }
 
 .newMeetingForm {
@@ -824,7 +825,7 @@ h2 {
 /* Meetings and IndividualMeetings */
 
 .meetingsContainer h2 {
-  padding-top: 150px;
+  padding-top: 170px;
   font-size: 1.8rem;
 }
 .meetingsContainer h4 {
