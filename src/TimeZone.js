@@ -12,6 +12,12 @@ const TimeZone = (props) => {
     const inputArray = [['city1', 'City 1', 'city1Input'], ['city2', 'City 2', 'city2Input'], ['city3', 'City 3', 'city3Input']]
     let apiInformation = []
     let copyArray = []
+    // const [loading, setLoading] = useState(true)
+    // const [showFinal, setShowFinal] = useState(false)
+    const [showLoader, setShowLoader] = useState(false)
+
+
+    // const url = ("https://worldtimeapi.org/api/timezone/")
 
     //API Call to get Time from the user Inputs, user is allowed up to 3 choices, res has to be formatted back into something that is readable.  If there is an error, it returns No information Avilable.  This APICall sets the 'apiFinal' which is a state housed in Welcome and passed to Calendar to use later.
     const apiCall = async (city, continent) => {
@@ -95,7 +101,12 @@ const TimeZone = (props) => {
         if (alertCount === 0) {
             setCityArray(copyArray)
             multipleApis()
+            setTimeout(() => {
+                setShowFinal(true)
+                setShowLoader(false)
+            }, 3000)
         }
+        setShowLoader(true)
     }
 
     const handleClick2 = () => {
@@ -122,7 +133,9 @@ const TimeZone = (props) => {
                 {
                     showFinal
                         ? <button className="finalizeMeetingBtn" name="finalizeMeeting" onClick={handleClick2}>Finalize Meetings</button>
-                        : null
+                        : showLoader ? 
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div> :
+                        null
                 }
             </div>
         </div>
