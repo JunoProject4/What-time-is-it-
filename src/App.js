@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 function App() {
   const buttonArray = ['theme', 'restart']
   const [welcome, setWelcome] = useState(true)
-  const [darkMode, setDarkMode] = useState("app lightMode")
+  const [darkMode, setDarkMode] = useState("app darkMode")
   const history = useHistory()
 
   //Button Functionality
