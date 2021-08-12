@@ -14,7 +14,6 @@ function App() {
 
   //Button Functionality
   const handleClick = (e) => {
-    e.preventDefault()
     if (e.target.className === 'theme') {
       darkMode === "app darkMode" ? setDarkMode("app lightMode") : setDarkMode("app darkMode")
     } else {
@@ -45,7 +44,7 @@ function App() {
       {
         buttonArray.map((button, i) => {
           return (
-            <button key={i} id="userBtns" className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}<fa-undo/></button>
+            <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}<fa-undo/></button>
           )
         })
       }

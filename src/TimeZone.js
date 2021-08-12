@@ -118,7 +118,7 @@ const TimeZone = (props) => {
                             return (
                                 <div key={index}>
                                     <label htmlFor={x[0]}>{x[1]}</label>
-                                    <input name={x[0]} value={window[x[2]]} type="text" placeholder={`${x[1]} Continent`} required onChange={handleChange} />
+                                    <input name={x[0]} id={x[0]} value={window[x[2]]} type="text" placeholder={`${x[1]} Continent`} required onChange={handleChange} />
                                 </div>
                             )
                         })
