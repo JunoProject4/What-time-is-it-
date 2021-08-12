@@ -44,7 +44,7 @@ function App() {
       {
         buttonArray.map((button, i) => {
           return (
-            <button key={i} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}<fa-undo/></button>
+            <button key={i} id={button} className={button} onClick={handleClick}>{button[0].toUpperCase() + button.slice(1).toLowerCase()}<fa-undo/></button>
           )
         })
       }
