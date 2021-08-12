@@ -518,18 +518,19 @@ h1 {
 
 /* BUTTONS */
 
-#userBtns.theme {
+#theme.theme {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-#userBtns.restart {
+#restart.restart {
   position: absolute;
   top: 0;
 }
 
-#userBtns {
+#theme,
+#restart {
   margin: 10px;
 }
 
