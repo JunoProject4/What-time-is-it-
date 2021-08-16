@@ -32,7 +32,6 @@ const TimeZone = (props) => {
         // The above values are then processed through new Date functions that combine the selected day AND time, so we have a saved variable of the the start day and time, and the end day and time.
         const definedStartDate = new Date(`${newDate} ${newStartTime}`)
         const definedEndDate = new Date(`${newDate} ${newEndTime}`)
-
         const arrOfTimesToState = [];
 
         // We run through the difference array, which is an array that hold information from the passed it data of the api call, including designated city location, current in that area, and time difference.
@@ -59,30 +58,39 @@ const TimeZone = (props) => {
 
         // This is the error handling for matching the user selected time against the timezones.  We loop through the array that is holding all the info from above.
         arrOfTimesToState.forEach(arr => {
-            // If the designated location time is before 8, they will be met with a modal that explains it's too early and how much to move it by
-            if (arr.startTime.getHours() < 8) {
+            // if the timeDifference is over 12 hours AND the designated start time for that time zone is either past 7pm or before 8am, run this command
+            if (arr.timeDifference > 12 && (arr.startTime.getHours() < 8 || arr.startTime.getHours() > 19)) {
                 Swal.fire({
                     title: 'Sorry!',
-                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8 - arr.startTime.getHours()} ${8 - arr.startTime.getHours() === 1 ? 'hour' : 'hours'} to accomodate for the time difference.`,
+                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${arr.startTime.getHours() < 8 ? 8 - arr.startTime.getHours() : (24 - arr.startTime.getHours()) + 8} ${8 - arr.startTime.getHours() === 1 ? 'hour' : 'hours'} to accommodate for the time difference.`,
                     icon: 'error',
                     confirmButtonText: "Ok"
 
                 })
             }
-            //If the designated location time is after 7pm, they will be met with a modal that explains its too late and how much to move it by
-            if (arr.endTime.getHours() > 19) {
+            // If the designated location time is before 8 AND the recommended meeting end time is before 7pm local time, run this command
+            else if (arr.startTime.getHours() < 8 && definedEndDate.getHours() + arr.timeDifference <= 19){
                 Swal.fire({
                     title: 'Sorry!',
-                    text: `This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours() - 19} ${arr.endTime.getHours() - 19 === 1 ? 'hour' : 'hours'} to accomodate for the time difference.`,
+                    text: `This time is too early for ${arr.location}.  We suggest moving the meeting forward by ${8 - arr.startTime.getHours()} ${8 - arr.startTime.getHours() === 1 ? 'hour' : 'hours'} to accommodate for the time difference.`,
+                    icon: 'error',
+                    confirmButtonText: "Ok"
+
+                })
+            }
+            // if the designated location end time is after 7pm or before 8am AND the recommended meeting start time is before 7pm local time, run this command
+            else if ((arr.endTime.getHours() > 19 || arr.endTime.getHours() <= 8) && definedStartDate.getHours() - arr.timeDifference <= 19) {
+                Swal.fire({
+                    title: 'Sorry!',
+                    text: `This time is too late for ${arr.location}.  We suggest moving the meeting back by ${arr.endTime.getHours() <= 8 ? (24 + arr.endTime.getHours()) - 19 : arr.endTime.getHours() - 19} ${arr.endTime.getHours() - 19 === 1 ? 'hour' : 'hours'} to accommodate for the time difference.`,
                     icon: 'error',
                     confirmButtonText: "Ok"
                 })
             }
         })
-
         // This function check runs to make sure that every array passes the condition of their hours being 8 or later, and 7pm  or earlier.  If all designated times pass this time, the user will be shown a modal that tells them that all times are successful for the meeting.
         const checker = (array) => array.every(arr => {
-            return arr.startTime.getHours() >= 8 && arr.endTime.getHours() <= 19;
+            return (arr.startTime.getHours() >= 8 && arr.startTime.getHours() <= 19) && (arr.endTime.getHours() <= 19 && arr.startTime.getHours() >= 8);
         });
         if (checker(arrOfTimesToState)) {
             Swal.fire({
@@ -94,9 +102,10 @@ const TimeZone = (props) => {
         }
         // this will pass to state all the arrays of times and dates and all data about each meeting only if they meet all conditions.
         setApprovedTime(checker(arrOfTimesToState));
+
     }
 
-    //This runs on "Set Meeting" button.  It displays a modal that asks user for the name of meeting.  Error handling is provided to ensure info is passed through.  If infro is passed through, it'll add the title to an object of information that is passed to meeting component so that when a meeting is displayed, it'll have the purpose of the meeting appear
+    //This runs on "Set Meeting" button.  It displays a modal that asks user for the name of meeting.  Error handling is provided to ensure info is passed through.  If info is passed through, it'll add the title to an object of information that is passed to meeting component so that when a meeting is displayed, it'll have the purpose of the meeting appear
     const onSubmitDates = () => {
 
         Swal.fire({
