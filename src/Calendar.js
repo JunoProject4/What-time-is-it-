@@ -58,6 +58,7 @@ const TimeZone = (props) => {
 
         // This is the error handling for matching the user selected time against the timezones.  We loop through the array that is holding all the info from above.
         arrOfTimesToState.forEach(arr => {
+            // if the timeDifference is over 12 hours AND the designated start time for that time zone is either past 7pm or before 8am, run this command
             if (arr.timeDifference > 12 && (arr.startTime.getHours() < 8 || arr.startTime.getHours() > 19)) {
                 Swal.fire({
                     title: 'Sorry!',
@@ -67,7 +68,7 @@ const TimeZone = (props) => {
 
                 })
             }
-            // If the designated location time is before 8 AND the recommended meeting end time is before 7pm local time, they will be met with a modal that explains it's too early and how much to move it by
+            // If the designated location time is before 8 AND the recommended meeting end time is before 7pm local time, run this command
             else if (arr.startTime.getHours() < 8 && definedEndDate.getHours() + arr.timeDifference <= 19){
                 Swal.fire({
                     title: 'Sorry!',
@@ -77,6 +78,7 @@ const TimeZone = (props) => {
 
                 })
             }
+            // if the designated location end time is after 7pm or before 8am AND the recommended meeting start time is before 7pm local time, run this command
             else if ((arr.endTime.getHours() > 19 || arr.endTime.getHours() <= 8) && definedStartDate.getHours() - arr.timeDifference <= 19) {
                 Swal.fire({
                     title: 'Sorry!',
