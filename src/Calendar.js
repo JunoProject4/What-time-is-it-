@@ -58,11 +58,6 @@ const TimeZone = (props) => {
 
         // This is the error handling for matching the user selected time against the timezones.  We loop through the array that is holding all the info from above.
         arrOfTimesToState.forEach(arr => {
-            console.log(arr.startTime.getHours())
-            console.log(arr.endTime.getHours())
-            console.log(arr)
-            console.log(definedEndDate.getHours() + arr.timeDifference)
-            
             if (arr.timeDifference > 12 && (arr.startTime.getHours() < 8 || arr.startTime.getHours() > 19)) {
                 Swal.fire({
                     title: 'Sorry!',
