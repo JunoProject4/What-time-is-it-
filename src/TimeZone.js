@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 
 const TimeZone = (props) => {
@@ -13,6 +13,12 @@ const TimeZone = (props) => {
     const inputArray = [['city1', 'City 1', 'city1Input'], ['city2', 'City 2', 'city2Input'], ['city3', 'City 3', 'city3Input']]
     let apiInformation = []
     let copyArray = []
+
+    // useEffect(() => {
+    //     return () => {
+    //         setApiFinal(apiInformation)
+    //     }
+    // }, [apiFinal])
 
     //API Call to get Time from the user Inputs, user is allowed up to 3 choices, res has to be formatted back into something that is readable.  If there is an error, it returns No information Avilable.  This APICall sets the 'apiFinal' which is a state housed in Welcome and passed to Calendar to use later.
     const apiCall = async (city, continent) => {
@@ -42,19 +48,25 @@ const TimeZone = (props) => {
                 apiCall(copyArray[1][0], copyArray[1][1]), 
                 apiCall(copyArray[2][0], copyArray[2][1])
             ]).then((res) => {
-                setShowFinal(true)
+                setTimeout(() => {
+                    setShowFinal(true)
+                }, 2000)
             })
             : copyArray.length === 2
                 ? Promise.all([
                     apiCall(copyArray[0][0], copyArray[0][1]),
                     apiCall(copyArray[1][0], copyArray[1][1]),
                 ]).then((res) => {
-                    setShowFinal(true)
+                    setTimeout(() => {
+                        setShowFinal(true)
+                    }, 2000)
                 })
                 : Promise.all([
                     apiCall(copyArray[0][0], copyArray[0][1]),
                 ]).then((res) => {
-                    setShowFinal(true)
+                    setTimeout(() => {
+                        setShowFinal(true)
+                    }, 2000)
                 })
     }
 
@@ -70,25 +82,28 @@ const TimeZone = (props) => {
     const handleClick = (e) => {
         e.preventDefault()
         let alertCount = 0
+        let inputArray = [city1Input, city2Input, city3Input]
+        let fixedInputArray = inputArray.map(y => y.trim().replace(/[^a-zA-Z_\s]+/g, "").replace(/\s+/g, " ").trim().toLowerCase().split(' ').slice(0, 2).join(' '))
+        console.log(fixedInputArray)
         const check = (/(^[a-zA-Z_]+\s[a-zA-Z_]+)$/)
 
-        if (city1Input.match(check) && city1Input.length) {
-            copyArray.push(city1Input.split(" "))
-        } else if (city1Input.length) {
+        if (fixedInputArray[0].match(check) && fixedInputArray[0].length) {
+            copyArray.push(fixedInputArray[0].split(" "))
+        } else if (fixedInputArray[0].length) {
             alertCount++
             alert("Invalid search parameters on City 1")
         }
 
-        if (city2Input.match(check) && city2Input.length) {
-            copyArray.push(city2Input.split(" "))
-        } else if (city2Input.length) {
+        if (fixedInputArray[1].match(check) && fixedInputArray[1].length) {
+            copyArray.push(fixedInputArray[1].split(" "))
+        } else if (fixedInputArray[1].length) {
             alertCount++
             alert("Invalid search parameters on City 2")
         }
 
-        if (city3Input.match(check) && city3Input.length) {
-            copyArray.push(city3Input.split(" "))
-        } else if (city3Input.length) {
+        if (fixedInputArray[2].match(check) && fixedInputArray[2].length) {
+            copyArray.push(fixedInputArray[2].split(" "))
+        } else if (fixedInputArray[2].length) {
             alertCount++
             alert("Invalid search parameters on City 3")
         }
@@ -110,15 +125,16 @@ const TimeZone = (props) => {
     return (
         <div className="component timeZoneContainer">
             <div className="flexFrom">
-                <h2>Up to 3 cities and continents (use _ for spaces)</h2>
-                <h3>*America, Africa, Asia, Australia, Europe*</h3>
+                <h2>Up to 3 cities and continents</h2>
+                <h3>Use '_' for spaces in multi-word cities</h3>
+                <h3>*America, Africa, Asia, Australia, Europe, Pacific*</h3>
                 <form className="cityInputForm" action="submit">
                     {
                         inputArray.map((x, index) => {
                             return (
                                 <div key={index}>
                                     <label htmlFor={x[0]}>{x[1]}</label>
-                                    <input name={x[0]} id={x[0]} value={window[x[2]]} type="text" placeholder={`${x[1]} Continent`} required onChange={handleChange} />
+                                    <input name={x[0]} id={x[0]} value={window[x[2]]} type="text" placeholder={`City${index + 1} Continent`} required onChange={handleChange} />
                                 </div>
                             )
                         })

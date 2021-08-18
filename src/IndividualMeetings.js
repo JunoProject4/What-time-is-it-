@@ -115,7 +115,9 @@ const IndividualMeetings = (props) => {
                         },
                         'attendees': [
                             { 'email': email },
-                            { 'email': 'friendlypirate@msn' },
+                            { 'email': 'grantskinner@junoCEO.com' },
+                            { 'email': 'the_makaarina_nieminen@losdelrio.com' },
+                            { 'email': 'StefanKaragiozov@animationKing.com' }
                         ],
                         'reminders': {
                             'useDefault': false,
